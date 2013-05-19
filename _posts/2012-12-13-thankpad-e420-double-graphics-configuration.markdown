@@ -19,6 +19,7 @@ categories: ubuntu
 	unzip amd-driver-installer-catalyst-12.10-x86.x86_64.zip  
 	chmod +x amd-driver-installer-catalyst-12.10-x86.x86_64.run   
 
+<!--more-->
 ###创建`deb`安装包并安装  
 	sudo sh ./amd-driver-installer-catalyst-12.10-x86.x86_64.run --buildpkg Ubuntu/precise  
 	sudo dpkg -i fglrx*.deb    

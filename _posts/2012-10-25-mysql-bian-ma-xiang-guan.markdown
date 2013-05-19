@@ -11,6 +11,7 @@ categories: sql
 	default-character-set = utf-8
 	character-set-server= utf-8
 
+<!--more-->
 ### mysql 命令 ###
 	mysql设置编码命令 
 

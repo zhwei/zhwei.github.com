@@ -28,4 +28,5 @@ sunjdk文件可以在[oracle](http://www.oracle.com/technetwork/java/javase/down
 	JAVA_HOME="/usr/lib/jvm/jdk1.6.0_34"
 
 
+<!--more-->
 [ruby on rails](http://ruby-china.org/wiki/install_ruby_guide)

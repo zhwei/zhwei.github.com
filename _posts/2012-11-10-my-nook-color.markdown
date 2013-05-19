@@ -10,6 +10,7 @@ categories: nook
 前几天入手的nook color，新刷的cm7系统，主要是为了看书购入的，感觉还不错，ips屏还是比较给力的。  
 ![正面](http://pic.yupoo.com/waqei_v/Cpdaqzbo/14tRpy.jpg)  
 
+<!--more-->
 还有一个号称二十美刀的原装皮套，不过感觉好沉。。。  
 ![皮套](http://pic.yupoo.com/waqei_v/CpdapX9W/pV950.jpg)  
 ![皮套2](http://pic.yupoo.com/waqei_v/CpdaqExr/N4JFS.jpg)  
