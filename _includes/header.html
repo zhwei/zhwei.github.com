@@ -11,6 +11,9 @@
 <nav id="main-nav">{% include navigation.html %}</nav>
 <nav id="sub-nav">
 	<div class="social">
+		{% if site.weibo_user %}
+		<a class="weibo" href="http://weibo.com/{{ site.weibo_user }}" title="weibo">Weibo</a>
+		{% endif %}
 		{% if site.facebook_user %}
 		<a class="facebook" href="http://www.facebook.com/{{ site.facebook_user }}" title="Facebook">Facebook</a>
 		{% endif %}

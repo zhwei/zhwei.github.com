@@ -1,7 +1,14 @@
-baseurl: /
+################################
+#                              #
+# config file                  #
+#                              #
+################################
+
+
 
 
 # url: 
+baseurl: /
 title: zhwei@Notes:~$
 subtitle:  
 author: zhwei
@@ -9,16 +16,34 @@ simple_search: http://google.com/search
 description: python -c 'import this'
 email: sdutzhangwei@gmail.com
 
+# 首页分页
+#
 paginate: 7           # Posts per page on the blog index
 pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
 excerpt_link: "Continue &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 
+category_dir: blog/categories
+markdown: rdiscount
+pygments: false # default python pygments have been replaced by pygments.rb
+
+
+
+
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
 
+
+
+# 单篇文章的链接
+#
 permalink: /archive/:year/:title.html
 
+
+# 第三方工具  
+#
+# weibo 
+weibo_user: 123271314
 
 # Github repositories
 github_user: zhwei
