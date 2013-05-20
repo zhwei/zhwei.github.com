@@ -3,7 +3,7 @@ layout: post
 title: "thankpad E420 ubuntu 双显卡配置"
 date: 2012-12-13 15:19
 comments: true
-categories: ubuntu
+tags: ubuntu
 ---
 ###首先卸载曾经的显卡驱动
 	sudo apt-get remove --purge fglrx  fglrx-amdcccle  fglrx-dev  

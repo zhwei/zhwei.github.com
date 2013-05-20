@@ -3,7 +3,7 @@ layout: post
 title: "ubuntu12.10 配置记录"
 date: 2012-11-23 22:38
 comments: true
-categories: ubuntu
+tags: ubuntu
 ---
 很久没更新的ubuntu12.04更新了下，结果直接挂掉了。。。
 前几天装上了新出的12.10，gnome还是老样子，效果有一丢丢改进.

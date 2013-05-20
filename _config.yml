@@ -26,6 +26,7 @@ plugins: _plugins
 markdown: rdiscount
 
 category_dir: blog/categories
+tags_path : /tags.html
 markdown: rdiscount
 pygments: false # default python pygments have been replaced by pygments.rb
 

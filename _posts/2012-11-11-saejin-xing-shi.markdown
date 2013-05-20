@@ -3,7 +3,7 @@ layout: post
 title: "sae进行时"
 date: 2012-11-11 14:17
 comments: true
-categories: sae
+tags: sae
 ---
 ###第一天
 * * *

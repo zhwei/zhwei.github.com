@@ -3,7 +3,7 @@ layout: post
 title: "my nook color"
 date: 2012-11-10 16:06
 comments: true
-categories: nook
+tags: nook
 ---
 ##入手
 * * *
