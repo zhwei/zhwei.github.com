@@ -59,8 +59,8 @@ github_user: zhwei
 facebook_user: zhweis
 
 # Disqus Comments
-#disqus_short_name: importthis-zhwei
-#disqus_show_comment_count: false
+disqus_short_name: importthis-zhwei
+disqus_show_comment_count: false
 
 # duoshuo
 #
