@@ -3,6 +3,21 @@ layout: default
 title: Tags
 ---
 
+<h1>tags</h1>
+<br />
+<br />
+<br />
+<div itemscope itemtype="http://schema.org/Blog">
+{% for tag in site.tags %}
+
+<a class="selftag" href="#{{ tag[0] }}">{{ tag[0] }}</a>
+
+{% endfor %}
+
+</div>
+<br />
+<br />
+
 <div itemscope itemtype="http://schema.org/Blog">
 {% for tag in site.tags %} 
 <section class="archives">
