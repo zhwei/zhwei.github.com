@@ -3,7 +3,7 @@ layout: post
 title: "博客相关配置"
 date: 2012-10-29 20:42
 comments: true
-tags: blog,notes
+tags: blog notes
 ---
 * 添加分类  
 [paz.am](http://paz.am/blog/blog/2012/06/25/octopress-category-list-plugin/)   
