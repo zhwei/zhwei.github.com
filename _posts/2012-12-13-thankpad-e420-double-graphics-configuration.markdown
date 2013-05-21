@@ -5,6 +5,7 @@ date: 2012-12-13 15:19
 comments: true
 tags: ubuntu
 ---
+
 ###首先卸载曾经的显卡驱动
 	sudo apt-get remove --purge fglrx  fglrx-amdcccle  fglrx-dev  
 ###安装闭源前准备的库

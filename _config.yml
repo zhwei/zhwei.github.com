@@ -50,15 +50,19 @@ weibo_user: 123271314
 
 # Github repositories
 github_user: zhwei
-github_repo_count: 4
-github_show_profile_link: true
-github_skip_forks: false
+#github_repo_count: 4
+#github_show_profile_link: true
+#github_skip_forks: false
 
 
 # Facebook
 facebook_user: zhweis
 
 # Disqus Comments
-disqus_short_name: importthis-zhwei
-disqus_show_comment_count: false
+#disqus_short_name: importthis-zhwei
+#disqus_show_comment_count: false
+
+# duoshuo
+#
+#duoshuo: zhweigithub
 
