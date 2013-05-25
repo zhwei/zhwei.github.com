@@ -45,15 +45,13 @@ def post(argv):
         return show_help(1)
 
     argv_1 = argv[2:]
-    print argv_1
     try:
         title = ' '.join(argv_1[argv_1.index("-t") + 1:])
-        print title
         filename = time_str[0:10] + "-" + '-'.join(
-            argv_1[0:argv_1.index("-t")]) + ".md"
+            argv_1[0:argv_1.index("-t")]) + ".markdown"
     except ValueError:
         title = ' '.join(argv_1)
-        filename = time_str[0:10] + "-" + '-'.join(argv_1) + ".md"
+        filename = time_str[0:10] + "-" + '-'.join(argv_1) + ".markdown"
         pass
 
     #slash_content = {
@@ -63,7 +61,7 @@ def post(argv):
     #    "tags": " ",
     #}
     wr = open(TARGET_FILE + filename, "w")
-    wr.write("-------------\n")
+    wr.write("---\n")
     wr.write("layout: post\n")
     wr.write('title: "'+title+'"\n')
     wr.write("date: "+time_str[0:16]+"\n")
@@ -72,9 +70,10 @@ def post(argv):
     #for key in slash_content.keys():
     #    content = key + ": " + str(slash_content[key]) + "\n"
     #    wr.write(content)
-    wr.write("-------------\n")
+    wr.write("---\n")
     wr.close()
     os.system("vim " + TARGET_FILE + filename)
+    print("成功创建文章"+title+", 再次打开可以使用generte.py -r")
 
 
 def recent(argv):
@@ -103,7 +102,6 @@ def recent(argv):
         os.system("vim " + TARGET_FILE + d_ctime[-num][0])
     except IndexError:
         show_help(3)
-
 
 def main():
     """
