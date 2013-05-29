@@ -54,18 +54,20 @@ tags: trans python magic
 
 这里有一个`__init__`和`__del__`在实际中的使用:
 
-	from os.path import join
+{% highlight python %}
+from os.path import join
 
-	class FileObject:
-		'''Wrapper for file objects to make sure the file gets closed on deletion.'''
+class FileObject:
+	'''Wrapper for file objects to make sure the file gets closed on deletion.'''
 
-		def __init__(self, filepath='~', filename='sample.txt'):
-			# open a file filename in filepath in read and write mode
-			self.file = open(join(filepath, filename), 'r+')
+	def __init__(self, filepath='~', filename='sample.txt'):
+		# open a file filename in filepath in read and write mode
+		self.file = open(join(filepath, filename), 'r+')
 
-		def __del__(self):
-			self.file.close()
-			del self.file
+	def __del__(self):
+		self.file.close()
+		del self.file
+{% endhighlight %}
 
 
 ## 让运算符在所有类中使用
