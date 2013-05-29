@@ -5,45 +5,58 @@ import sys
 import os
 import datetime
 
-#TARGET_FILE = os.getcwd() + "/_posts/"
+# TARGET_FILE = os.getcwd() + "/_posts/"
 TARGET_FILE = "/home/zhwei/apps/jekyll_blog/_posts/"
 
 
-def show_help(num=0):
+def loca(art):
+    return TARGET_FILE + art
+
+
+def show_help():
     print(
-        [
-            """
+        """
     Usage:\n
     ##################################################
-    --help          OR -h           show this help;
+    -h --help                      show this help;
 
-    post <url>      OR -p           发布新博客
-    -p <博客url>    -t <博客标题>   发布新博客, -t 为可选参数
+    -p --post
+    -p <博客url> -t <博客标题>     发布新博客, -t 为可选参数
 
-    recent          OR -r           打开最近创建的博客文件
-                                    -r 还可以加参数(可选), 序号从0开始,
-                                    比如:
-                                        倒数第二篇为 -r -2
-                                        最旧的文章 -r 1
+    -r --recent  <可选>            打开最近创建的博客文件
+                                   -r 还可以加参数(可选), 序号从0开始,
+                                   比如:
+                                      倒数第二篇为 -r -2
+                                      最旧的文章 -r 1
+
+    -m  --match <可选>             关键词匹配, 后面可加关键词, 也可不加,
+                                   然后在终端中多次输入关键词
     ##################################################
-    """,
-            "Error: 请输入自定义url!!",
-            "Error: 请输入合法数字",
-            "Error: 您没有那么多博客文件"
-        ][num]
+    """
     )
+
+
+def printerr(num):
+    errors = [
+        "Error: 请输入自定义url!!",
+        "Error: 请输入合法数字",
+        "Error: 您没有那么多博客文件",
+        "Error: 未匹配到您输入的关键字",
+    ]
+    print "\033[49;31;5m%s" % errors[num]
 
 
 def post(argv):
     """
     新建markdown博客文件, 填入博客标题等标准内容
+    如果不填写标题参数则为空
     """
-    time_str = str(datetime.datetime.now()) # 获取当前时间并转化为字符串
+    time_str = str(datetime.datetime.now())  # 获取当前时间并转化为字符串
     try:
         # 是否存在url参数
         argv[2]
     except IndexError:
-        return show_help(1)
+        return printerr(0)
 
     argv_1 = argv[2:]
     try:
@@ -55,7 +68,7 @@ def post(argv):
         filename = time_str[0:10] + "-" + '-'.join(argv_1) + ".markdown"
         pass
 
-    #slash_content = {
+    # slash_content = {
     #    "layout": "post",
     #    "date": time_str[0:16],
     #    "title": title,
@@ -64,22 +77,24 @@ def post(argv):
     wr = open(TARGET_FILE + filename, "w")
     wr.write("---\n")
     wr.write("layout: post\n")
-    wr.write('title: "'+title+'"\n')
-    wr.write("date: "+time_str[0:16]+"\n")
+    wr.write('title: "' + title + '"\n')
+    wr.write("date: " + time_str[0:16] + "\n")
     wr.write("comments: true\n")
     wr.write("tags: \n")
-    #for key in slash_content.keys():
+    # for key in slash_content.keys():
     #    content = key + ": " + str(slash_content[key]) + "\n"
     #    wr.write(content)
     wr.write("---\n")
     wr.close()
     os.system("vim " + TARGET_FILE + filename)
-    print("成功创建文章"+title+", 再次打开可以使用generte.py -r")
+    print("成功创建文章" + title + ", 再次打开可以使用generte.py -r")
 
 
 def recent(argv):
     """
-    打开最近创建的markdown博客文件
+    打开最近创建的markdown博客文件, 可以添加相应序号
+    然后打开第几篇文章, 文件名以时间开头,所以以文件
+    名排序
     """
     try:
         num = int(argv[2])
@@ -87,7 +102,7 @@ def recent(argv):
         num = 0
         pass
     except ValueError:
-        return show_help(2)
+        return printerr(1)
 
     li = os.listdir(TARGET_FILE)
     d_ctime = {}        # 文件名: 文件创建时间 字典
@@ -102,7 +117,48 @@ def recent(argv):
     try:
         os.system("vim " + TARGET_FILE + d_ctime[-num][0])
     except IndexError:
-        show_help(3)
+        printerr(2)
+
+
+def match(argv, keys=None, artlist=None):
+    """
+    匹配文件名查找, 如果不输入关键词则在终端中提示
+    用户输入文章序号或者关键词, 关键词多次叠加检索
+    直至匹配到单一文章
+    """
+    if artlist is None:
+        artlist = os.listdir(TARGET_FILE)
+    if keys is None:
+        keys = argv[2:]
+
+    for key in keys:
+        i = 0
+        leng = len(artlist)
+        while i < leng:
+            d = artlist.pop()
+            if d.find(key) != -1:
+                artlist.insert(0, d)
+            else:
+                pass
+            i = i + 1
+    if len(artlist) > 1:
+        for a in artlist:
+            print "<%s> %s" % (str(artlist.index(a)), a[11:-9].replace("-", " "))
+        tar = raw_input("输入你想打开的文章序号或者关键词(输入q退出)-->")
+        if tar == "q":
+            return 0
+        try:
+            name = artlist[int(tar)]
+        except ValueError:
+            keys = tar.split(" ") + keys
+            return match(None, keys, artlist)
+        os.system("vim " + loca(name))
+    elif len(artlist) == 1:
+        command = "vim " + loca(artlist[0])
+        os.system(command)
+    else:
+        printerr(3)
+
 
 def main():
     """
@@ -115,10 +171,12 @@ def main():
         return show_help()
     if ar == "--help" or ar == "-h" or ar is None:
         show_help()
-    elif ar == "post" or ar == "-p":
+    elif ar == "--post" or ar == "-p":
         post(argv)
-    elif ar == "recent" or ar == "-r":
+    elif ar == "--recent" or ar == "-r":
         recent(argv)
+    elif ar == "--match" or ar == "-m":
+        match(argv)
     else:
         return show_help()
 
