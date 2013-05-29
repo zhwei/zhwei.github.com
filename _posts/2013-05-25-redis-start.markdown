@@ -10,7 +10,9 @@ ubuntu安装redis
 
 安装步骤  
 
+{% highlight bash %}
     wget http://download.redis.io/redis-stable.tar.gz
     tar xvzf redis-stable.tar.gz
     cd redis-stable
     make
+{% endhighlight %}

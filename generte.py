@@ -5,7 +5,8 @@ import sys
 import os
 import datetime
 
-TARGET_FILE = os.getcwd() + "/_posts/"
+#TARGET_FILE = os.getcwd() + "/_posts/"
+TARGET_FILE = "/home/zhwei/apps/jekyll_blog/_posts/"
 
 
 def show_help(num=0):
