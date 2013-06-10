@@ -186,6 +186,7 @@ def git():
     print(git.status())
     m = raw_input("|--commit message -->")
     print(git.commit(m=m))
+    os.chdir(ROOT_FILE)
     os.system("git push origin " + ORIGIN)
 
 
