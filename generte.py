@@ -6,7 +6,8 @@ import os
 import datetime
 
 # TARGET_FILE = os.getcwd() + "/_posts/"
-TARGET_FILE = "/home/zhwei/apps/jekyll_blog/_posts/"
+ROOT_FILE = "/home/zhwei/apps/jekyll_blog/"
+TARGET_FILE = ROOT_FILE + "_posts/"
 
 
 def loca(art):
@@ -31,6 +32,7 @@ def show_help():
 
     -m  --match <可选>             关键词匹配, 后面可加关键词, 也可不加,
                                    然后在终端中多次输入关键词
+    -n  --note <item>              打开笔记, 在a文件夹下
     ##################################################
     """
     )
@@ -159,6 +161,10 @@ def match(argv, keys=None, artlist=None):
     else:
         printerr(3)
 
+def note():
+    cmd = "vim " + ROOT_FILE + "a/index.markdown"
+    os.system(cmd)
+
 
 def main():
     """
@@ -177,6 +183,8 @@ def main():
         recent(argv)
     elif ar == "--match" or ar == "-m":
         match(argv)
+    elif ar == "--note" or ar == "-n":
+        note()
     else:
         return show_help()
 
