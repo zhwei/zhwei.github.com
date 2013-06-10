@@ -32,7 +32,9 @@ def show_help():
 
     -m  --match <可选>             关键词匹配, 后面可加关键词, 也可不加,
                                    然后在终端中多次输入关键词
-    -n  --note <item>              打开笔记, 在a文件夹下
+    -n  --note <item>              打开笔记, 在a文件夹下的index.markdown
+    -cd                            来到博客目录
+    -g  --git                      提交到git仓库
     ##################################################
     """
     )
@@ -161,9 +163,30 @@ def match(argv, keys=None, artlist=None):
     else:
         printerr(3)
 
-def note():
+def note(argv):
+    """
+    快速笔记, 保存在/a/下的index.markdown文件内,
+    积累多了之后进行整理
+    """
     cmd = "vim " + ROOT_FILE + "a/index.markdown"
     os.system(cmd)
+
+def git():
+    """
+    将修改提交到git仓库
+    """
+    try:
+        import sh
+    except ImportError:
+        print("请安装 sh 模块")
+
+    git = sh.git.bake(_cwd=ROOT_FILE)
+    print(git.add("."))
+    print(git.status())
+    m = raw_input("commit message -->")
+    print(git.commit(m=m))
+    print(git.status())
+
 
 
 def main():
@@ -184,7 +207,9 @@ def main():
     elif ar == "--match" or ar == "-m":
         match(argv)
     elif ar == "--note" or ar == "-n":
-        note()
+        note(argv)
+    elif ar == "--git" or ar == "-g":
+        git()
     else:
         return show_help()
 
