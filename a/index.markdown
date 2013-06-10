@@ -7,3 +7,4 @@ tags: note
 ---
 
 + ubuntu 中virtualbox安装extension pack 时使用root或者sudo运行, 否则无法安装
++ ubuntu安装virutalbox最好是在官网安装, 通过ubuntu源安装的不能使用usb映射.
