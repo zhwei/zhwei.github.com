@@ -72,3 +72,17 @@ xp安装不讲
 	erase times/擦除时间 :  00:01
 	program times/下载时间: 00:15
 	Encrypt OK/ 已加密
+
+### virtualbox运行时宿主机异常关机
+
+	Kernel driver not installed (rc=-1908)
+
+	The VirtualBox Linux kernel driver (vboxdrv) is either not loaded or there is a permission problem with /dev/vboxdrv. Please reinstall the kernel module by executing
+
+	'/etc/init.d/vboxdrv setup'
+
+	as root. If it is available in your distribution, you should install the DKMS package first. This package keeps track of Linux kernel changes and recompiles the vboxdrv kernel module if necessary.
+
+可以直接运行:  
+
+	sudo /etc/init.d/vboxdrv setup
