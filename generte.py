@@ -8,6 +8,7 @@ import datetime
 # TARGET_FILE = os.getcwd() + "/_posts/"
 ROOT_FILE = "/home/zhwei/apps/jekyll_blog/"
 TARGET_FILE = ROOT_FILE + "_posts/"
+ORIGIN = "master"
 
 
 def loca(art):
@@ -183,9 +184,9 @@ def git():
     git = sh.git.bake(_cwd=ROOT_FILE)
     print(git.add("."))
     print(git.status())
-    m = raw_input("commit message -->")
+    m = raw_input("|--commit message -->")
     print(git.commit(m=m))
-    print(git.status())
+    os.system("git push origin " + ORIGIN)
 
 
 
