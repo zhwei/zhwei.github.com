@@ -164,6 +164,7 @@ def match(argv, keys=None, artlist=None):
     else:
         printerr(3)
 
+
 def note(argv):
     """
     快速笔记, 保存在/a/下的index.markdown文件内,
@@ -172,24 +173,28 @@ def note(argv):
     cmd = "vim " + ROOT_FILE + "a/index.markdown"
     os.system(cmd)
 
-def git():
+
+def git(argv):
     """
     将修改提交到git仓库
     """
     try:
         import sh
+        git = sh.git.bake(_cwd=ROOT_FILE)
     except ImportError:
         print("请安装 sh 模块")
 
-    git = sh.git.bake(_cwd=ROOT_FILE)
-    print(git.add("."))
-    print(git.status())
-    m = raw_input("|--commit message -->")
-    print(git.commit(m=m))
-    os.chdir(ROOT_FILE)
-    print("|--pushing to " + ORIGIN)
-    os.system("git push origin " + ORIGIN)
-
+    try:
+        argv[2]
+        print(git.status())
+    except IndexError:
+        print(git.add("."))
+        print(git.status())
+        m = raw_input("|--commit message -->")
+        print(git.commit(m=m))
+        os.chdir(ROOT_FILE)
+        print("|--pushing to " + ORIGIN)
+        os.system("git push origin " + ORIGIN)
 
 
 def main():
@@ -212,7 +217,7 @@ def main():
     elif ar == "--note" or ar == "-n":
         note(argv)
     elif ar == "--git" or ar == "-g":
-        git()
+        git(argv)
     else:
         return show_help()
 
