@@ -56,11 +56,19 @@ github_user: zhwei
 
 
 # Facebook
-facebook_user: zhweis
+#facebook_user: zhweis
 
 # Disqus Comments
 disqus_short_name: importthis-zhwei
 disqus_show_comment_count: false
+
+# Twitter
+twitter_user: zhweifcx
+twitter_tweet_count: 4
+twitter_show_replies: false
+twitter_follow_button: true
+twitter_show_follower_count: true
+twitter_tweet_button: true
 
 # duoshuo
 #
