@@ -1,11 +1,13 @@
 ---
 layout: post
-title: "纯笔记.."
+title: "zhwei@Notes:~$"
 date: 2013-05-25 15:41
 comments: false
 tags: note
+customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 ---
 
++ coffee 中 `@` = `this`
 + ubuntu 中virtualbox安装extension pack 时使用root或者sudo运行, 否则无法安装
 + ubuntu安装virutalbox最好是在官网安装, 通过ubuntu源安装的不能使用usb映射.
 + 查看git库中各个用户提交的次数,并且递减排序 `git shortlog -sn`

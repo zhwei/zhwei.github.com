@@ -36,6 +36,7 @@ def show_help():
     -n  --note <item>              打开笔记, 在a文件夹下的index.markdown
     -cd                            来到博客目录
     -g  --git                      提交到git仓库
+    -j                             运行jekyll, 当文件改变后自动更新
     ##################################################
     """
     )
@@ -218,6 +219,9 @@ def main():
         note(argv)
     elif ar == "--git" or ar == "-g":
         git(argv)
+    elif ar == "-j":
+        os.chdir(ROOT_FILE)
+        os.system("jekyll --server --auto")
     else:
         return show_help()
 

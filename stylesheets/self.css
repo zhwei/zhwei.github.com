@@ -16,4 +16,5 @@
     -moz-transition: 0.14s linear;
     -o-transition: 0.14s linear;
     transition: 0.14s linear;
-    -webkit-backface-visibility: hidden; }
+    -webkit-backface-visibility: hidden; 
+}

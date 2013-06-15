@@ -1,0 +1,8 @@
+.post li {
+	padding: 15px;
+	margin: 15px 0;
+	border-width: 1px;
+	border-style: dashed;
+	border-color: #999999;
+	list-style-type: none;
+}
