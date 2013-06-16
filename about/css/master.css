@@ -211,6 +211,9 @@ a:hover{
 
   .content {
     margin-top: 90px;
+    width: 480;
+    margin-left:auto;
+    margin-right:auto;
   }
 
   .about {
