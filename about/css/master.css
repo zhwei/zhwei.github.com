@@ -131,12 +131,12 @@ a:hover{
 .white {
   background-color: #ffffff;
   width: 821px;
-  height: 1500px;
+  height: 921px;
 }
 
 .layer{
   width:620px;
-  background:#ffffff;
+  background: #ffffcc;
   position:fixed;
   _position:absolute;    /* 勉强应付 IE6 */
   top:50%;
@@ -159,7 +159,7 @@ a:hover{
   margin: 10px 10px 10px 10px;
 }
 .close{
-  background-image: url("./img/close.png");
+  background-image: url("../img/close.png");
   position:absolute;
   top: -8px;
   right: -8px;
@@ -174,15 +174,24 @@ a:hover{
 }
 
 .about {
-  background-color: #99cccc;
+  height: 700px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: -50px;
 }
 
 #swf embed {
   width: 500px;
   height: 500px;
-  margin: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 61px;
 }
 
 #name {
   cursor: pointer;
+}
+
+.title {
+  font-size: 50px;
+  font-family: 'Source Code Pro', sans-serif;
+  margin-left: 222px;
 }
