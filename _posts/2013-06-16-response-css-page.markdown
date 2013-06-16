@@ -6,11 +6,11 @@ comments: true
 tags: css
 ---
 
-要交web基础作业了, 一直没想出做什么页面, 想起自己的博客没有一个`aboutme`页面, 又想学一下响应式布局, 所以, 如你所见: [aboutme](http://zhangweide.cn/about)
+要交web基础作业了, 一直没想出做什么页面, 想起自己的博客没有一个**aboutme**页面, 又想学一下响应式布局, 所以, 如你所见: [aboutme](http://zhangweide.cn/about)
 
 要针对不同的终端写不同的 css
 
-这是 bootstrap 问分辨率划分
+这是 bootstrap 的分辨率区间划分
 
 {% highlight css %}
 
@@ -66,7 +66,7 @@ tags: css
 @media (min-width: 768px) and (max-width: 979px) {
 
 .container {
-  width: 768;
+  width: 768px;  /* <-- */
   margin-left: auto;
   margin-right: auto;
 }
@@ -82,7 +82,7 @@ tags: css
     $(document).ready(function(){
         $('#me').click(function(){$('#layer').fadeIn();});    //弹出层
         $('#close').click(function(){$('#layer').fadeOut();});    //关闭层
-        });
+    });
 {% endhighlight %}
 
 点击 #me 的元素时, 弹出对话框, 对话框内容为 #layer, 可以在 #layer 中添加链接 #close , 点击可以关闭对话框.
