@@ -159,7 +159,7 @@ a:hover{
   margin: 10px 10px 10px 10px;
 }
 .close{
-  background-image: url("/img/close.png");
+  background-image: url("./img/close.png");
   position:absolute;
   top: -8px;
   right: -8px;
