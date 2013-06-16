@@ -1,0 +1,28 @@
+---
+layout: post
+title: "关于我"
+date: 2013-06-16 14:33
+comments: true
+tags: 
+---
+
+# about me
+
+  苦逼程序猿一头, 主语言Python, C.
+
+## Python
+
+  熟悉python魔法方法, 尝试翻译过一篇外国[文章](http://www.rafekettler.com/magicmethods.html), 翻译了[一部分](http://zhangweide.cn/archive/2013/python-magic-methond-trans-1.html)后发现已经有人[翻译完了](http://pycoders-weekly-chinese.readthedocs.org/en/latest/issue6/a-guide-to-pythons-magic-methods.html), 就没有再继续.
+
+  熟悉web.py框架, 做出来的最有成就感的一个东西就是[GotIt](http://gotit.asia/)了, 主要帮助使用校外网或者不在学校的同学查成绩 课表或者考试时间, 用到了模拟提交 验证码识别 session处理 两步提交等技术, 现在上线已经接近一年了, 用户反馈还可以吧.
+
+  熟悉django框架, 写过一个商城系统.
+
+  了解过 flask, tornado.
+
+  web前端后台都搞过一些, html5 + css3 + javascript 都搞过.
+
+## C
+
+  嵌入式C
+  正在学习搞51单片机中, 博客在[这里](http://zhangweide.cn/tags.html#51)

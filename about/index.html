@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AboutMe -- zhwei</title>
+  <link href='http://fonts.googleapis.com/css?family=Sarina|Lily+Script+One|Source+Code+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/master.css" type="text/css" media="screen" charset="utf-8">
+  <script src="/js/jquery.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('#me').click(function(){$('#layer').fadeIn();});    //弹出层
+        $('#close1').click(function(){$('#layer').fadeOut();});    //关闭层
+        });
+    $(document).ready(function(){
+        $('#name').click(function(){$('#swf').fadeIn();});    //弹出层
+        $('#close2').click(function(){$('#swf').fadeOut();});    //关闭层
+        });
+  </script>
+
+</head>
+<body>
+  <div class="container">
+
+    <div id="banner">
+      <div id="zhwei">
+        <p><a href="">Zhwei's Aboutme Page</a></p>
+      </div> <!-- #zhwei -->
+    </div> <!-- #banner -->
+
+    <div class="content">
+
+      <div class="left-part">
+        <div class="span-img">
+          <img src="/img/me.jpg" class="img-3648" alt="" id="me" />
+        </div> <!-- .img -->
+        <div id="layer" class="layer">
+          <a href="http://love.gotit.asia" target="_blank"><img src="/img/m2.jpg" class="img-layer" /></a>
+          <div id="close1" class="close"></div>
+        </div> <!-- .layer -->
+        <div class="span-sns">
+          <p class="lily" id="name">zhwei</p>
+        </div> <!-- .span-sns -->
+
+        <div id="swf" class="layer">
+          <embed src="/img/nanguatou.swf"></embed>
+          <div id="close2" class="close"></div>
+        </div> <!-- #swf -->
+
+      </div> <!-- left-part -->
+
+      <div class="right-part">
+        <div class="white">
+          <div class="about">
+
+
+
+          </div> <!-- about -->
+        </div> <!-- white -->
+      </div> <!-- right-part -->
+
+    </div> <!-- .content -->
+
+  </div> <!-- .container -->
+</body>
+</html>
