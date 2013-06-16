@@ -70,12 +70,6 @@ a:hover{
   color: #99ff99;
 }
 
-.white {
-  background-color: #ffffff;
-  width: 821px;
-  height: 921px;
-}
-
 .layer{
   width:620px;
   background: #ffffcc;
@@ -151,6 +145,12 @@ a:hover{
     text-align: center;
     font-size: 200%;
   }
+  .white {
+    background-color: #ffffff;
+    width: 821px;
+    height: 921px;
+  }
+
 
   .content {
     margin-top: 90px;
@@ -169,18 +169,19 @@ a:hover{
 @media (max-width: 480px) {
 
   .left-part {
+    /*
     margin-left: 20px;
-    float: left;
+    float: left; */
   }
 
   .right-part {
-    margin-right: 20px;
-    float: right;
+    /* margin-right: 20px;
+    float: right; */
   }
 
 
   .span-img {
-    display: block;
+    display: none;
     background: #ffffff;
     width: 380px;
     height: 500px;
@@ -203,13 +204,23 @@ a:hover{
     font-size: 200%;
   }
 
+  .white {
+    background-color: #ffffff;
+    /*
+    width: 821px;
+    height: 921px; */
+  }
+
+
   .content {
     margin-top: 90px;
   }
 
   .about {
     height: 700px;
-    margin-top: -50px;
+   /*  margin-top: -50px; */
+    margin-left: 16px;
+    margin-right: 16px;
   }
 
 
