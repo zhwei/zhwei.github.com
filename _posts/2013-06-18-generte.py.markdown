@@ -1,0 +1,18 @@
+---
+layout: post
+title: "本站用的管理工具"
+date: 2013-06-18 20:36
+comments: true
+tags: blog
+---
+
+脚本可见 https://gist.github.com/zhwei/5613474  
+
+## 字典排序 line.118
+
+{% highlight python %}
+dict1 = sorted(dict1.iteritems(),
+    key=lambda k_v: (k_v[1], k_v[0]),
+    reverse=True)  # 字典按值排序, 生成元组列表
+
+{% endhighlight %}
