@@ -12,6 +12,9 @@ customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 + django 使用 image model 时需要安装 PIL ,在 virtualenv 使用时需要再次安装, apt 安装的python-imaging 并不起作用, 可以在 [link](http://www.pythonware.com/products/pil/) 下载到包, 已经下载并保存到dropbox.
 
 + django自定义表单工具 autoforms
+
++ sublime text 2 中的 `zencoding`现在叫做 `emmet`
+
 + coffee 中 `@` = `this`
 + ubuntu 中virtualbox安装extension pack 时使用root或者sudo运行, 否则无法安装
 + ubuntu安装virutalbox最好是在官网安装, 通过ubuntu源安装的不能使用usb映射.
