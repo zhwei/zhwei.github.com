@@ -7,6 +7,8 @@ tags: note
 customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 ---
 
++ 编译安装`nginx`, `./configure --prefix=/opt/nginx --with-http_gzip_static_module --with-http_flv_module --with-http_ssl_module`, `make`
+
 + 缺少`python.h`安装`python-dev`
 
 + django 使用 tinymce1.5.1, 同步生成数据库时, 会出现`ImportError: cannot import name smart_unicode`报错, 在其官方[issue](https://code.google.com/p/django-tinymce/issues/detail?id=63) 已有提出, 可以手动将`...site-packages/tinymce/widgets.py`文件第14行改成 `from django.utils.encoding import smart_unicode`
