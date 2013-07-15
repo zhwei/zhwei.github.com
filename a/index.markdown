@@ -7,6 +7,8 @@ tags: note
 customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 ---
 
++ `sudo: unable to resolve host ... ` 在`/etc/hosts`文件中添加主机名到`127.0.0.1`的映射
+
 + 编译安装`nginx`, `./configure --prefix=/opt/nginx --with-http_gzip_static_module --with-http_flv_module --with-http_ssl_module`, `make`
 
 + 缺少`python.h`安装`python-dev`
