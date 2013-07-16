@@ -7,6 +7,8 @@ tags: note
 customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 ---
 
++ `git pull`是出现`error: insufficient permission for adding an object to repository database .git/objects`, 见[http://stackoverflow.com/questions/6448242/git-push-error-insufficient-permission-for-adding-an-object-to-repository-datab](http://stackoverflow.com/questions/6448242/git-push-error-insufficient-permission-for-adding-an-object-to-repository-datab)
+
 + `sudo: unable to resolve host ... ` 在`/etc/hosts`文件中添加主机名到`127.0.0.1`的映射
 
 + 编译安装`nginx`, `./configure --prefix=/opt/nginx --with-http_gzip_static_module --with-http_flv_module --with-http_ssl_module`, `make`
