@@ -19,8 +19,7 @@ dict1 = sorted(dict1.iteritems(),
 
 {% endhighlight %}
 
-通过 `.iteritems()`方法将字典转化成元组列表, 然后按元组的第二元素进行排序.
-
+通过`.iteritems()`方法将字典转化成元组列表, 然后按元组的第二元素进行排序.
 
 ## 文章查找  line.128
 
@@ -28,16 +27,16 @@ dict1 = sorted(dict1.iteritems(),
 对每一元素`pop()`使用`find()`方法查找关键词, 如果找到则将其插入列表首部, 循环一个列表长度后剩下的元素均是包含关键词的
 
 {% highlight python %}
-      for key in keys:
-        i = 0
-        leng = len(artlist)
-        while i < leng:
-            d = artlist.pop()
-            if d.find(key) != -1:
-                artlist.insert(0, d)
-            else:
-                pass
-            i = i + 1
+  for key in keys:
+    i = 0
+    leng = len(artlist)
+    while i < leng:
+        d = artlist.pop()
+        if d.find(key) != -1:
+            artlist.insert(0, d)
+        else:
+            pass
+        i = i + 1
 {% endhighlight %}
 
 然后可以再将处理后的文章列表作文参数传入, 再次匹配
@@ -49,7 +48,7 @@ dict1 = sorted(dict1.iteritems(),
 
 需要安装`sh`模块
 
-{% highlight  %}
+{% highlight python %}
 def git(argv):
     """
     将修改提交到git仓库
