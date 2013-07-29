@@ -180,10 +180,7 @@ a:hover{
 
 
   .span-img {
-    display: block;
-    background: #ffffff;
-    width: 380px;
-    height: 500px;
+    display: none;
   }
 
   .img-3648 {
@@ -257,11 +254,7 @@ a:hover{
 
 
   .span-img {
-    display: block;
-    background: #ffffff;
-    width: 380px;
-    height: 500px;
-    margin: 0px auto;
+    display: none;
   }
 
   .img-3648 {
@@ -335,10 +328,7 @@ a:hover{
 
 
   .span-img {
-    display: block;
-    background: #ffffff;
-    width: 200px;
-    height: 260px;
+    display: none;
   }
 
   .img-3648 {
