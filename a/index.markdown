@@ -7,6 +7,10 @@ tags: note
 customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 ---
 
++ django添加用户到组需要 `dian = Group.objects.filter(name='dian')[0]  user.groups.add(dian)`
+
++ `Nginx Error - 413 Request Entity Too Large`在`server`中添加`client_max_body_size 20M;`[link](http://stackoverflow.com/questions/5001092/413-request-entity-too-large-the-web-server-connection-was-closed-error-64)
+
 + `git pull`是出现`error: insufficient permission for adding an object to repository database .git/objects`, 见[http://stackoverflow.com/questions/6448242/git-push-error-insufficient-permission-for-adding-an-object-to-repository-datab](http://stackoverflow.com/questions/6448242/git-push-error-insufficient-permission-for-adding-an-object-to-repository-datab)
 
 + `sudo: unable to resolve host ... ` 在`/etc/hosts`文件中添加主机名到`127.0.0.1`的映射
