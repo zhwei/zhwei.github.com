@@ -7,6 +7,8 @@ tags: note
 customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 ---
 
++ 当git使用`https`clone时,之后的每次`pull`和`push`都需要提供用户名和密码,而是用ssh clone的则不需要, 并且ssh方式要比https易于验证, 使用https遇到过长时间不能验证的情况
+
 + django添加用户到组需要 `dian = Group.objects.filter(name='dian')[0]  user.groups.add(dian)`
 
 + `Nginx Error - 413 Request Entity Too Large`在`server`中添加`client_max_body_size 20M;`[link](http://stackoverflow.com/questions/5001092/413-request-entity-too-large-the-web-server-connection-was-closed-error-64)
