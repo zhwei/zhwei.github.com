@@ -6,14 +6,15 @@ comments: true
 tags: mysql
 categories: sql,encode
 ---
-### 配置文件 my.cnf ###
+
+# 配置文件 my.cnf
 
 	默认字符集为 utf-8
 	default-character-set = utf-8
 	character-set-server= utf-8
 
-<!--more-->
-### mysql 命令 ###
+
+# mysql 命令
 	mysql设置编码命令 
 
 	SET character_set_client = utf8; 

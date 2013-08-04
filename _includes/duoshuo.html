@@ -1,17 +1,18 @@
-{% comment %} Load script if disquss comments are enabled and `page.comments` is either empty (index) or set to true {% endcomment %}
-{% if site.duoshuo and page.comments != false %}
+
 <!-- Duoshuo Comment BEGIN -->
+<section id="comment">
+    <h1 class="title">Comments</h1>
 	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"{{ site.duoshuo }}"};
+	<script type="text/javascript">
+	  var duoshuoQuery = {short_name:"zhweigithub"};
 	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
+	 var ds = document.createElement('script');
+	 ds.type = 'text/javascript';ds.async = true;
+	 ds.src = 'http://static.duoshuo.com/embed.js';
+	 ds.charset = 'UTF-8';
+	 (document.getElementsByTagName('head')[0] 
+	  || document.getElementsByTagName('body')[0]).appendChild(ds);
+	 })();
 	</script>
-<!-- Duoshuo Comment END -->
-{% endif %}
+	<!-- Duoshuo Comment END -->
+</section>

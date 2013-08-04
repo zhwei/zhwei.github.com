@@ -8,12 +8,18 @@ layout: default
     {% endif %}
     <div class="entry-content">{{ content }}</div>
 </article>
+
 {% unless page.sharing == false %}
-	{% include post/sharing.html %}
+
+{% include post/sharing.html %}
+
 {% endunless %}
+
 {% if site.disqus_short_name and page.comments == true %}
+
 <section id="comment">
     <h1 class="title">Comments</h1>
-    <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+    <div id="disqus_thread" aria-live="polite">{% include duoshuo.html %}</div>
 </section>
+
 {% endif %}
