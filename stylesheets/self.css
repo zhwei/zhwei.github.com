@@ -21,7 +21,6 @@
 
 #menuIndex {
     background-color:#ecf0f5;
-    padding: 15px;
     margin: 15px 0;
     border-width: 1px;
     border-style: dashed;
@@ -51,5 +50,5 @@
 
 
 #menuIndex ul>ul {
-    margin-left: 10px;
+    margin-left: 15px;
 }
