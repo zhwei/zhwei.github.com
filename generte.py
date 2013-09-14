@@ -221,7 +221,7 @@ def main():
         git(argv)
     elif ar == "-j":
         os.chdir(ROOT_FILE)
-        os.system("jekyll --server --auto")
+        os.system("jekyll serve --watch")
     else:
         return show_help()
 
