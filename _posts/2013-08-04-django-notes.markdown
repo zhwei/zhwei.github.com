@@ -99,3 +99,18 @@ user.groups.add(dian)
   setup_environ(webtest.settings)
 
 {% endhighlight %}
+
+## django form ChoiceFields
+
+遇到 too many values to unpack
+
+choice 格式 ("label":"内容"),("label":"内容"),
+
+
+遭遇 `IOError: decoder jpeg not available`
+
+安装libjpeg8-dev
+
+此处使用PIL或者pillow均可以，只要修改setup.py文件中库的引用位置
+
+http://three99.com/posts/how-to-install-pil-on-ubuntu-with-jpeg-support/
