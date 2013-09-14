@@ -8,32 +8,29 @@ title: Tags
 <br />
 <br />
 <div itemscope itemtype="http://schema.org/Blog">
-{% for tag in site.tags %}
-
-<a class="selftag" href="#{{ tag[0] }}">{{ tag[0] }}</a>
-
-{% endfor %}
-
+  {% for tag in site.tags %}
+    <a class="selftag" href="#{{ tag[0] }}">{{ tag[0] }}</a>
+  {% endfor %}
 </div>
 <br />
 <br />
 
 <div itemscope itemtype="http://schema.org/Blog">
-{% for tag in site.tags %} 
-<section class="archives">
-<h2 id="{{ tag[0] }}-ref"><a name="{{ tag[0] }}">{{ tag[0] }}</a></h2>
-  {% for post in tag[1] %}
+	{% for tag in site.tags %} 
+	<section class="archives">
+	<h2 id="{{ tag[0] }}-ref"><a name="{{ tag[0] }}">{{ tag[0] }}</a></h2>
+	{% for post in tag[1] %}
 	<article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
-		<div class="meta">
-			<span class="date"><time datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %e %Y" }}</time></span>
-			<br>
-			<span class="tags">
-				<a class="category" href="{{ root_url }}/tags.html#{{ tag[0] }}">{{ tag[0] }}</a>
-			</span>
-		</div>
+	<div class="meta">
+		<span class="date"><time datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %e %Y" }}</time></span>
+		<br>
+		<span class="tags">
+			<a class="category" href="{{ root_url }}/tags.html#{{ tag[0] }}">{{ tag[0] }}</a>
+		</span>
+	</div>
 	<h1 class="title" itemprop="name"><a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a></h1>
 	</article>
-  {% endfor %}
-</section>
-{% endfor %}
+	{% endfor %}
+	</section>
+	{% endfor %}
 </div>
