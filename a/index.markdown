@@ -7,6 +7,8 @@ tags: note
 customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 ---
 
++ git查看远端分支`git branch -a`, git删除远端分支`git push origin --delete <branch name>`, git删除本地分支`git branch -d <branch name>`
+
 + 当git使用`https`clone时,之后的每次`pull`和`push`都需要提供用户名和密码,而是用ssh clone的则不需要, 并且ssh方式要比https易于验证, 使用https遇到过长时间不能验证的情况
 
 + django添加用户到组需要 `dian = Group.objects.filter(name='dian')[0]  user.groups.add(dian)`
