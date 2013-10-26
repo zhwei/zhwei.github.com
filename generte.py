@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
 import sys
@@ -49,7 +49,7 @@ def printerr(num):
         "Error: 您没有那么多博客文件",
         "Error: 未匹配到您输入的关键字",
     ]
-    print "\033[49;31;5m%s" % errors[num]
+    print("%s" % errors[num])
 
 
 def post(argv):
@@ -149,7 +149,7 @@ def match(argv, keys=None, artlist=None):
             i = i + 1
     if len(artlist) > 1:
         for a in artlist:
-            print "<%s> %s" % (str(artlist.index(a)), a[11:-9].replace("-", " "))
+            print("<%s> %s" % (str(artlist.index(a)), a[11:-9].replace("-", " ")))
         tar = raw_input("输入你想打开的文章序号或者关键词(输入q退出)-->")
         if tar == "q":
             return 0
@@ -222,6 +222,8 @@ def main():
     elif ar == "-j":
         os.chdir(ROOT_FILE)
         os.system("jekyll serve --watch")
+    elif ar == "-ln":
+        os.system("sudo ln -s %sgenerte.py /usr/local/bin/jg" % ROOT_FILE)
     else:
         return show_help()
 
