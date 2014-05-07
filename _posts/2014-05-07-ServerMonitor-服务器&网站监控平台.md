@@ -4,7 +4,7 @@ title: "ServerMonitor 服务器&网站监控平台"
 tagline: python server monitor
 category: null
 tags: []
-published: false
+published: true
 ---
 ## 起因
 
