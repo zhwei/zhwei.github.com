@@ -6,6 +6,8 @@ comments: true
 tags:pycon
 ---
 
+* 开始前  
+
 ![开始前](http://zhwei-blog.qiniudn.com/wpid-IMG_20131208_083244.jpg)
 
 ![帽子](http://zhwei-blog.qiniudn.com/wpid-IMG_20131208_083852.jpg)
