@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "windows service sample using pyInstaller"
+title: "windows service example using pyInstaller"
 date: 2013-11-09 19:15
 comments: true
 tags: python serial
@@ -98,3 +98,5 @@ tags: python serial
         else:
             win32serviceutil.HandleCommandLine(aservice)
 ```
+
++ [原文链接](https://groups.google.com/forum/?hl=en#!searchin/PyInstaller/windows$20service$20sample$20using$20pyInstaller/pyinstaller/P5UnwZ8C2Ts/ONHJnoZOm5EJ)
