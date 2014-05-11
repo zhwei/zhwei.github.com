@@ -7,6 +7,19 @@ tags: note
 customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 ---
 
++ django文章截断, slice：n个字符后截断`{{ my_variable|slice:":255" }}`, truncatewords：n个单词后截断`{{ value|truncatewords:2 }} {{ value|truncatewords_html:2 }}`
+
++ 本地搭建pypi镜像源, 使用pep381client
+
+```python
+
+  virtualenv env
+  source env/bin/activate
+  pip install pep381client
+  mkdir data
+  pep381run data
+```
+
 + 使用pycurl时，传入的url的编码需要是utf-8，因为pycurl底层是c，不认unicode
 
 + git查看远端分支`git branch -a`, git删除远端分支`git push origin --delete <branch name>`, git删除本地分支`git branch -d <branch name>`
