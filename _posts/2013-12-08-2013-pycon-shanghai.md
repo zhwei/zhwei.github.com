@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "PyConChina上海场现场"
-date: 2013-05-25 15:41
+date: 2013-12-08 15:41
 comments: true
 tags:pycon
 ---

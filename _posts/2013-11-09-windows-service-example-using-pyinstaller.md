@@ -3,7 +3,7 @@ layout: post
 title: "windows service example using pyInstaller"
 date: 2013-11-09 19:15
 comments: true
-tags: python serial
+tags: python windows
 ---
 
 * 用python写的windows服务，支持pyinstaller打包。

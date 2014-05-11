@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Pyinstaller打包Python写的windows服务-记录"
-date: 2013-05-25 15:41
+date: 2013-11-10 15:41
 comments: true
-tags: windows python
+tags: python windows
 ---
 
 ## 由来
