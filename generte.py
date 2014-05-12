@@ -224,7 +224,7 @@ def main():
         cmd = """git push origin master &&
         git checkout gitcafe-pages &&
         git merge master &&
-        git push gc gitcafe-pages
+        git push gc gitcafe-pages &&
         git checkout master &&
         """
         os.system(cmd)
