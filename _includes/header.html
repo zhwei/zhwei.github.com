@@ -1,26 +1,28 @@
 
-        <div class="profilepic">
-          <img src='{{ root_url }}/stylesheets/gravatar.jpeg' alt='Gravatar' style='width: 160px;' />
-        </div>
+<div class="profilepic">
+  <a href="{{ root_url }}" title="zhwei">
+    <img src='{{ root_url }}/stylesheets/gravatar.jpeg' alt='Gravatar' style='width: 160px;' />
+  </a>
+</div>
 
-        <h1><a href="/">{{ site.title }}</a></h1>
-        <p class="subtitle">{{ site.subtitle }}</p>
-        <nav id="main-nav">
-          {% include navigation.html %}
-        </nav>
-        <nav id="sub-nav">
-          <div class="social">
-            {% if site.github_user %}
-            <a class="github" href="https://github.com/{{ site.github_user }}" title="GitHub">GitHub</a>
-            {% endif %}
-            {% if site.weibo_user %}
-            <a class="weibo" href="http://weibo.com/{{ site.weibo_user }}" title="weibo">Weibo</a>
-            {% endif %}
-            {% if site.twitter_user %}
-            <a class="twitter" href="http://twitter.com/{{ site.twitter_user }}" title="Twitter">Twitter</a>
-            {% endif %}
-            {% if site.subscribe_rss %}
-            <a class="rss" href="{{ site.subscribe_rss }}" title="RSS">RSS</a>
-            {% endif %}
-          </div>
-        </nav>
+<h1><a href="/">{{ site.title }}</a></h1>
+<p class="subtitle">{{ site.subtitle }}</p>
+<nav id="main-nav">
+  {% include navigation.html %}
+</nav>
+<nav id="sub-nav">
+  <div class="social">
+    {% if site.github_user %}
+    <a class="github" href="https://github.com/{{ site.github_user }}" title="GitHub">GitHub</a>
+    {% endif %}
+    {% if site.weibo_user %}
+    <a class="weibo" href="http://weibo.com/{{ site.weibo_user }}" title="weibo">Weibo</a>
+    {% endif %}
+    {% if site.twitter_user %}
+    <a class="twitter" href="http://twitter.com/{{ site.twitter_user }}" title="Twitter">Twitter</a>
+    {% endif %}
+    {% if site.subscribe_rss %}
+    <a class="rss" href="{{ site.subscribe_rss }}" title="RSS">RSS</a>
+    {% endif %}
+  </div>
+</nav>

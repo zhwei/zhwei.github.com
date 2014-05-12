@@ -86,7 +86,7 @@ comments: false
 ### [PAHChina](http://pah.zhangweide.cn/)
   + 中国PAH关爱联盟公益网站
   + Django
-  + 描述: 该网站使用Django开发， 包含多角色(患者，医生， 医院，志愿者等)， 支持主分站CMS， 分站可绑定自定义域名， 内部捐赠系统以及帐务公开机制，其他定制化业务。
+  + 描述: 该网站使用Django开发， 包含多角色(患者，医生， 医院，志愿者等)， 支持主分站CMS， 分站可绑定自定义域名， 内部捐赠系统以及账务公开机制，其他定制化业务。
 
 ### [ServerMonitor](http://git.oschina.net/zhwei/ServerMonitor)
 
@@ -104,3 +104,16 @@ comments: false
   + [汽配商城](http://git.oschina.net/zhwei/qipei)/Django
   + [校内视频在线版](https://github.com/zhwei/sdut-cumpus-video)/web.py
   + [平均学分绩点计算](https://gist.github.com/zhwei/88ff04a6cc7f7dabdfaa)/Python
+
+## 求职意愿
+- - -
+
+希望能找到一份后端开发工作，Python最佳，也愿意学习新语言或者新技术。
+
+Ps: _目前大三下学期， 根据学校政策大四可以办理学分置换， 全年可在外实习，只需要会学校作毕业答辩。_
+
+## 联系方式
+- - -
+
++ Email: `zhwei_yes@163.com` or `zhwei.yes@gmail.com`
++ QQ: 就留三菱伞儿呜呜妖

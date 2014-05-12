@@ -32,8 +32,6 @@ markdown: rdiscount
 highlighter: pygments
 
 
-
-
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
 
