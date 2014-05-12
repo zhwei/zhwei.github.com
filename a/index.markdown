@@ -10,7 +10,6 @@ customcss: <link rel="stylesheet" href="/stylesheets/cusli.css" />
 + django文章截断, slice：n个字符后截断`{{ my_variable|slice:":255" }}`, truncatewords：n个单词后截断`{{ value|truncatewords:2 }} {{ value|truncatewords_html:2 }}`
 
 + 本地搭建pypi镜像源, 使用pep381client
-
 ```python
 
   virtualenv env
