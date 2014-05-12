@@ -221,11 +221,11 @@ def main():
         git(argv)
     elif ar == "push":
         os.chdir(ROOT_FILE)
-        cmd = """git push origin master &&
-        git checkout gitcafe-pages &&
-        git merge master &&
-        git push gc gitcafe-pages &&
-        git checkout master &&
+        cmd = """git push origin master && 
+        git checkout gitcafe-pages && 
+        git merge master && 
+        git push gc gitcafe-pages && 
+        git checkout master
         """
         os.system(cmd)
     elif ar == "-j":
