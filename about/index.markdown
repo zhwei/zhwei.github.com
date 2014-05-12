@@ -6,16 +6,12 @@ comments: false
 ---
 
 
-## zhwei
-
-![大学照片](http://zhwei.qiniudn.com/avatar-medium.jpg)
-
-
 ## 简介
 
 + 基本信息
   - 张卫/男
   - 山东理工大学/计算机科学与技术/2011级
+  - 常用名: zhwei
 
 + 生活
   - 杏园中的野草
@@ -24,7 +20,7 @@ comments: false
 
 ## 简历
 
-### Python
+- Python
 
   + 熟悉Python, 熟悉Python元方法, 多线程, 生成器
   + 熟悉Django, web.py, Bottle
@@ -35,7 +31,7 @@ comments: false
   + 使用supervisor管理系统服务
   + 了解tornado
 
-### Linux
+- Linux
 
   + 日常工作使用Arch, Ubuntu
   + 写过服务器监控程序[ServerMonitor](#ServerMonitor)
@@ -46,23 +42,24 @@ comments: false
   + 使用OpenWrt做路由器
   + 使用tmux
 
-### Web
+- Web
 
-  + 熟悉HTML, CSS基础语法
-  + 使用过Less, CoffeeScript
+  + 熟悉HTML, CSS基础语法, 使用过Less, CoffeeScript
   + 熟悉Bootstrap前端框架及定制化设计
   + 能用JQuery进行简单DOM操作
 
-### Geek生活
+- Geek生活
 
   + 熟悉Git常用操作
   + 使用Hanouts与小伙伴交流
   + 常年使用Shadowsocks, GoAgent
 
-### 团队协作
+- 团队协作
 
   + 使用Git做版本控制
   + 有多次团队协作经验
   + 使用过Trello, Tower等在线协作平台
 
 ## 作品
+
+  - Gotit
