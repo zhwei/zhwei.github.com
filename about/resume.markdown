@@ -6,9 +6,10 @@ comments: false
 ---
 
 
-## 基本信息
+## 个人信息
 - - -
 
++ 基本信息
   - 张卫/男
   - 山东理工大学/计算机科学与技术/2011级
   - 常用名: zhwei
@@ -16,7 +17,7 @@ comments: false
 + 生活
   - 杏园中的野草
   - 真诚的Pythoner， 热爱生活的程序猿
-  - 有代码洁癖，git深度患者  
+  - 有代码洁癖，Git深度患者  
 
 
 ## 技能
@@ -53,9 +54,12 @@ comments: false
 
 ### Geek生活
 
-  + 熟悉Git常用操作
-  + 使用Hanouts与小伙伴交流
+  + 使用Github与小伙伴协作
+  + 使用Hangouts与小伙伴交流
   + 常年使用Shadowsocks， GoAgent
+  + 混迹于[v2ex](https://v2ex.com/member/zhwei)
+  + 喜欢Markdown，使用Jekyll博客，如你所见
+  + KISS
 
 ### 团队协作
 
