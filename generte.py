@@ -219,6 +219,9 @@ def main():
         note(argv)
     elif ar == "--git" or ar == "-g":
         git(argv)
+    elif ar == "push":
+        os.chdir(ROOT_FILE)
+        os.system("git push origin master && git push gc gitcafe-pages")
     elif ar == "-j":
         os.chdir(ROOT_FILE)
         os.system("jekyll serve --watch")
