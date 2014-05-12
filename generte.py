@@ -221,7 +221,11 @@ def main():
         git(argv)
     elif ar == "push":
         os.chdir(ROOT_FILE)
-        os.system("git push origin master && git push gc gitcafe-pages")
+        cmd = """git push origin master && 
+        git checkout gitcafe-pages &&
+        git merge master &&
+        git push gc gitcafe-pages"""
+        os.system(cmd)
     elif ar == "-j":
         os.chdir(ROOT_FILE)
         os.system("jekyll serve --watch")
