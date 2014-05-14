@@ -56,6 +56,7 @@ comments: false
 
   + 使用Github与小伙伴协作
   + 使用Hangouts与小伙伴交流
+  + 使用LaTeX写简历
   + 常年使用Shadowsocks， GoAgent
   + 混迹于[v2ex](https://v2ex.com/member/zhwei)
   + 喜欢Markdown，使用Jekyll博客，如你所见
