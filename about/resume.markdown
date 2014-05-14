@@ -110,10 +110,10 @@ comments: false
 
 希望能找到一份后端开发工作，Python最佳，也愿意学习新语言或者新技术。
 
-Ps: _目前大三下学期， 根据学校政策大四可以办理学分置换， 全年可在外实习，只需要会学校作毕业答辩。_
+Ps: _目前大三下学期， 根据学校政策大四可以办理学分置换， 全年可在外实习，只需要回学校作毕业答辩。_
 
 ## 联系方式
 - - -
 
-+ Email: `zhwei_yes@163.com` or `zhwei.yes@gmail.com`
++ Email: `zhwei_yes@163.com` or `zhwei.yes@gmail.com`  
 + QQ: 就留三菱伞儿呜呜妖
