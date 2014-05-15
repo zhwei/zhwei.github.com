@@ -4,8 +4,7 @@ title: "Supervisor笔记"
 date: 2013-12-14 21:37
 comments: true
 tags: notes
-menu: true
----
+menu: true---
 
 Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。
 
@@ -31,6 +30,8 @@ setuptools
 ## 调整配置文件
 
 + 增加web管理界面
+
+
 取消配置文件中的下列行，并按需配置用户名密码
 ```
     [inet_http_server]
@@ -38,6 +39,7 @@ setuptools
     username=your_username           ; (default is no username (open server))
     password=your_password           ; (default is no password (open server))
 ```
+
 ## 添加服务
 
 配置文件详解
@@ -84,6 +86,7 @@ setuptools
     ;environment=A="1",B="2"       ; 进程附加环境 (def no adds)
     ;serverurl=AUTO                ; override serverurl computation (childutils)
 ```
+
 ## 添加事件监听器
 
 ```conf
@@ -126,7 +129,14 @@ setuptools
     ;stderr_events_enabled=false   ; emit events on stderr writes (default false)
     ;environment=A="1",B="2"       ; process environment additions
     ;serverurl=AUTO                ; override serverurl computation (childutils)
-    添加进程组
+    
+  ```
+    
+
+  
+## 添加进程组
+
+```conf
 
     ; The below sample group section shows all possible group values,
     ; create one or more 'real' group: sections to create "heterogeneous"
@@ -139,6 +149,7 @@ setuptools
 ```
 
 ## 命令行工具 supervisorctl
+
 
 查看所有命令
 
