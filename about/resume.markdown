@@ -30,6 +30,7 @@ comments: false
   + 熟悉PIL
   + 配合使用过Redis， MongoDB
   + 使用过WMI， PyWin32
+  + 使用fabric快速部署
   + 使用gunicorn部署web站点
   + 使用supervisor管理系统服务
   + 了解tornado
@@ -116,5 +117,7 @@ Ps: _目前大三下学期， 根据学校政策大四可以办理学分置换�
 ## 联系方式
 - - -
 
-+ Email: `zhwei_yes@163.com` or `zhwei.yes@gmail.com`  
-+ QQ: 就留三菱伞儿呜呜妖
++ Email: 
+  - `zhwei.yes@gmail.com`
+  - `zhwei_yes@163.com`
++ QQ: 963032551

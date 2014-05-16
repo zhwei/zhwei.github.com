@@ -230,7 +230,7 @@ def main():
         os.system(cmd)
     elif ar == "-j":
         os.chdir(ROOT_FILE)
-        os.system("jekyll serve --watch")
+        os.system("~/.gem/ruby/2.1.0/bin/jekyll serve --watch")
     elif ar == "-ln":
         os.system("sudo ln -s %sgenerte.py /usr/local/bin/jg" % ROOT_FILE)
     else:
