@@ -12,7 +12,7 @@ comments: false
 + 基本信息
   - 张卫/男
   - 山东理工大学/计算机科学与技术/2011级
-  - 常用名: zhwei
+  - 常用网名: zhwei
 
 + 生活
   - 杏园中的野草
@@ -33,7 +33,6 @@ comments: false
   + 使用fabric快速部署
   + 使用gunicorn部署web站点
   + 使用supervisor管理系统服务
-  + 了解tornado
 
 ### Linux
 
@@ -48,7 +47,8 @@ comments: false
 
 ### Web
 
-  + 熟悉HTML， CSS基础语法， 使用过Less， CoffeeScript
+  + 熟悉HTML， CSS基础语法
+  + 使用Less， CoffeeScript
   + 熟悉Bootstrap前端框架及定制化设计
   + 能用JQuery进行简单DOM操作
   + 了解HTTP协议
@@ -78,7 +78,11 @@ comments: false
   + 校外信息查询系统
   + Python, web.py, Redis, MongoDB
   + 描述: 帮助使用校外网的同学使用正方教务系统查询成绩， 从初学Python到现在一直在升级维护， 为了提高用户体验增加了页面缓存和验证码识别等功能. 访问量最高的时候PV/天 接近7万， 曾为多款Android提供接口服务.
-  + 平台组成: Web查询， 微信公众帐号， 对外开放的API， 网站后台
+  + 平台组成: 
+    - Web查询
+    - 对外开放的API
+    - 微信公众帐号
+    - 网站后台
   + 功能组成:
     - 成绩， 课表， 考试时间查询
     - 平均学分基点计算
@@ -88,7 +92,7 @@ comments: false
 ### [PAHChina](http://pah.zhangweide.cn/)
   + 中国PAH关爱联盟公益网站
   + Django
-  + 描述: 该网站使用Django开发， 包含多角色(患者，医生， 医院，志愿者等)， 支持主分站CMS， 分站可绑定自定义域名， 内部捐赠系统以及账务公开机制，其他定制化业务。
+  + 描述: 该网站包含多角色(患者，医生， 医院，志愿者等)， 支持主分站CMS， 分站可绑定自定义域名， 内部捐赠系统以及账务公开机制，其他定制化业务。
 
 ### [ServerMonitor](http://git.oschina.net/zhwei/ServerMonitor)
 
