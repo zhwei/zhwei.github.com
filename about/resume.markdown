@@ -29,21 +29,10 @@ comments: false
   + 熟悉PEP8编码风格
   + 熟悉PIL
   + 配合使用过Redis， MongoDB
-  + 使用过WMI， PyWin32
   + 使用fabric快速部署
   + 使用gunicorn部署web站点
   + 使用supervisor管理系统服务
-
-### Linux
-
-  + 日常工作使用Arch， Ubuntu
-  + 写过服务器监控程序[ServerMonitor](http://git.oschina.net/zhwei/ServerMonitor)
-  + 熟悉Nginx日常配置
-  + 维护多台Ubuntu CentOS RedHat Oracle服务器
-  + 了解XenServer
-  + 了解Shell基本语法
-  + 使用OpenWrt做路由器
-  + 使用tmux
+  + 使用过WMI， PyWin32
 
 ### Web
 
@@ -52,6 +41,17 @@ comments: false
   + 熟悉Bootstrap前端框架及定制化设计
   + 能用JQuery进行简单DOM操作
   + 了解HTTP协议
+
+
+### Linux
+
+  + 日常工作使用Arch， Ubuntu
+  + 写过服务器监控程序[ServerMonitor](http://git.oschina.net/zhwei/ServerMonitor)
+  + 熟悉Nginx日常配置
+  + 维护多台Ubuntu XenServer CentOS RedHat Oracle服务器
+  + 使用OpenWrt做路由器
+  + 使用tmux
+  + 了解Shell基本语法
 
 ### Geek生活
 
@@ -125,3 +125,5 @@ Ps: _目前大三下学期， 根据学校政策大四可以办理学分置换�
   - `zhwei.yes@gmail.com`
   - `zhwei_yes@163.com`
 + QQ: 963032551
+
+_Email联系获取正式简历_
