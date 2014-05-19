@@ -157,12 +157,73 @@ class Word(str):
 
 一元运算符只有一个操作数，比如：取反、绝对值等。
 
-  `__pos__(self)`
-
+  `__pos__(self)`  
   一元运算符取正值的实现 (e.g. `+some_object`)
 
-  `__neg__(self)`
+  `__neg__(self)`  
   一元运算符取反的实现(e.g. `-some_object`)
-  `__abs__(self)`
-  内置`abs()`方法的实现
-  `__invert__(self)`
+
+  `__abs__(self)`  
+  定义使用内置`abs()`方法时的行为
+
+  `__invert__(self)`  
+  定义使用内置操作符`～`时的行为，具体实例见[the Wikipedia article on bitwise operations](http://en.wikipedia.org/wiki/Bitwise_operation#NOT)
+
+  `__round__(self, n)`  
+  定义使用内置方法`round()`时的行为, `n`是四舍五入时保留的小数位数
+
+  `__floor__(self)`  
+  定义调用方法`math.floor()`时的行为， 返回离数字上舍整数
+
+  `__ceil__(self)`  
+  定义调用方法`math.ceil()`时的行为， 返回离数字上舍整数
+
+  `__trunc__(self)`  
+  定义调用方法`math.trunc()`时的行为， 截取数字的整数部分
+
+#### 常用运算符
+
+
+现在我们来看下常用的二元运算符以及几个方法(像：`+`，`-`，`*`等等), 这些中的大部分是很通俗易懂的。
+
+  `__add__(self, other)`  
+  定义加法
+
+  `__sub__(self, other)`  
+  定义减法
+
+  `__mul__(self, other)`  
+  定义乘法
+
+  `__floordiv__(self, other)`  
+  定义整除
+
+  `__div__(self, other)`  
+  定义除法
+
+  `__truediv__(self, other)`  
+  定义整数除法，只有在`from __future__ import division` 时使用
+
+  `__mod__(self, other)`  
+  定义取模运算
+
+  `__divmod__(self, other)`  
+  定义长除法，调用`divmod()`时的行为
+
+  `__pow__(self, other)`  
+  定义运算符`**`
+
+  `__lshift__(self, other)`  
+  定义左移运算符`<<`
+
+  `__rshift__(self, other)`  
+  定义右移运算符`>>`
+
+  `__and__(self, other)`  
+  定义按位与，`&`操作符
+
+  `__or__(self, other)`  
+  定义按位或，`|`操作符
+
+  `__xor__(self, other)`  
+  定义按位异或， `^`操作符
