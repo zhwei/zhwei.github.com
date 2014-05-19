@@ -24,7 +24,7 @@ comments: false
 - - -
 ### Python
 
-  + 熟悉Python， 熟悉Python元方法， 多线程， 生成器
+  + 熟悉Python， 熟悉Python魔法方法， 多线程， 生成器
   + 熟悉Django， web.py， Bottle
   + 熟悉PEP8编码风格
   + 熟悉PIL
