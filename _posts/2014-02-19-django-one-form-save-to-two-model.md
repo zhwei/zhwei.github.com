@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "django从一个form保存到两个model"
-date: 2014-10-25 21:37
+date: 2014-02-19 21:37
 comments: true
 tags: django
 ---
