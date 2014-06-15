@@ -4,16 +4,13 @@
 #                              #
 ################################
 
-
-
-
 url: zhangweide.cn
 baseurl: /
-title: zhwei@Notes:~$
-subtitle:  
+title: Zhwei's Blog
+subtitle:
 author: zhwei
 simple_search: http://google.com/search
-description: python -c 'import this'
+description: Be Your Personal Best
 email: sdutzhangwei@gmail.com
 
 # 首页分页
