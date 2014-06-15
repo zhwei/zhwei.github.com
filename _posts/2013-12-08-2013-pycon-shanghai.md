@@ -3,7 +3,7 @@ layout: post
 title: "PyConChina上海场现场"
 date: 2013-12-08 15:41
 comments: true
-tags: pycon
+tags: Activity
 ---
 
 * 开始前  

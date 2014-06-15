@@ -3,7 +3,7 @@ layout: post
 title: "寒假记录"
 date: 2013-01-30 16:25
 comments: true
-tags: notes
+tags: Notes
 ---
 ## 学习使用`socket`模块
 ### 2013-01-30  

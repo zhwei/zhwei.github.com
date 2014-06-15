@@ -3,8 +3,7 @@ layout: post
 title: "mysql 编码相关"
 date: 2012-10-25 21:39
 comments: true
-tags: mysql
-categories: sql,encode
+tags: SQL
 ---
 
 # 配置文件 my.cnf

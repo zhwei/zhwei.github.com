@@ -3,7 +3,7 @@ layout: post
 title: "Supervisor笔记"
 date: 2013-12-14 21:37
 comments: true
-tags: notes
+tags: Notes
 menu: true---
 
 Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。

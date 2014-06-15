@@ -3,7 +3,7 @@ layout: post
 title: "sql备忘"
 date: 2013-05-20 21:37
 comments: true
-tags: mysql
+tags: SQL
 ---
 
 ### mysql初始化密码

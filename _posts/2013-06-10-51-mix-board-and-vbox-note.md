@@ -3,7 +3,7 @@ layout: post
 title: "51最小开发板使用记录及virtualbox相关"
 date: 2013-06-10 16:48
 comments: true
-tags: 51 vbox
+tags: Notes
 ---
 
 最近对51开发板感兴趣, 用[ma6174](http://ma6174.cnblogs.com)的51小板搞了下.  

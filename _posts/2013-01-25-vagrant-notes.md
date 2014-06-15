@@ -3,7 +3,7 @@ layout: post
 title: "vagrant 备忘"
 date: 2013-01-25 21:37
 comments: true
-tags: notes
+tags: Notes
 ---
 
 ![](http://www.vagrantup.com/images/logo_vagrant-81478652.png)

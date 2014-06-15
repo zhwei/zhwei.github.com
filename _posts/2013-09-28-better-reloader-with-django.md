@@ -3,7 +3,7 @@ layout: post
 title: "使用django框架的reloader重载WSGI app"
 date: 2013-09-28 09:22
 comments: true
-tags: web.py python
+tags: Python
 ---
 
 使用django框架的autoreload在网站程序代码改动时重载应用。  

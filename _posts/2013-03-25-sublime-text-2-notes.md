@@ -3,7 +3,7 @@ layout: post
 title: "sublime text 2 备忘"
 date: 2013-03-25 21:39
 comments: true
-tags: notes
+tags: Notes
 ---
 ### 安装包管理
 

@@ -3,7 +3,7 @@ layout: post
 title: "Gotit改进与待做"
 date: 2014-02-18 21:37
 comments: true
-tags: gotit
+tags: Gotit
 ---
 
 Gotit 近段时间的改进和以后一段时间内的更新计划，挖坑的时间到了，准备跳票。

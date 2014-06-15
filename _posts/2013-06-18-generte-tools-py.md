@@ -3,7 +3,7 @@ layout: post
 title: "本站用的管理工具"
 date: 2013-06-18 20:36
 comments: true
-tags: blog
+tags: Tools
 ---
 
 脚本可见 [https://gist.github.com/zhwei/5613474](https://gist.github.com/zhwei/5613474)  

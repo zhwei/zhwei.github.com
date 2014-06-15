@@ -3,7 +3,7 @@ layout: post
 title: "pySerial -- Python的串口通讯模块"
 date: 2013-10-26 19:15
 comments: true
-tags: python serial
+tags: Python
 ---
 
 

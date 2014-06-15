@@ -3,7 +3,7 @@ layout: post
 title: "Gotit多线程加速及缓存"
 date: 2013-09-13 21:19
 comments: true
-tags: gotit 多线程
+tags: Gotit
 menu: true
 ---
 

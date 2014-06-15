@@ -3,7 +3,7 @@ layout: post
 title: "响应式页面设计"
 date: 2013-06-16 21:52
 comments: true
-tags: css
+tags: CSS
 ---
 
 要交web基础作业了, 一直没想出做什么页面, 想起自己的博客没有一个**aboutme**页面, 又想学一下响应式布局, 所以, 如你所见: [aboutme](http://zhangweide.cn/about)

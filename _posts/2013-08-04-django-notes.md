@@ -3,7 +3,7 @@ layout: post
 title: "django相关笔记"
 date: 2013-08-04 22:09
 comments: true
-tags: django python
+tags: Django
 menu: true
 ---
 

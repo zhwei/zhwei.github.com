@@ -3,7 +3,7 @@ layout: post
 title: "11月月度总结"
 date: 2012-12-03 22:29
 comments: true
-tags: summary
+tags: Life
 ---
 ###总结
   刚刚看了[浮云比翼](http://www.cnblogs.com/fuyunbiyi)同学的博客,感觉每月总结一些还是很必要的,每次想写博客的时候总是怕麻烦,然后就不了了之了,想这样给自己一个强制性的要求,每个月多多少少写一些,等回过头来看时,不会是一片空白.  

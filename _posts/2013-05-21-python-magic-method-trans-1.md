@@ -3,7 +3,7 @@ layout: post
 title: "[翻译]A Guide to Python's Magic Methods"
 date: 2013-05-21 19:48
 comments: true
-tags: trans python magic
+tags: Trans
 ---
 
 > 原文作者:[Rafe Kettler](http://www.rafekettler.com)  
