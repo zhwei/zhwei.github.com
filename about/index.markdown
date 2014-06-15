@@ -19,5 +19,5 @@ comments: false
 
 ## 简历
 
-+ [**在线链接**](/about/resume)
++ [**在线链接**](/about/resume.html)
 + 正式简历请邮件索取
