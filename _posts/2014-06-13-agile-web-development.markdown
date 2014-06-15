@@ -6,4 +6,4 @@ comments: true
 tags: 
 ---
 
-[AGILE WEB DEVELOPMENT WITH DJANGO](/reveal/agile-web-development-with-django.html)
+[AGILE WEB DEVELOPMENT WITH DJANGO](/slide/agile-web-development.html)
