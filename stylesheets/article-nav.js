@@ -49,7 +49,7 @@ $(document).ready(function(){
             });
 
             //添加h1
-            tmpl += '<p>文章目录</p><br />';
+            tmpl += '<p>文章目录</p>';
 
             for(var i=0;i<h2.length;i++){
                 tmpl += '<li><a href="#" data-id="'+h2[i].id+'">+&nbsp;'+h2[i].name+'</a></li>';

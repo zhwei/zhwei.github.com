@@ -207,19 +207,20 @@ def main():
         ar = argv[1]
     except IndexError:
         return show_help()
-    if ar == "--help" or ar == "-h" or ar is None:
-        show_help()
-    elif ar == "--post" or ar == "-p":
-        post(argv)
-    elif ar == "--recent" or ar == "-r":
-        recent(argv)
-    elif ar == "--match" or ar == "-m":
-        match(argv)
-    elif ar == "--note" or ar == "-n":
-        note(argv)
-    elif ar == "--git" or ar == "-g":
-        git(argv)
-    elif ar == "push":
+
+    _dic = {
+            ("--post", "-p"): post,
+            ("--match", "-m"): match,
+            ("--recent", "-r"): recent,
+            ("--note", "-n"): note,
+            ("--git", "-g"): git,
+        }
+
+    for key in _dic:
+        if ar in key:
+            _dic[key](argv)
+
+    if ar == "push":
         os.chdir(ROOT_FILE)
         cmd = """git push origin master && 
         git checkout gitcafe-pages && 
@@ -233,8 +234,8 @@ def main():
         os.system("~/.gem/ruby/2.1.0/bin/jekyll serve --watch")
     elif ar == "-ln":
         os.system("sudo ln -s %sgenerte.py /usr/local/bin/jg" % ROOT_FILE)
-    else:
-        return show_help()
+
+    return show_help()
 
 if __name__ == "__main__":
     main()
