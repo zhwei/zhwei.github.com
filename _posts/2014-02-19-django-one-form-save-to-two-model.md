@@ -7,7 +7,6 @@ tags: Django
 ---
 
 ```python
-
     from django.forms.models import model_to_dict, fields_for_model
 
     class UserDetailsForm(ModelForm):

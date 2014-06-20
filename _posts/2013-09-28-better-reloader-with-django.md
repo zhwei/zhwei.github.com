@@ -12,8 +12,7 @@ tags: Python
 
 **bottle**
 
-{% highlight python %}
-
+```python
 from bottle import run, Bottle
 
 app = Bottle()
@@ -25,14 +24,11 @@ if '__main__' == __name__:
     from django.utils import autoreload
     autoreload.main(dev_server)
 
-{% endhighlight %}
-
+```
 
 **web.py**
 
-
-{% highlight python %}
-
+```python
 from code import app
 
 def dev_server():
@@ -41,10 +37,6 @@ def dev_server():
 if __name__ == "__main__":
     from django.utils import autoreload
     autoreload.main(dev_server)
-
-{% endhighlight %}
+```
 
 [http://blog.est.im/post/34342180038](http://blog.est.im/post/34342180038)
-
-
-详解 todo。。

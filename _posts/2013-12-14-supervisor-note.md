@@ -4,7 +4,8 @@ title: "Supervisor笔记"
 date: 2013-12-14 21:37
 comments: true
 tags: Notes
-menu: true---
+menu: true
+---
 
 Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。
 
@@ -13,8 +14,8 @@ http://supervisord.org/
 
 # 安装
 setuptools
-```
 
+```bash
     pip install supervisor
     # or
     easy_install supervisor
@@ -27,24 +28,26 @@ setuptools
 需要以root身份执行
 
     echo_supervisord_conf > /etc/supervisord.conf
+
 ## 调整配置文件
 
 + 增加web管理界面
 
 
 取消配置文件中的下列行，并按需配置用户名密码
-```
-    [inet_http_server]
-    port=*:9001
-    username=your_username           ; (default is no username (open server))
-    password=your_password           ; (default is no password (open server))
+
+```ini
+[inet_http_server]
+port=*:9001
+username=your_username           ; (default is no username (open server))
+password=your_password           ; (default is no password (open server))
 ```
 
 ## 添加服务
 
 配置文件详解
-```conf
 
+```ini
     [supervisorctl]
     serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
     ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket
@@ -89,7 +92,7 @@ setuptools
 
 ## 添加事件监听器
 
-```conf
+```ini
 
     ; The below sample eventlistener section shows all possible
     ; eventlistener subsection values, create one or more 'real'
@@ -129,15 +132,11 @@ setuptools
     ;stderr_events_enabled=false   ; emit events on stderr writes (default false)
     ;environment=A="1",B="2"       ; process environment additions
     ;serverurl=AUTO                ; override serverurl computation (childutils)
-    
   ```
-    
 
-  
 ## 添加进程组
 
-```conf
-
+```ini
     ; The below sample group section shows all possible group values,
     ; create one or more 'real' group: sections to create "heterogeneous"
     ; process groups.

@@ -77,3 +77,7 @@ hr {
   border: 1px solid #ddd;
   max-width: 90%;
 }
+code {
+  border-radius: 5px;
+  margin-top: 8px;
+}

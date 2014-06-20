@@ -234,8 +234,8 @@ def main():
         os.system("~/.gem/ruby/2.1.0/bin/jekyll serve --watch")
     elif ar == "-ln":
         os.system("sudo ln -s %sgenerte.py /usr/local/bin/jg" % ROOT_FILE)
-
-    return show_help()
+    else:
+        return show_help()
 
 if __name__ == "__main__":
     main()

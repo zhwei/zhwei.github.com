@@ -30,9 +30,7 @@ POST一般用来上传文件或者提交一个完整的web表单。
 
 实际数据是这样的  
 
-```
-user=554101&user_code=eNWyXdrrTpC6hoSvzPHBYKLljGkcDw79QsWtNeMu&attachment=0&code_brush=&code_snippet=&msg=test
-```
+    user=554101&user_code=eNWyXdrrTpC6hoSvzPHBYKLljGkcDw79QsWtNeMu&attachment=0&code_brush=&code_snippet=&msg=test
 
 浏览器中提交表单时，这里与get类似，每个键值对都是通过`&`分割, 其他非字母数字会进行url转码。
 
