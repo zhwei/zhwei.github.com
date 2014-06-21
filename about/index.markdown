@@ -9,15 +9,17 @@ comments: false
 - - -
 
   - 张卫/男
-  - 山东理工大学/计算机科学与技术/2011级
   - 常用名: zhwei
 
 + 生活
-  - 杏园中的野草
-  - 真诚的Pythoner， 热爱生活的程序猿
-  - 有代码洁癖，git深度患者
+  - 热爱生活的程序猿
+  - 真诚的Pythoner
+
++ 联系我
+
+![](http://zhwei.qiniudn.com/Email.png)
 
 ## 简历
 
-+ [**在线链接**](/about/resume.html)
++ [在线简历](/about/resume.html)
 + 正式简历请邮件索取
