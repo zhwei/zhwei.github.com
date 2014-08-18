@@ -52,7 +52,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
     <section>
       <section>
-        <h2>Python yield</h2>
+        <h2>yield</h2>
         <p>
           生成器，按照一定算法生成一个序列。
         </p>
@@ -86,6 +86,24 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         <h2>特性</h2>
         <ul>
           <p>调用生成器函数时函数体不执行，第一次通过next()调用时开始执行到yield表达式，然后终止， 直到下一次调用next()方法时继续执行后续程序。</p>
+        </ul>
+      </section>
+
+      <section>
+        <h2>其他方法</h2>
+        <ul>
+          <li>send()</li>
+          <ul>
+            <li><pre class="prettyprint linenums"><code class="``python">next(gen) == gen.send(None)</code></pre></li>
+          </ul>
+          <li>throw()</li>
+          <ul>
+            <li><pre class="prettyprint linenums"><code class="``python">gen.throws(TypeError, "info")</code></pre></li>
+          </ul>
+          <li>close()</li>
+          <ul>
+            <li>yield会抛出GeneratorExit异常</li>
+          </ul>
         </ul>
       </section>
     </section>
@@ -132,14 +150,16 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <section class="present" style="top: -143.5px; display: block;">
 
       <section>
-        <h1>基于生成器的协程</h1>
+        <h3>基于生成器的协程</h3>
+      </section>
+
+      <section>
         <pre class="prettyprint linenums"><code class="``python">        import random
 
         def consumer():
             while True:
                 number = yield
                 print("Receive ", number)
-
         def producter():
 
             while True:
@@ -154,14 +174,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
       </section>
 
-      <section>
-      </section>
-
-      <section>
-      </section>
 
     </section>
-
 
     <section class="present" style="top: -143.5px; display: block;">
       <h1>Q&nbsp;&&nbsp;A</h1>
