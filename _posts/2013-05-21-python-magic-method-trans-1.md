@@ -227,3 +227,5 @@ class Word(str):
 
   `__xor__(self, other)`  
   定义按位异或， `^`操作符
+
+#### 反运算操作符
