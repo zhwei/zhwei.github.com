@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Agile Web Development</title>
+
+<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+<meta name="author" content="Hakim El Hattab">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link href="http://cdn.bootcss.com/reveal.js/2.6.2/css/reveal.min.css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/reveal.js/2.6.2/css/theme/default.css" rel="stylesheet">
+
+<!-- For syntax highlighting -->
+<link href="http://cdn.bootcss.com/reveal.js/2.6.2/lib/css/zenburn.css" rel="stylesheet">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = 'css/print/pdf.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+</script>
+
+<!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+      <h2>Python Tips</h2>
+      <br><br><br>
+      <p>
+      <small>By &nbsp;<a href="http://zhangweide.cn">zhangwei</a> / <a href="mailto:zhangwei@baixing.net">zhangwei@baixing.net</a></small>
+      </p>
+    </section>
+
+    <section>
+      <section>
+        <h2>Python yield</h2>
+        <p>
+          生成器，按照一定算法生成一个序列。
+        </p>
+
+        <aside class="notes"></aside>
+      </section>
+      <section>
+        <h2>斐波那契数列</h2>
+        <pre class="prettyprint linenums"><code class="``python">
+          def fib(n):
+              ret = []
+              a, b = 0, 1
+              while b < n:
+                  ret.append(b)
+                  a, b = b, a + b
+          return ret </code></pre>
+
+        <pre class="prettyprint linenums"><code class="``python">
+          def fib(n):
+              a, b = 1, 1
+              while a < n:
+                  yield a
+                  a, b = b, a + b
+        </code></pre>
+
+        <aside class="notes">惰性求值</aside>
+      </section>
+      <section>
+        <h2>特性</h2>
+        <ul>
+          <p>调用生成器函数时函数体不执行，第一次通过next()调用时开始执行到yield表达式，然后终止， 直到下一次调用next()方法时继续执行后续程序。</p>
+        </ul>
+      </section>
+    </section>
+
+    <!-- Example of nested vertical slides -->
+    <section>
+      <section>
+        <h2>Web敏捷开发</h2>
+      </section>
+      <section>
+        <h2>网站主要组成部分</h2>
+        <ul>
+          <li>数据库</li>
+          <li>业务逻辑</li>
+          <li>访问控制</li>
+          <li>前端设计</li>
+        </ul>
+      </section>
+      <section>
+        <h2>我的选择</h2>
+        <br>
+        <h3>Django</h3>
+        <h3>+</h3>
+        <h3>Bootstrap</h3>
+      </section>
+    </section>
+
+    <section>
+      <section data-state="soothe">
+        <h2>Django</h2>
+        <p>The Web framework for perfectionists with deadlines.</p>
+        <blockquote><p>Django makes it easier to build better Web apps more quickly and with less code.</p></blockquote>
+      </section>
+
+      <section>
+        <h2>ORM</h2>
+        <p>Object-relational mapper</p>
+        <ul>
+          <li>用于实现面向对象编程语言里不同类型系统的数据之间的转换</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>避免手写复杂的SQL语句和常见SQL注入场景</h4>
+        <br />
+        <pre class="prettyprint linenums"><code class="``python">  from django.db import models
+  from ckeditor.fields import RichTextField
+
+  class Pages(TimeStampedModel):
+      """
+      Pages
+      """
+
+      title = models.CharField(verbose_name='标题', max_length=100)
+      content = RichTextField(verbose_name='内容', config_name="default")
+
+      mark = models.CharField(verbose_name='唯一标志', unique=True, max_length=20)
+
+      class Meta:
+          verbose_name = "页面"
+          verbose_name_plural = "  页面"
+
+      def __unicode__(self):
+          return self.title
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>通过面向对象编程的方式操作数据库</h3>
+        <br />
+        <pre class="prettyprint linenums"><code class="``python">  class TimeStampedModel(models.Model):
+      """工具类
+      用来给你的model添加下面两个字段，分别是创建时间和更新时间
+      Usage: class YourModel(TimeStampedModel): ...
+      """
+
+      created_date = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
+      updated_date = models.DateTimeField(verbose_name='更新时间', auto_now=True)
+
+      class Meta:
+          abstract = True
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>Admin Site</h2>
+      </section>
+      <section>
+        <h3>简单配置即可拥有完备后台</h3>
+        <a href="http://ww4.sinaimg.cn/large/9f62afa1gw1ehdena1b2hj213j0irabk.jpg" title="添加页面" class="fancybox" rel="gallery0"><img src="http://ww4.sinaimg.cn/large/9f62afa1gw1ehdena1b2hj213j0irabk.jpg" alt="添加页面"></a>
+      </section>
+
+      <section>
+        <h3>高度可定制</h3>
+        <pre class="prettyprint linenums">
+        <code class="``python">  class DownloadAdmin(admin.ModelAdmin):
+
+          list_display = ('name', 'description', 'download_link', 'created_date')
+          list_filter = ('created_date',)
+          search_fields = ('name', 'description', )
+          form = forms.UploadFileForm
+
+          fieldsets = (
+          (None, {
+          'fields': ('document', 'description')
+          }),
+          ('Advanced options', {
+          'classes': ('collapse',),
+          'fields': ('name',)
+          }),
+          )
+
+          def download_link(self, obj):
+          link = "&lt;strong&gt;&lt;a href={0}&gt;下载&lt;/a&gt;&lt;/strong&gt;".format(reverse('file',
+          kwargs=dict(file_id=obj.id)))
+          return mark_safe(link)
+          download_link.short_description = "下载链接"
+
+          def delete_model(self, request, obj):
+          storage, path = obj.document.storage, obj.document.path
+          super(DownloadAdmin, self).delete_model(request, obj)
+          storage.delete(path)
+
+          admin.site.register(models.Download, DownloadAdmin)
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>Views</h3>
+        <p>Django has the concept of “views” to encapsulate the logic responsible for processing a user’s request and for returning the response</p>
+      </section>
+      <section>
+        <h3>Generic View</h3>
+        <pre class="prettyprint linenums"><code class="``python">  class RegisterMeeting(generic.CreateView):
+      """
+       注册会议
+      """
+      model = models.Members
+      template_name = "register.html"
+      success_url = '/'
+
+      def get_success_url(self):
+          messages.success(self.request, "注册成功！")
+          return reverse_lazy("index")
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>Templates</h3>
+        <br />
+        <ul>
+          <li>Powerful</li>
+          <li>Extensible</li>
+          <li>Designer-Friendly</li>
+          <li>Separate design, content and Python code.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Others</h3>
+        <br />
+        <ul>
+          <li>Elegant URL design</li>
+          <li>Cache System</li>
+          <li>Internationalization(i18n)</li>
+          <li>Security</li>
+          <li>Common Web application tools</li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <section>
+        <h2>Bootstrap</h2>
+        <p>
+        简洁、直观、强悍、移动设备优先的前端开发框架，让web开发更迅速、简单。
+        </p>
+      </section>
+      <section>
+        <h2>One framework, every device.</h2>
+        <img src="http://ww2.sinaimg.cn/large/9f62afa1gw1ehdkf6ycdnj20rs0a0jrs.jpg" />
+      </section>
+      <section>
+        <h2>Comprehensive docs</h2>
+        <img src="http://ww4.sinaimg.cn/large/9f62afa1tw1ehdkgounq6j20rs0a0mxt.jpg" />
+      </section>
+      <section>
+        <h2>Third-Party</h2>
+        <ul>
+          <li><a href="http://bootswatch.com/" target="_blank">Free themes for Bootstrap</a></li>
+          <li><a href="http://www.bootsnipp.com/" target="_blank">Bootsnipp</a></li>
+          <li><a href="http://www.bootcss.com/" target="_blank">Bootstrap中文网</a></li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+      <h1>Q&nbsp;&&nbsp;A</h1>
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+      <h1>THE END</h1>
+      <h3>Thank you!</h3>
+    </section>
+
+  </div>
+
+</div>
+
+<script src="http://cdn.bootcss.com/reveal.js/2.6.2/lib/js/head.min.js"></script>
+<script src="http://cdn.bootcss.com/reveal.js/2.6.2/js/reveal.min.js"></script>
+
+<script>
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+center: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+// Parallax scrolling
+// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+// parallaxBackgroundSize: '2100px 900px',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+
+</script>
+
+</body>
+</html>
