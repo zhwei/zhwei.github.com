@@ -179,6 +179,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
             while True:
                 number = yield
                 print("Receive ", number)
+
         def producter():
 
             while True:
@@ -188,11 +189,28 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         c = consumer()
         c.next()
         for nu in producter():
-            c.send(nu)
-        </code></pre>
+            c.send(nu)</code></pre>
 
       </section>
 
+
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+
+       <section class="present" style="top: -143.5px; display: block;">
+          <p>RESULT = yield from EXPR</p>
+       </section>
+
+       <section class="present" style="top: -143.5px; display: block;">
+
+          <pre class="prettyprint linenums"><code class="``python">
+          def generator():
+              yield from generator2()
+              yield from generator3()
+          </code></pre>
+
+       </section>
 
     </section>
 
