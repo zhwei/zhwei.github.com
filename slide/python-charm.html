@@ -154,6 +154,25 @@ if( window.location.search.match( /print-pdf/gi ) ) {
       </section>
 
       <section>
+        <pre class="prettyprint linenums"><code class="``python">
+         var q: = new queue
+
+         loop
+             while q is not full
+                 create some new items
+                 add items to q
+             yield to comsume
+
+         loop
+             while q is not empty
+                 pop item from q
+                 use item
+             yield to production
+
+        </code></pre>
+      </section>
+
+      <section>
         <pre class="prettyprint linenums"><code class="``python">        import random
 
         def consumer():
