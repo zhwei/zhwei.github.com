@@ -154,12 +154,32 @@ if( window.location.search.match( /print-pdf/gi ) ) {
       </section>
 
       <section>
+        <pre class="prettyprint linenums"><code class="``python">
+         var q: = new queue
+
+         loop
+             while q is not full
+                 create some new items
+                 add items to q
+             yield to comsume
+
+         loop
+             while q is not empty
+                 pop item from q
+                 use item
+             yield to production
+
+        </code></pre>
+      </section>
+
+      <section>
         <pre class="prettyprint linenums"><code class="``python">        import random
 
         def consumer():
             while True:
                 number = yield
                 print("Receive ", number)
+
         def producter():
 
             while True:
@@ -169,11 +189,28 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         c = consumer()
         c.next()
         for nu in producter():
-            c.send(nu)
-        </code></pre>
+            c.send(nu)</code></pre>
 
       </section>
 
+
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+
+       <section class="present" style="top: -143.5px; display: block;">
+          <p>RESULT = yield from EXPR</p>
+       </section>
+
+       <section class="present" style="top: -143.5px; display: block;">
+
+          <pre class="prettyprint linenums"><code class="``python">
+          def generator():
+              yield from generator2()
+              yield from generator3()
+          </code></pre>
+
+       </section>
 
     </section>
 
