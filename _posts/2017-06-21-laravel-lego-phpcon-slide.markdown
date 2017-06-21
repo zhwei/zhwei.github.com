@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PHPCon China Laravel Lego 分享的 Slide
+title: "PHPCon China Laravel Lego 分享的 Slide"
 date: 2017-06-21 20:31
 comments: true
 tags: Laravel
