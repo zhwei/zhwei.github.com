@@ -15,9 +15,7 @@ email: sdutzhangwei@gmail.com
 
 category_dir: blog/categories
 tags_path : /tags.html
-markdown: rdiscount
-#pygments: true # default python pygments have been replaced by pygments.rb
-# highlighter: pygments
+markdown: kramdown
 
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
