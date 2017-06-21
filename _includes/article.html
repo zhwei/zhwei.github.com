@@ -1,12 +1,15 @@
 <h1 class="title" itemprop="name">
-  {% if site.titlecase %}
-  {{ page.title | titlecase }}
-  {% else %}
-  {{ page.title }}
-  {% endif %}</h1>
-{% if  page.menu %}
-  <div id="menuIndex" class="row-fluid" style=""></div>
+    {% if site.titlecase %}
+        {{ page.title | titlecase }}
+    {% else %}
+        {{ page.title }}
+    {% endif %}
+</h1>
+
+{% if page.menu %}
+    <div id="menuIndex" class="row-fluid" style=""></div>
 {% endif %}
+
 <div class="entry-content" itemprop="articleBody" id="entry-content">
-  {{ content }}
+    {{ content }}
 </div>

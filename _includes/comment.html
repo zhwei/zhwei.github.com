@@ -5,9 +5,13 @@
             Load script if disquss comments are enabled and `page.comments` is either empty (index) or set to true 
         {% endcomment %} 
 
+        <noscript>
+            Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+
         <script type="text/javascript">
             (function () {
-                var disqus_shortname = 'zhwei-blog';
+                var disqus_shortname = 'zhwei';
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
