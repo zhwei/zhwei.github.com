@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on zhwei's Blog</title><link>https://zhw.in/tags/docker/</link><description>Recent content in Docker on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 04 Dec 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker Jenkins Run Tests in Docker</title><link>https://zhw.in/post/docker-jenkins-run-tests-in-docker/</link><pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate><guid>https://zhw.in/post/docker-jenkins-run-tests-in-docker/</guid><description>起因 团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。
+最近遇到了测试时的并发问题，由于 Jenkins 需要在 PR 更新时重新检查，每完整测试一次需要 10 到 15 分钟，同时有很多开发者提交 PR 时，就会导致长时间无意义的等待，有此希望能提高 Jenkins 的并发测试能力。
+选择方案 先介绍下项目测试时依赖的环境：
+- PHP - Redis - MySQL - ElasticSearch 多个 PR 测试进程之间，ES、Redis 是可以共享的，但 MySQL 不可以，其中考虑的方案是考虑能否通过改变项目中的数据库名称从而共享同一台 MySQL Server ，但实际调试中发现除去 ORM 能够简单变更数据库外，还是有很多场景中的数据库名称是写死在代码里面的，所以这条方案宣告放弃。
+如标题所说，我们的 Jenkins 是运行在 docker 中的，那测试是不是也可以在 docker 中运行呢，所有依赖环境、软件包，全部通过 docker 打包整理，最终 Jenkins 在发起测试时需要调用的是一个 docker 命令，那么问题来了，怎样让 Jenkins 调用 docker ？想到的有以下两个思路：
+Jenkins 中完整安装 docker ，关注点：
+需要重新 build jenkins image，调试会很麻烦 性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例 网络会不会有问题？172 这个网段会不会混乱（还是调试问题） Jenkins 中调用宿主机的 docker ，关注点：</description></item></channel></rss>

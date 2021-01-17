@@ -1,0 +1,141 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。
+官方文档 http://supervisord.org/
+安装 setuptools
+pip install supervisor # or easy_install supervisor 初始使用 创建配置文件 需要以root身份执行
+echo_supervisord_conf &amp;gt; /etc/supervisord.conf  调整配置文件  增加web管理界面  取消配置文件中的下列行，并按需配置用户名密码
+[inet_http_server] port=*:9001 username=your_username ; (default is no username (open server)) password=your_password ; (default is no password (open server)) 添加服务 配置文件详解
+[supervisorctl] serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL for a unix socket ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket ;username=chris ; should be same as http_username if set ;password=123 ; should be same as http_password if set ;prompt=mysupervisor ; cmd line prompt (default &amp;#34;supervisor&amp;#34;) ;history_file=~/."><title>Supervisor笔记</title><link rel=canonical href=https://zhw.in/post/supervisor%E7%AC%94%E8%AE%B0/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Supervisor笔记"><meta property="og:description" content="Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。
+官方文档 http://supervisord.org/
+安装 setuptools
+pip install supervisor # or easy_install supervisor 初始使用 创建配置文件 需要以root身份执行
+echo_supervisord_conf &amp;gt; /etc/supervisord.conf  调整配置文件  增加web管理界面  取消配置文件中的下列行，并按需配置用户名密码
+[inet_http_server] port=*:9001 username=your_username ; (default is no username (open server)) password=your_password ; (default is no password (open server)) 添加服务 配置文件详解
+[supervisorctl] serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL for a unix socket ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket ;username=chris ; should be same as http_username if set ;password=123 ; should be same as http_password if set ;prompt=mysupervisor ; cmd line prompt (default &amp;#34;supervisor&amp;#34;) ;history_file=~/."><meta property="og:url" content="https://zhw.in/post/supervisor%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="zhwei's Blog"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Notes"><meta property="article:published_time" content="2013-12-14T00:00:00+00:00"><meta property="article:modified_time" content="2013-12-14T00:00:00+00:00"><meta name=twitter:site content="zhwei_"><meta name=twitter:title content="Supervisor笔记"><meta name=twitter:description content="Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。
+官方文档 http://supervisord.org/
+安装 setuptools
+pip install supervisor # or easy_install supervisor 初始使用 创建配置文件 需要以root身份执行
+echo_supervisord_conf &amp;gt; /etc/supervisord.conf  调整配置文件  增加web管理界面  取消配置文件中的下列行，并按需配置用户名密码
+[inet_http_server] port=*:9001 username=your_username ; (default is no username (open server)) password=your_password ; (default is no password (open server)) 添加服务 配置文件详解
+[supervisorctl] serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL for a unix socket ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket ;username=chris ; should be same as http_username if set ;password=123 ; should be same as http_password if set ;prompt=mysupervisor ; cmd line prompt (default &amp;#34;supervisor&amp;#34;) ;history_file=~/."><link rel="shortcut icon" href=/images/favicon.ico></head><body><script>(function(){const colorSchemeKey='StackColorScheme';if(!localStorage.getItem(colorSchemeKey)){localStorage.setItem(colorSchemeKey,"auto");}})();</script><script>(function(){const colorSchemeKey='StackColorScheme';const colorSchemeItem=localStorage.getItem(colorSchemeKey);const supportDarkMode=window.matchMedia('(prefers-color-scheme: dark)').matches===true;if(colorSchemeItem=='dark'||colorSchemeItem==='auto'&&supportDarkMode){document.body.dataset.scheme='dark';}else{document.body.dataset.scheme='light';}})();</script><div class="container main-container flex on-phone--column extended article-page with-toolbar"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hua214120a4d200677a7520b2605f86182_99547_300x0_resize_box_2.png width=300 height=282 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>🏠</span></figure><h1 class=site-name><a href=https://zhw.in>zhwei's Blog</a></h1><h2 class=site-description>Be Your Personal Best</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><li><a href=https://github.com/zhwei><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0c-2.4-1.6-3.5-1.3-3.5-1.3a4.2 4.2.0 00-.1 3.2 4.6 4.6.0 00-1.3 3.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg><span>GitHub</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>Dark Mode</span></li></ol></aside><main class="main full-width"><div id=article-toolbar><a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><article class=main-article><header class=article-header><div class=article-details><h2 class=article-title><a href=/post/supervisor%E7%AC%94%E8%AE%B0/>Supervisor笔记</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2013-12-14</time></footer></div></header><section class=article-content><p>Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。</p><h1 id=官方文档>官方文档</h1><p><a href=http://supervisord.org/>http://supervisord.org/</a></p><h1 id=安装>安装</h1><p>setuptools</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>    pip install supervisor
+    <span class=c1># or</span>
+    easy_install supervisor
+</code></pre></div><h1 id=初始使用>初始使用</h1><h2 id=创建配置文件>创建配置文件</h2><p>需要以root身份执行</p><pre><code>echo_supervisord_conf &gt; /etc/supervisord.conf
+</code></pre><h2 id=调整配置文件>调整配置文件</h2><ul><li>增加web管理界面</li></ul><p>取消配置文件中的下列行，并按需配置用户名密码</p><div class=highlight><pre class=chroma><code class=language-ini data-lang=ini><span class=k>[inet_http_server]</span>
+<span class=na>port</span><span class=o>=</span><span class=s>*:9001</span>
+<span class=na>username</span><span class=o>=</span><span class=s>your_username           ; (default is no username (open server))</span>
+<span class=na>password</span><span class=o>=</span><span class=s>your_password           ; (default is no password (open server))</span>
+</code></pre></div><h2 id=添加服务>添加服务</h2><p>配置文件详解</p><div class=highlight><pre class=chroma><code class=language-ini data-lang=ini>    <span class=k>[supervisorctl]</span>
+    <span class=na>serverurl</span><span class=o>=</span><span class=s>unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
+</span><span class=s>    ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket
+</span><span class=s>    ;username=chris              ; should be same as http_username if set
+</span><span class=s>    ;password=123                ; should be same as http_password if set
+</span><span class=s>    ;prompt=mysupervisor         ; cmd line prompt (default &#34;supervisor&#34;)
+</span><span class=s>    ;history_file=~/.sc_history  ; use readline history if available
+</span><span class=s>    添加单个进程</span>
+
+    <span class=c1>; 管理单个进程的配置，可创建多个，下面是所有可能的配置选项</span>
+    <span class=c1>;[program:theprogramname]</span>
+    <span class=c1>;command=/bin/cat              ; 启动进程的命令 使用相对路径，可以加参数</span>
+    <span class=c1>;process_name=%(program_name)s ; 进程名称 表达式 (默认 %(program_name)s)</span>
+    <span class=c1>;numprocs=1                    ; 进程数目 (def 1)</span>
+    <span class=c1>;directory=/tmp                ; 执行命令所在的目录 (def no cwd)</span>
+    <span class=c1>;umask=022                     ; 进程默认权限 (default None)</span>
+    <span class=c1>;priority=999                  ; 进程启动相对优先权 (default 999)</span>
+    <span class=c1>;autostart=true                ; 跟随supervisor启动时启动 (default: true)</span>
+    <span class=c1>;autorestart=unexpected        ; 计划启动 (default: unexpected)</span>
+    <span class=c1>;startsecs=1                   ; 延时启动 (def. 1)</span>
+    <span class=c1>;startretries=3                ; 最多连续启动失败 (default 3)</span>
+    <span class=c1>;exitcodes=0,2                 ; 进程结束代码 (default 0,2)</span>
+    <span class=c1>;stopsignal=QUIT               ; signal used to kill process (default TERM)</span>
+    <span class=c1>;stopwaitsecs=10               ; 最长结束等待时间，否则使用 SIGKILL (default 10)</span>
+    <span class=c1>;stopasgroup=false             ; 是否想UNIX进程组发送结束信号 (default false)</span>
+    <span class=c1>;killasgroup=false             ; SIGKILL UNIX 进程组 (def false)</span>
+    <span class=c1>;user=chrism                   ; 设置启动此程序的用户</span>
+    <span class=c1>;redirect_stderr=true          ; 重定向程序的标准错误到标准输出 (default false)</span>
+    <span class=c1>;stdout_logfile=/a/path        ; 标准输出的日志路径, NONE for none; default AUTO</span>
+    <span class=c1>;stdout_logfile_maxbytes=1MB   ; 日志文件最大值，否则循环写入 (default 50MB)</span>
+    <span class=c1>;stdout_logfile_backups=10     ; 标准输出日志备份数目 (default 10)</span>
+    <span class=c1>;stdout_capture_maxbytes=1MB   ; number of bytes in &#39;capturemode&#39; (default 0)</span>
+    <span class=c1>;stdout_events_enabled=false   ; emit events on stdout writes (default false)</span>
+    <span class=c1>;stderr_logfile=/a/path        ; 标准错误输出日志路径, NONE for none; default AUTO</span>
+    <span class=c1>;stderr_logfile_maxbytes=1MB   ; 日志文件最大值，否则循环写入 (default 50MB)</span>
+    <span class=c1>;stderr_logfile_backups=10     ; 标准错误日志备份数目 (default 10)</span>
+    <span class=c1>;stderr_capture_maxbytes=1MB   ; number of bytes in &#39;capturemode&#39; (default 0)</span>
+    <span class=c1>;stderr_events_enabled=false   ; emit events on stderr writes (default false)</span>
+    <span class=c1>;environment=A=&#34;1&#34;,B=&#34;2&#34;       ; 进程附加环境 (def no adds)</span>
+    <span class=c1>;serverurl=AUTO                ; override serverurl computation (childutils)</span>
+</code></pre></div><h2 id=添加事件监听器>添加事件监听器</h2><div class=highlight><pre class=chroma><code class=language-ini data-lang=ini>
+    <span class=c1>; The below sample eventlistener section shows all possible</span>
+    <span class=c1>; eventlistener subsection values, create one or more &#39;real&#39;</span>
+    <span class=c1>; eventlistener: sections to be able to handle event notifications</span>
+    <span class=c1>; sent by supervisor.</span>
+    <span class=c1>; 下面是事件监听器的可选配置, supervisor能够处理事件通知.</span>
+    <span class=c1>;</span>
+    <span class=c1>; ** 译者注： 和上面相同的解释没有翻译 **</span>
+
+    <span class=c1>;[eventlistener:theeventlistenername]</span>
+    <span class=c1>;command=/bin/eventlistener    ; the program (relative uses PATH, can take args)</span>
+    <span class=c1>;process_name=%(program_name)s ; process_name expr (default %(program_name)s)</span>
+    <span class=c1>;numprocs=1                    ; number of processes copies to start (def 1)</span>
+    <span class=c1>;events=EVENT                  ; event notif. types to subscribe to (req&#39;d)</span>
+    <span class=c1>;buffer_size=10                ; 事件缓冲队列的大小 (default 10)</span>
+    <span class=c1>;directory=/tmp                ; directory to cwd to before exec (def no cwd)</span>
+    <span class=c1>;umask=022                     ; umask for process (default None)</span>
+    <span class=c1>;priority=-1                   ; the relative start priority (default -1)</span>
+    <span class=c1>;autostart=true                ; start at supervisord start (default: true)</span>
+    <span class=c1>;autorestart=unexpected        ; whether/when to restart (default: unexpected)</span>
+    <span class=c1>;startsecs=1                   ; number of secs prog must stay running (def. 1)</span>
+    <span class=c1>;startretries=3                ; max # of serial start failures (default 3)</span>
+    <span class=c1>;exitcodes=0,2                 ; &#39;expected&#39; exit codes for process (default 0,2)</span>
+    <span class=c1>;stopsignal=QUIT               ; signal used to kill process (default TERM)</span>
+    <span class=c1>;stopwaitsecs=10               ; max num secs to wait b4 SIGKILL (default 10)</span>
+    <span class=c1>;stopasgroup=false             ; send stop signal to the UNIX process group (default false)</span>
+    <span class=c1>;killasgroup=false             ; SIGKILL the UNIX process group (def false)</span>
+    <span class=c1>;user=chrism                   ; setuid to this UNIX account to run the program</span>
+    <span class=c1>;redirect_stderr=true          ; redirect proc stderr to stdout (default false)</span>
+    <span class=c1>;stdout_logfile=/a/path        ; stdout log path, NONE for none; default AUTO</span>
+    <span class=c1>;stdout_logfile_maxbytes=1MB   ; max # logfile bytes b4 rotation (default 50MB)</span>
+    <span class=c1>;stdout_logfile_backups=10     ; # of stdout logfile backups (default 10)</span>
+    <span class=c1>;stdout_events_enabled=false   ; emit events on stdout writes (default false)</span>
+    <span class=c1>;stderr_logfile=/a/path        ; stderr log path, NONE for none; default AUTO</span>
+    <span class=c1>;stderr_logfile_maxbytes=1MB   ; max # logfile bytes b4 rotation (default 50MB)</span>
+    <span class=c1>;stderr_logfile_backups        ; # of stderr logfile backups (default 10)</span>
+    <span class=c1>;stderr_events_enabled=false   ; emit events on stderr writes (default false)</span>
+    <span class=c1>;environment=A=&#34;1&#34;,B=&#34;2&#34;       ; process environment additions</span>
+    <span class=c1>;serverurl=AUTO                ; override serverurl computation (childutils)</span>
+</code></pre></div><h2 id=添加进程组>添加进程组</h2><div class=highlight><pre class=chroma><code class=language-ini data-lang=ini>    <span class=c1>; The below sample group section shows all possible group values,</span>
+    <span class=c1>; create one or more &#39;real&#39; group: sections to create &#34;heterogeneous&#34;</span>
+    <span class=c1>; process groups.</span>
+    <span class=c1>; 下面是进程组的可选配置，可以创建一个或多个进程组。</span>
+
+    <span class=c1>;[group:thegroupname]</span>
+    <span class=c1>;programs=progname1,progname2  ; 这里的进程名是上文 [program:theprogramname] 定义的theprogramname</span>
+    <span class=c1>;priority=999                  ; the relative start priority (default 999)</span>
+</code></pre></div><h2 id=命令行工具-supervisorctl>命令行工具 supervisorctl</h2><p>查看所有命令</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>
+    $ supervisorctl <span class=nb>help</span>
+
+    default commands <span class=o>(</span><span class=nb>type</span> <span class=nb>help</span> <span class=o>)</span>:
+    <span class=o>=====================================</span>
+    add    clear  <span class=nb>fg</span>        open  quit    remove  restart   start   stop  update
+    avail  <span class=nb>exit</span>   maintail  pid   reload  reread  shutdown  status  tail  version
+    命令功能
+
+    作者:	飞龙 http://feilong.me/2011/03/monitor-processes-with-supervisord
+    supervisord，初始启动Supervisord，启动、管理配置中设置的进程。
+    supervisorctl stop programxxx，停止某一个进程<span class=o>(</span>programxxx<span class=o>)</span>，programxxx为<span class=o>[</span>program:chatdemon<span class=o>]</span>里配置的值，这个示例就是chatdemon。
+    supervisorctl start programxxx，启动某个进程
+    supervisorctl restart programxxx，重启某个进程
+    supervisorctl stop groupworker: ，重启所有属于名为groupworker这个分组的进程<span class=o>(</span>start,restart同理<span class=o>)</span>
+    supervisorctl stop all，停止全部进程，注：start、restart、stop都不会载入最新的配置文件。
+    supervisorctl reload，载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程。
+    supervisorctl update，根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启。
+    注意：显示用stop停止掉的进程，用reload或者update都不会自动重启。
+</code></pre></div></section><footer class=article-footer><section class=article-tags><a href=/tags/notes/>Notes</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper></aside><footer class=site-footer><section class=copyright>&copy;
+2012 -
+2021 zhwei's Blog</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.0.1>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const customFont=document.createElement('link');customFont.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";customFont.type="text/css";customFont.rel="stylesheet";document.head.appendChild(customFont);}());</script></body></html>

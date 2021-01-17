@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on zhwei's Blog</title><link>https://zhw.in/tags/tools/</link><description>Recent content in Tools on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 18 Jun 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/tags/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>本站用的管理工具</title><link>https://zhw.in/post/%E6%9C%AC%E7%AB%99%E7%94%A8%E7%9A%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link><pubDate>Tue, 18 Jun 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E6%9C%AC%E7%AB%99%E7%94%A8%E7%9A%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid><description>脚本可见 https://gist.github.com/zhwei/5613474
+字典排序 line.118 dict1 = sorted(dict1.iteritems(), key=lambda k_v: (k_v[1], k_v[0]), reverse=True) # 字典按值排序, 生成元组列表 通过.iteritems()方法将字典转化成元组列表, 然后按元组的第二元素进行排序.
+文章查找 line.128 将博客文件读入列表
+对每一元素pop()使用find()方法查找关键词, 如果找到则将其插入列表首部, 循环一个列表长度后剩下的元素均是包含关键词的
+for key in keys: i = 0 leng = len(artlist) while i &amp;lt; leng: d = artlist.pop() if d.find(key) != -1: artlist.insert(0, d) else: pass i = i + 1 然后可以再将处理后的文章列表作文参数传入, 再次匹配
+操作git line.177 每次敲git命令也是挺麻烦的, 做了一个全自动的, 除了需要自己写 commit message
+需要安装sh模块
+def git(argv): &amp;#34;&amp;#34;&amp;#34; 将修改提交到git仓库 &amp;#34;&amp;#34;&amp;#34; try: import sh git = sh.</description></item></channel></rss>

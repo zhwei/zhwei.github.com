@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Python Tips</title>
+
+<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+<meta name="author" content="Hakim El Hattab">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link href="http://cdn.bootcss.com/reveal.js/2.6.2/css/reveal.min.css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/reveal.js/2.6.2/css/theme/default.css" rel="stylesheet">
+
+<!-- For syntax highlighting -->
+<link href="http://cdn.bootcss.com/reveal.js/2.6.2/lib/css/zenburn.css" rel="stylesheet">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = 'css/print/pdf.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+</script>
+
+<!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+    <section>
+      <h2>Python Tips</h2>
+      <br><br><br>
+      <p>
+      <small>By &nbsp;<a href="http://zhangweide.cn">zhangwei</a> / <a href="mailto:zhangwei@baixing.net">zhangwei@baixing.net</a></small>
+      </p>
+    </section>
+
+    <section>
+      <section>
+        <h2>yield</h2>
+        <p>
+          生成器，按照一定算法生成一个序列。
+        </p>
+
+        <aside class="notes"></aside>
+      </section>
+
+      <section>
+        <h2>斐波那契数列</h2>
+        <pre class="prettyprint linenums"><code class="``python">
+          def fib(n):
+              ret = []
+              a, b = 0, 1
+              while b < n:
+                  ret.append(b)
+                  a, b = b, a + b
+          return ret </code></pre>
+
+        <pre class="prettyprint linenums"><code class="``python">
+          def fib(n):
+              a, b = 1, 1
+              while a < n:
+                  yield a
+                  a, b = b, a + b
+        </code></pre>
+
+        <aside class="notes">惰性求值</aside>
+      </section>
+
+      <section>
+        <h2>特性</h2>
+        <ul>
+          <p>调用生成器函数时函数体不执行，第一次通过next()调用时开始执行到yield表达式，然后终止， 直到下一次调用next()方法时继续执行后续程序。</p>
+        </ul>
+      </section>
+
+      <section>
+        <h2>其他方法</h2>
+        <ul>
+          <li>send()</li>
+          <ul>
+            <li><pre class="prettyprint linenums"><code class="``python">next(gen) == gen.send(None)</code></pre></li>
+          </ul>
+          <li>throw()</li>
+          <ul>
+            <li><pre class="prettyprint linenums"><code class="``python">gen.throws(TypeError, "info")</code></pre></li>
+          </ul>
+          <li>close()</li>
+          <ul>
+            <li>yield会抛出GeneratorExit异常</li>
+          </ul>
+        </ul>
+      </section>
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+      <section>
+        <p>上下文管理器</p>
+
+        <pre class="prettyprint linenums"><code class="``python">
+        with open("/tmp/xxx.txt", "w") as fi:
+            pass
+        </code></pre>
+
+      </section>
+
+      <section>
+
+        <pre class="prettyprint linenums"><code class="``python">
+        from contextlib import contextmanager
+
+        @contextmanager
+        def tag(name):
+            print "<%s>" % name
+            yield
+            print "</%s>" % name
+
+        >>> with tag("h1"):
+        ...    print "foo"
+        ...
+        <h1>
+        foo
+        </h1>
+        </code></pre>
+
+        <aside class="notes">
+          + http://preshing.com/20110920/the-python-with-statement-by-example/
+          + http://hg.python.org/cpython/file/3.4/Lib/contextlib.py
+          + http://www.rafekettler.com/magicmethods.html#context
+        </aside>
+      </section>
+
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+
+      <section>
+        <h3>基于生成器的协程</h3>
+      </section>
+
+      <section>
+        <pre class="prettyprint linenums"><code class="``python">
+         var q: = new queue
+
+         loop
+             while q is not full
+                 create some new items
+                 add items to q
+             yield to comsume
+
+         loop
+             while q is not empty
+                 pop item from q
+                 use item
+             yield to production
+
+        </code></pre>
+      </section>
+
+      <section>
+        <pre class="prettyprint linenums"><code class="``python">        import random
+
+        def consumer():
+            while True:
+                number = yield
+                print("Receive ", number)
+
+        def producter():
+
+            while True:
+                yield random.uniform(10, 20)
+                print("Create one line")
+
+        c = consumer()
+        c.next()
+        for nu in producter():
+            c.send(nu)</code></pre>
+
+      </section>
+
+
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+
+       <section class="present" style="top: -143.5px; display: block;">
+          <p>RESULT = yield from EXPR</p>
+       </section>
+
+       <section class="present" style="top: -143.5px; display: block;">
+
+          <pre class="prettyprint linenums"><code class="``python">
+          def generator():
+              yield from generator2()
+              yield from generator3()
+          </code></pre>
+
+       </section>
+
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+      <h1>Q&nbsp;&&nbsp;A</h1>
+    </section>
+
+    <section class="present" style="top: -143.5px; display: block;">
+      <h1>THE END</h1>
+      <h3>Thank you!</h3>
+    </section>
+
+  </div>
+
+</div>
+
+<script src="http://cdn.bootcss.com/reveal.js/2.6.2/lib/js/head.min.js"></script>
+<script src="http://cdn.bootcss.com/reveal.js/2.6.2/js/reveal.min.js"></script>
+
+<script>
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+center: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+// Parallax scrolling
+// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+// parallaxBackgroundSize: '2100px 900px',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+{ src: 'http://cdn.bootcss.com/reveal.js/2.6.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes on zhwei's Blog</title><link>https://zhw.in/tags/notes/</link><description>Recent content in Notes on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 16 Jun 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/tags/notes/index.xml" rel="self" type="application/rss+xml"/><item><title>HTTP请求方式注解</title><link>https://zhw.in/post/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%B3%A8%E8%A7%A3/</link><pubDate>Mon, 16 Jun 2014 00:00:00 +0000</pubDate><guid>https://zhw.in/post/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%B3%A8%E8%A7%A3/</guid><description>被问到了HTTP常见的几个方法，也有些迷惑的地方，整理如下。
+GET GET是http的默认请求方式， 一般用来获取数据， 传输的数据经过url编码后放在路径?之后， 多个键值对通过&amp;amp;连接， 另外get的传输长度一般不推荐超过255个字节。
+GET方法一般被视为安全方法， 因为它仅用来获取数据而不会对服务器有其他改动。
+安全方法
+像HEAD、GET、OPTIONS 和 TRACE这几种http方法是被认为是“安全的”， 这意味着它们只会进行获取数据而不会修改服务器的状态， 换句话说，它们不会产生负面影响， 当然除了常见的无害操作，比如记录日志、创建缓存或者创建其他统计信息。
+正相反， 像POST、PUT、DELETE 和 PATCH 等方法是有可能产生副作用。网络爬虫等一般不会使用这些方式(笔者注:搜索引擎的暗网抓取可能会使用这些方法)。
+尽管GET方法是一般被视为“安全的”，但如果在实际使用中没有做任何设置，比如可以无限制的抓取等情况， 也会导致一些不可预料的问题，比如web缓存或者搜索引擎问题。
+POST POST一般用来上传文件或者提交一个完整的web表单。
+这是Chrome中查看到的POST内容
+实际数据是这样的
+user=554101&amp;amp;user_code=eNWyXdrrTpC6hoSvzPHBYKLljGkcDw79QsWtNeMu&amp;amp;attachment=0&amp;amp;code_brush=&amp;amp;code_snippet=&amp;amp;msg=test 浏览器中提交表单时，这里与get类似，每个键值对都是通过&amp;amp;分割, 其他非字母数字会进行url转码。
+为什么一些请求会使用POST提交数据?
+GET请求数据都可以在URL中看到 GET提交的数据都会有长度限制 一般规范，POST用来修改数据，GET用来获取数据 GET请求请提交的数据放置在HTTP请求协议头中，而POST提交的数据则放在实体数据中 其他请求方式 HEAD 获取某个URI响应头信息，基本与GET相同但是不返回响应主体。
+PUT 通过提供的URI获取到特定的内容主体，如果存在则修改内容，如果不存在则创建。
+DELETE 通过URI删除指定内容
+TRACE 返回接受到的请求，用来查看数据经过中间服务器时发生了哪些变动
+OPTIONS 返回给定URL支持的所有HTTP方法
+CONNECT 要求使用SSL和TLS进行TCP通信
+PATCH 请求修改局部数据
+参考链接 http://en.wikipedia.org/wiki/POST_(HTTP) http://en.wikipedia.org/wiki/GET_(HTTP)</description></item><item><title>Supervisor笔记</title><link>https://zhw.in/post/supervisor%E7%AC%94%E8%AE%B0/</link><pubDate>Sat, 14 Dec 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/supervisor%E7%AC%94%E8%AE%B0/</guid><description>Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。
+官方文档 http://supervisord.org/
+安装 setuptools
+pip install supervisor # or easy_install supervisor 初始使用 创建配置文件 需要以root身份执行
+echo_supervisord_conf &amp;gt; /etc/supervisord.conf 调整配置文件 增加web管理界面 取消配置文件中的下列行，并按需配置用户名密码
+[inet_http_server] port=*:9001 username=your_username ; (default is no username (open server)) password=your_password ; (default is no password (open server)) 添加服务 配置文件详解
+[supervisorctl] serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL for a unix socket ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket ;username=chris ; should be same as http_username if set ;password=123 ; should be same as http_password if set ;prompt=mysupervisor ; cmd line prompt (default &amp;#34;supervisor&amp;#34;) ;history_file=~/.</description></item><item><title>lvm笔记</title><link>https://zhw.in/post/lvm%E7%AC%94%E8%AE%B0/</link><pubDate>Fri, 13 Dec 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/lvm%E7%AC%94%E8%AE%B0/</guid><description>介绍 LVM Logical Volume Manager
+LVM是Linux环境下对磁盘分区进行管理的一种机制，LVM是建立在硬盘和分区之上的一个逻辑层，来提高磁盘分区管理的灵活性。
+能解决哪些问题 在线通过增加或减少物理卷组改变逻辑卷组的大小 在小型系统上，比如个人电脑，不必在安装系统的时候费脑筋估算分区的大小，lvm上以后可以按需求轻易调整分区的大小。 能够对逻辑分区实现一致性备份 可以在多个物理卷或者整个硬盘上创建单个分区，有点像RAID 0, 但更像JBOD, 允许动态调整卷的大小。 创建LVM 如果要在/dev/sda3, /dev/sda4, /dev/sda5上创建lvm
+创建物理卷
+pvcreate /dev/sda{3..5} 创建为卷组
+vgcreate test0 /dev/sda{3..5} 在卷组test0上创建10G的逻辑卷 lv_0
+lvcreate -L 10G -n lv_0 test0 创建文件系统并挂载
+mkfs.ext4 /dev/test0/lv_0 扩容 需求： 将物理卷/dev/sda6 加入lvm并扩大为20G
+创建物理卷
+pvcreate /dev/sda6 添加到卷组test0
+vgextend test0 /dev/sda6 扩展逻辑卷, 扩展到20G
+lvextend -L 20G /dev/test0/lv_0 使增加的容量生效
+resize2fs /dev/test0/lv_0 搞定
+减容 需求： 将逻辑卷减小成10G</description></item><item><title>这就是搜索引擎 整理</title><link>https://zhw.in/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/</link><pubDate>Sat, 15 Jun 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/</guid><description>网络爬虫 抓取策略
+宽度优先 非完全pagerank opic策略(cash) 大站优先 更新策略
+历史参考(泊松建模) 用户体验 聚类抽样 暗网抓取
+分布式爬虫
+主从式 url 对等式 (哈希取模 \ 一致性哈希 ) 搜索引擎索引 基础 单词-文档 倒排 单词字典 哈希加链表 树形结构 倒排列表 单词 &amp;ndash;&amp;gt; 倒排列表
+建立列表 两遍 排序 单词id -&amp;gt; 文档ID -&amp;gt; 频率 归并 1 2 5 6 1 2 3 4
+索引更新 完全重建 再合并 原地更新 混合策略 查询 一次一文档 一次单词 跳跃指针 `&amp;lt;5 Pos1&amp;gt; 5,1 2,1 5,2 &amp;lt;13 Pos2&amp;gt; 13,1 2,1 5,2</description></item><item><title>51最小开发板使用记录及virtualbox相关</title><link>https://zhw.in/post/51%E6%9C%80%E5%B0%8F%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%E5%8F%8Avirtualbox%E7%9B%B8%E5%85%B3/</link><pubDate>Mon, 10 Jun 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/51%E6%9C%80%E5%B0%8F%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%E5%8F%8Avirtualbox%E7%9B%B8%E5%85%B3/</guid><description>最近对51开发板感兴趣, 用ma6174的51小板搞了下.
+不过上来就卡住了, 由于笔记本双系统 ubuntu+win8, 在win8下死活装不上 usb转串口的驱动程序, 只能考虑使用虚拟机. 由于使用的主系统是ubuntu, 所以选择在ubuntn中的virtualbox中安装xp.
+xp安装不讲
+usb映射 最需要的虚拟机的一个功能是usb映射, 系统中的vbox是通过ubuntu源安装的, 装好系统后google了好久都没有把usb映射搞好, 在官方论坛中找到了原因, ** ubuntu源安装的不支持usb映射 **&amp;hellip;
+官网下载安装好后, 运行提示没有权限控制usb子系统, 需要将用户添加到vboxusers用户组.
+&amp;quot;FAILED TO ACCESS THE USB SUBSYSTEM.....
+执行: sudo usermod -a -G vboxusers youruser
+建议注销一下
+-a 参数是将你的用户添加到新的用户组而不将你从原来的用户组中删除.
+现在已经能够进行usb映射了,如果是笔记本的话还能够自动识别内置摄像头.
+usb
+STC ISP 握手失败 提示信息
+Chinese:正在尝试与 MCU/单片机 握手连接 ... Chinese:连接失败，请尝试以下操作： 1.在单片机停电状态下，点下载按钮，再给单片机上电 ... 仍在连接中, 请给 MCU 上电... MCU Type is: STC89C52RC MCU Firmware Version: 4.3C Chinese:MCU 固件版本号: 4.3C Double speed / 双倍速: 12T/单倍速 振荡放大器增益: full gain 下次下载时 P1.</description></item><item><title>sublime text 2 备忘</title><link>https://zhw.in/post/sublime-text-2-%E5%A4%87%E5%BF%98/</link><pubDate>Mon, 25 Mar 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/sublime-text-2-%E5%A4%87%E5%BF%98/</guid><description>安装包管理 Ctrl + ` import urllib2,os; pf=&amp;lsquo;Package Control.sublime-package&amp;rsquo;; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),&amp;lsquo;wb&amp;rsquo;).write(urllib2.urlopen(&amp;lsquo;http://sublime.wbond.net/'+pf.replace(' &amp;lsquo;,'%20&amp;rsquo;)).read()); print &amp;lsquo;Please restart Sublime Text to finish installation&amp;rsquo; 回车
+快捷键 安装插件,以Alignment为例
+Shift + Ctrl + p install alignment 代码补齐
+Shift + Ctrl + a zencoding Ctrl + Alt + Enter div#page&amp;gt;div.logo+ul#navigation&amp;gt;li*5&amp;gt;a &amp;lt;div id=&amp;quot;page&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;logo&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;ul id=&amp;quot;navigation&amp;quot;&amp;gt; &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; vim模式 Shift + Ctrl + P 输入settings user 调出Preferences：Settings - User 打开Preferences.</description></item><item><title>寒假记录</title><link>https://zhw.in/post/%E5%AF%92%E5%81%87%E8%AE%B0%E5%BD%95/</link><pubDate>Wed, 30 Jan 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E5%AF%92%E5%81%87%E8%AE%B0%E5%BD%95/</guid><description>学习使用socket模块 2013-01-30 创建tcp服务器 客户端时,遇到如下错误,由于不能上网,无法查询特此记录
+Traceback (most recent call last): File &amp;ldquo;tsTserv.py&amp;rdquo;, line 21, in data = tcpSerSock.recv(BUFSIZ) File &amp;ldquo;/usr/lib/python2.7/socket.py&amp;rdquo;, line 170, in _dummy raise error(EBADF, &amp;lsquo;Bad file descriptor&amp;rsquo;) socket.error: [Errno 9] Bad file descriptor</description></item><item><title>vagrant 备忘</title><link>https://zhw.in/post/vagrant-%E5%A4%87%E5%BF%98/</link><pubDate>Fri, 25 Jan 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/vagrant-%E5%A4%87%E5%BF%98/</guid><description>安装 gem install vagrant Vagrant Official Boxes https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Boxes
+使用 第一次使用,进入工作目录 vagrant box add lucid32 http://files.vagrantup.com/lucid32.box #初始化虚拟机 vagrant init lucid32 #启动虚拟机 vagrant up #ssh进入 vagrant ssh #关闭虚拟机 vagrant halt #打包虚拟机 vagrant package --output base-ubuntu-rvm.box 配置文件 Vagrantfile 端口转发
+#将虚拟机80端口转发到宿主机8080端口 config.vm.forward_port 80, 8080</description></item><item><title>vim备忘</title><link>https://zhw.in/post/vim%E5%A4%87%E5%BF%98/</link><pubDate>Sun, 25 Nov 2012 00:00:00 +0000</pubDate><guid>https://zhw.in/post/vim%E5%A4%87%E5%BF%98/</guid><description>注释 用&amp;quot;#&amp;ldquo;注释当前行
+:s/^/# 在2~50行首添加&amp;rdquo;#&amp;ldquo;注释
+:2,50s/^ /# 用&amp;rdquo;#&amp;ldquo;注释当前行和当前行后面的三行
+:.,+3s/^/# 用&amp;rdquo;#&amp;ldquo;注释所有行
+:%s/^/# 补全 英文单词补全
+set dictionary+=/usr/share/dict/words CTRL-X_CTRL-K 包含路径及文件名
+CTRL-X_CTRL-F 曾经输入过的变量名或字符串
+CTRL-N 行补全 CTRL-X_CTRL-L 万能补全 filetype plugin on CTRL-X_CTRL-O
+vim 256色问题 自从转战kde后一直忍受konsole中难看的vim主题, 也找了好多对策,比如使用gvim..转战sublime等等, 但终究是不方便. 今天才知道是konsole默认不支持256色的问题,在~/.vimrc中添加了下面两句后解决了 &amp;ldquo;解决konsole 256 色显示问题
+let g:solarized_termcolors=256 set t_Co=256</description></item></channel></rss>
