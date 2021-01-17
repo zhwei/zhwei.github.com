@@ -1,12 +1,10 @@
-zhwei 的学习笔记
-===========
+# zhwei's Blog
 
-+ 原生`jekyll`, 没有使用插件
-+ 模板修改自[Greyshade](htt,kjkp://shashankmehta.in/archive/2012/greyshade.html)
-+ 博客文章直接放在`_post`下
-+ 本地运行：
-    ```bash
-    docker run --rm --volume=$PWD:/srv/jekyll -it -p 4000:4000 jekyll/minimal:3.4.3 jekyll serve
-    ```
+- 使用 Hugo 生成
+- 站点模板：https://docs.stack.jimmycai.com/v/zh-cn/
 
-    Visit http://127.0.0.1:4000
+## Local Preview
+
+```bash
+hugo server
+```
