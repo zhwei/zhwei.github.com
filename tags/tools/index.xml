@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on zhwei's Blog</title><link>https://zhw.in/tags/tools/</link><description>Recent content in Tools on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 18 Jun 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/tags/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>本站用的管理工具</title><link>https://zhw.in/post/%E6%9C%AC%E7%AB%99%E7%94%A8%E7%9A%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link><pubDate>Tue, 18 Jun 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E6%9C%AC%E7%AB%99%E7%94%A8%E7%9A%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid><description>脚本可见 https://gist.github.com/zhwei/5613474
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on zhwei's Blog</title><link>https://zhw.in/tags/tools/</link><description>Recent content in Tools on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/tags/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>虚拟组网工具推荐</title><link>https://zhw.in/post/virtual-networking/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/virtual-networking/</guid><description>引子 推荐虚拟组网工具前先说一下个人网络环境。
+在前司工作时，由于一直是远程工作，几乎随时都要联通公司内网，前司的 VPN 用的深信服的 SSL VPN。Mac 端的客户端非常难用，几乎隔几小时就要断一次，于是写了个 AppleScript 自动重连脚本续了一段时间。但有个问题，手机上很难访问公司内网，且不说其手机客户端有多难用，深信服 VPN 限定了一个用户只能有一个设备在线，想在手机上测试时非常痛苦。
+另外，一直使用 Surge 作为代理客户端，增强模式真的是非常强大，除了强大的规则、代理功能之外，日常用来抓包也非常方便。
+于是有了个想法，能不能把公司的内网转发也交给 Surge 处理呢？
+说干就干，在公有云申请了一台 Windows Server 主机作为 Gateway，之所以用 Windows 是因为深信服 VPN 的 Windows 客户端相对更稳定一些，然后在 WinServer 运行 VPN 客户端，又写了一个 AutoIT 脚本守护这个客户端，一旦断开自动重连。最后，通过 SS 暴露给 Surge 使用，非常完美！从此以后彻底摆脱了深信服的 VPN 客户端，手机端也可以非常顺滑的访问公司内网资源。
+有了带公网 IP 的 Gateway 后，我又盯上了家里的 NAS ！这玩意怎样在保证安全的前提下载公网使用呢？
+虚拟组网 本地组网相比大家都非常熟悉，一堆设备挂在交换机或者路由器下面，就可以组成一个简单的局域网，各设备直接可通过局域网 IP 访问。
+与本地组网不同的是，虚拟组网设备之间没有通过网线连接，甚至不在一个机房、国家甚至地区。但通过 P2P 或者中转节点，实现了局域网的效果。
+下面列一下从开始使用到目前为止遇到的组网工具机器优缺点。
+ZeroTier https://www.zerotier.com
+我目前用的工具，放在最开始并不意味着它是最好的，但它是最适合我的个人场景的。
+优点
+P2P 通信 支持自建 moon 节点，用于服务发现（已自建） 当无法建立 P2P 通信时，流量也会通过 moon 节点转发 国内运营商会限制 UDP 流量，甚至分配假的公网 IP，导致无法建立 P2P 链接 所以还是用自己的更放心 :) 有 Windows、NAS GUI 客户端，配对简单 有在线 Central 管理功能，强大又方便（相对于下面方案需要自己手写配置配置文件） 在线路由管理很强大 缺点</description></item><item><title>本站用的管理工具</title><link>https://zhw.in/post/%E6%9C%AC%E7%AB%99%E7%94%A8%E7%9A%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link><pubDate>Tue, 18 Jun 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E6%9C%AC%E7%AB%99%E7%94%A8%E7%9A%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid><description>脚本可见 https://gist.github.com/zhwei/5613474
 字典排序 line.118 dict1 = sorted(dict1.iteritems(), key=lambda k_v: (k_v[1], k_v[0]), reverse=True) # 字典按值排序, 生成元组列表 通过.iteritems()方法将字典转化成元组列表, 然后按元组的第二元素进行排序.
 文章查找 line.128 将博客文件读入列表
 对每一元素pop()使用find()方法查找关键词, 如果找到则将其插入列表首部, 循环一个列表长度后剩下的元素均是包含关键词的
