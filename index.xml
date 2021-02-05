@@ -80,11 +80,11 @@
 &lt;li>人工管理证书，人工分发，相对麻烦&lt;/li>
 &lt;/ul>
 &lt;h3 id="其他">其他&lt;/h3>
-&lt;p>tailscale，https://tailscale.com&lt;/p>
+&lt;p>tailscale，&lt;a href="https://tailscale.com">https://tailscale.com&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>也是个商业服务，没有使用过，暂不评价&lt;/li>
 &lt;/ul>
-&lt;p>WireGuard，https://www.wireguard.com&lt;/p>
+&lt;p>WireGuard，&lt;a href="https://www.wireguard.com">https://www.wireguard.com&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>也是老牌子了，tailscale 基于它开发的&lt;/li>
 &lt;li>之前在生产项目中也尝试过，但它对内核有要求，需要重启机器，弃用了&lt;/li>
@@ -93,8 +93,8 @@
 &lt;h3 id="内网穿透代理">内网穿透代理&lt;/h3>
 &lt;p>下面两个工具和前面提到的虚拟组网并不是一类工具，但在特定场景用起来会非常方便。例如，在本地开发时需要接受第三方服务的 callback 时，可以使用下面工具临时暴露本地服务到公网。&lt;/p>
 &lt;ul>
-&lt;li>ngrok，https://ngrok.com&lt;/li>
-&lt;li>frp，https://github.com/fatedier/frp&lt;/li>
+&lt;li>ngrok，&lt;a href="https://ngrok.com">https://ngrok.com&lt;/a>&lt;/li>
+&lt;li>frp，&lt;a href="https://github.com/fatedier/frp">https://github.com/fatedier/frp&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>关于播客</title><link>https://zhw.in/post/podcast/</link><pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/podcast/</guid><description>&lt;img src="https://zhw.in/post/podcast/Xnip2021-01-12_20-13-04.jpg" alt="Featured image of post 关于播客" />&lt;h2 id="引子">引子&lt;/h2>
 &lt;p>好久没写博客了，有点手痒，想了想就写一篇关于播客的吧。
 从 18 年开始有了听播客的习惯，最早关注的播客是《津津乐道》。再早之前也曾听过几个节目，比如最近开始复更的《Teahour》早期关于工程师的一期，当时对播客这个概念很陌生，播客对我也没有多少吸引力。
