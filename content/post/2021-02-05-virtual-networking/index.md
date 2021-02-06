@@ -2,6 +2,7 @@
 title: 虚拟组网工具推荐
 date: 2021-02-05
 slug: virtual-networking
+image: media/world-1264062_1920.jpg
 tags:
     - Tools
 ---
@@ -69,7 +70,6 @@ Slack 出品的开源项目
 - 人工管理证书，人工分发，相对麻烦
 - 无法统一管理授信客户端，只能增加黑名单
   - 证书泄露了会很危险，需要更新所有节点配置文件
-- 虽然已经 1.x 版本，但个人感觉仍处于早期阶段
 - 只支持 P2P 通信
   - 无法通过 Lighthouse 节点转发流量，遇到国内奇葩的网络环境时就废了
 
@@ -84,7 +84,7 @@ Slack 出品的开源项目
 - 开源
 - P2P
 - main 节点支持流量转发
-- 支持在 main 节点统一管理受信节点
+- 支持在 main 节点统一管理授信节点
 
 缺点
 - 人工管理证书，人工分发，相对麻烦
@@ -106,3 +106,9 @@ WireGuard，<https://www.wireguard.com>
 
 - ngrok，<https://ngrok.com>
 - frp，<https://github.com/fatedier/frp>
+
+
+---
+
+
+> 题图：由 [TheAndrasBarta](https://pixabay.com/zh/users/theandrasbarta-2004841/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1264062) 在 [Pixabay](https://pixabay.com/zh/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1264062) 上发布
