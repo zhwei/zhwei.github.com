@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>虚拟组网工具推荐</title><link>https://zhw.in/post/virtual-networking/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/virtual-networking/</guid><description>&lt;h2 id="引子">引子&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>虚拟组网工具推荐</title><link>https://zhw.in/post/virtual-networking/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/virtual-networking/</guid><description>&lt;img src="https://zhw.in/post/virtual-networking/media/world-1264062_1920.jpg" alt="Featured image of post 虚拟组网工具推荐" />&lt;h2 id="引子">引子&lt;/h2>
 &lt;p>推荐虚拟组网工具前先说一下个人网络环境。&lt;/p>
 &lt;p>在前司工作时，由于一直是远程工作，几乎随时都要联通公司内网，前司的 VPN 用的深信服的 SSL VPN。Mac 端的客户端非常难用，几乎隔几小时就要断一次，于是写了个 AppleScript 自动重连脚本续了一段时间。但有个问题，手机上很难访问公司内网，且不说其手机客户端有多难用，深信服 VPN 限定了一个用户只能有一个设备在线，想在手机上测试时非常痛苦。&lt;/p>
 &lt;p>另外，一直使用 Surge 作为代理客户端，增强模式真的是非常强大，除了强大的规则、代理功能之外，日常用来抓包也非常方便。&lt;/p>
@@ -56,7 +56,6 @@
 &lt;li>证书泄露了会很危险，需要更新所有节点配置文件&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>虽然已经 1.x 版本，但个人感觉仍处于早期阶段&lt;/li>
 &lt;li>只支持 P2P 通信
 &lt;ul>
 &lt;li>无法通过 Lighthouse 节点转发流量，遇到国内奇葩的网络环境时就废了&lt;/li>
@@ -73,7 +72,7 @@
 &lt;li>开源&lt;/li>
 &lt;li>P2P&lt;/li>
 &lt;li>main 节点支持流量转发&lt;/li>
-&lt;li>支持在 main 节点统一管理受信节点&lt;/li>
+&lt;li>支持在 main 节点统一管理授信节点&lt;/li>
 &lt;/ul>
 &lt;p>缺点&lt;/p>
 &lt;ul>
@@ -95,7 +94,13 @@
 &lt;ul>
 &lt;li>ngrok，&lt;a href="https://ngrok.com">https://ngrok.com&lt;/a>&lt;/li>
 &lt;li>frp，&lt;a href="https://github.com/fatedier/frp">https://github.com/fatedier/frp&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>关于播客</title><link>https://zhw.in/post/podcast/</link><pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/podcast/</guid><description>&lt;img src="https://zhw.in/post/podcast/Xnip2021-01-12_20-13-04.jpg" alt="Featured image of post 关于播客" />&lt;h2 id="引子">引子&lt;/h2>
+&lt;/ul>
+&lt;hr>
+&lt;blockquote>
+&lt;p>题图：由 &lt;a class="link" href="https://pixabay.com/zh/users/theandrasbarta-2004841/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=1264062" target="_blank" rel="noopener"
+>TheAndrasBarta&lt;/a> 在 &lt;a class="link" href="https://pixabay.com/zh/?utm_source=link-attribution&amp;amp;amp;utm_medium=referral&amp;amp;amp;utm_campaign=image&amp;amp;amp;utm_content=1264062" target="_blank" rel="noopener"
+>Pixabay&lt;/a> 上发布&lt;/p>
+&lt;/blockquote></description></item><item><title>关于播客</title><link>https://zhw.in/post/podcast/</link><pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/podcast/</guid><description>&lt;img src="https://zhw.in/post/podcast/Xnip2021-01-12_20-13-04.jpg" alt="Featured image of post 关于播客" />&lt;h2 id="引子">引子&lt;/h2>
 &lt;p>好久没写博客了，有点手痒，想了想就写一篇关于播客的吧。
 从 18 年开始有了听播客的习惯，最早关注的播客是《津津乐道》。再早之前也曾听过几个节目，比如最近开始复更的《Teahour》早期关于工程师的一期，当时对播客这个概念很陌生，播客对我也没有多少吸引力。
 再到后来一次开车赶路途中，心血来潮听了津津乐道有一期关于 ‘伪科学’ 的节目，突然感觉：咦，这玩意有点意思。&lt;/p>
