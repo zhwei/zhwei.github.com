@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>虚拟组网工具推荐</title><link>https://zhw.in/post/virtual-networking/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/virtual-networking/</guid><description>&lt;img src="https://zhw.in/post/virtual-networking/media/world-1264062_1920.jpg" alt="Featured image of post 虚拟组网工具推荐" />&lt;h2 id="引子">引子&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>Postman 实现带 csrf_token 的表单登录</title><link>https://zhw.in/post/postman-login-with-csrftoken/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/postman-login-with-csrftoken/</guid><description>&lt;p>Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇百怪，完全遵照 OAuth 等标准授权协议的项目简直是凤毛麟角。&lt;/p>
+&lt;p>下面使用 Postman 的 Pre-request Script 实现了 csrf_token 解析，然后与邮箱密码一起发起登录请求。&lt;/p>
+&lt;p>脚本中使用了多个环境变量，需要切换身份登陆时可以通过切换不同 Environment 实现。用到的环境变量如下：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>APP_URL&lt;/code> 应用的 base url，便于切换不同环境（local、staging 等），eg: &lt;code>https://app.test&lt;/code>&lt;/li>
+&lt;li>&lt;code>USER_EMAIL&lt;/code> 登录使用的邮箱&lt;/li>
+&lt;li>&lt;code>USER_PASSWORD&lt;/code> 登陆使用的密码&lt;/li>
+&lt;/ul>
+&lt;p>新建 Request，以下面是登录请求为例：&lt;/p>
+&lt;pre>&lt;code>curl --location --request POST 'https://app.test/login' \
+--form 'email=&amp;quot;user@example.com&amp;quot;' \
+--form 'password=&amp;quot;123456&amp;quot;' \
+--form '_csrf_token=&amp;quot;hmXaw7m2Mgyinr7yPHPgPbfVmtH4dOSwOUXykhC0&amp;quot;'
+&lt;/code>&lt;/pre>&lt;p>在 Pre-request Script 中发起 GET 请求解析 csrf token：&lt;/p>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="c1">// 先清理 cookie (登陆状态)
+&lt;/span>&lt;span class="c1">// 需要预先配置域名到 Whitelist Domains，否则无法使用 Script 清理
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="nx">pm&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">cookies&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">jar&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="nx">clear&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">pm&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;APP_URL&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">clearError&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">=&amp;gt;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">clearError&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Clear Cookie Fail&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">clearError&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="nx">alert&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="c1">// 清理失败时让 postman 报错
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="c1">// 发起 GET 请求，使用正则表达式从 HTML 中解析 csrf_token
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="c1">// 某些框架也会将 csrf token 写入 cookie，会更简单些
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="c1">// 将解析到的 token 写入环境变量
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="nx">pm&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">sendRequest&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;span class="nx">pm&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;APP_URL&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s2">&amp;#34;/login&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;span class="kd">function&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">err&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">response&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">pm&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">set&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;span class="s1">&amp;#39;CSRF_TOKEN&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;span class="nx">response&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">text&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="nx">match&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;name=&amp;#34;_csrf_token&amp;#34;\ content=&amp;#34;(.*)&amp;#34;&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;span class="p">)&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">);&lt;/span>
+&lt;span class="p">})&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后 Body 中使用环境变量读取 csrf token，如下截图，每次发送此 Request 都会开启新的 Session，其他针对 APP_URL 的请求会共享新产生 Cookie。&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 164; flex-basis: 394px">
+&lt;a href="https://zhw.in/post/postman-login-with-csrftoken/media/16172822685321.jpg" data-size="1302x792">&lt;img src="https://zhw.in/post/postman-login-with-csrftoken/media/16172822685321.jpg"
+srcset="https://zhw.in/post/postman-login-with-csrftoken/media/16172822685321_hud23b41a33a32b215b19ef445300fe136_125586_480x0_resize_q75_box.jpg 480w, https://zhw.in/post/postman-login-with-csrftoken/media/16172822685321_hud23b41a33a32b215b19ef445300fe136_125586_1024x0_resize_q75_box.jpg 1024w"
+width="1302"
+height="792"
+loading="lazy"
+alt="Request">
+&lt;/a>
+&lt;figcaption>Request&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>参考链接&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/" target="_blank" rel="noopener"
+>Postman JavaScript reference&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>&lt;a class="link" href="https://paw.cloud" target="_blank" rel="noopener"
+>Paw&lt;/a> 中也可以使用类似的方式实现，不过 Cookie 好像不是共享的，需要使用 &lt;code>Response Cookie&lt;/code> 来读取 GET 请求产生的 Cookie。&lt;/p></description></item><item><title>虚拟组网工具推荐</title><link>https://zhw.in/post/virtual-networking/</link><pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/virtual-networking/</guid><description>&lt;img src="https://zhw.in/post/virtual-networking/media/world-1264062_1920.jpg" alt="Featured image of post 虚拟组网工具推荐" />&lt;h2 id="引子">引子&lt;/h2>
 &lt;p>推荐虚拟组网工具前先说一下个人网络环境。&lt;/p>
 &lt;p>在前司工作时，由于一直是远程工作，几乎随时都要联通公司内网，前司的 VPN 用的深信服的 SSL VPN。Mac 端的客户端非常难用，几乎隔几小时就要断一次，于是写了个 AppleScript 自动重连脚本续了一段时间。但有个问题，手机上很难访问公司内网，且不说其手机客户端有多难用，深信服 VPN 限定了一个用户只能有一个设备在线，想在手机上测试时非常痛苦。&lt;/p>
 &lt;p>另外，一直使用 Surge 作为代理客户端，增强模式真的是非常强大，除了强大的规则、代理功能之外，日常用来抓包也非常方便。&lt;/p>
@@ -94,6 +147,11 @@
 &lt;ul>
 &lt;li>ngrok，&lt;a href="https://ngrok.com">https://ngrok.com&lt;/a>&lt;/li>
 &lt;li>frp，&lt;a href="https://github.com/fatedier/frp">https://github.com/fatedier/frp&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="配置过程中的一些参考文章">配置过程中的一些参考文章&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://blog.sgdylan.com/2018/09/21/tinc-note/" target="_blank" rel="noopener"
+>Tinc: windows 路由配置比较清晰的文章&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;blockquote>
