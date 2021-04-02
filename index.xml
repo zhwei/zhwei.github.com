@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>Postman 实现带 csrf_token 的表单登录</title><link>https://zhw.in/post/postman-login-with-csrftoken/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/postman-login-with-csrftoken/</guid><description>&lt;p>Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇百怪，完全遵照 OAuth 等标准授权协议的项目简直是凤毛麟角。&lt;/p>
 &lt;p>下面使用 Postman 的 Pre-request Script 实现了 csrf_token 解析，然后与邮箱密码一起发起登录请求。&lt;/p>
 &lt;p>脚本中使用了多个环境变量，需要切换身份登陆时可以通过切换不同 Environment 实现。用到的环境变量如下：&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 376; flex-basis: 903px">
+&lt;a href="https://zhw.in/post/postman-login-with-csrftoken/media/16173258219260.jpg" data-size="1092x290">&lt;img src="https://zhw.in/post/postman-login-with-csrftoken/media/16173258219260.jpg"
+srcset="https://zhw.in/post/postman-login-with-csrftoken/media/16173258219260_hud23b41a33a32b215b19ef445300fe136_48735_480x0_resize_q75_box.jpg 480w, https://zhw.in/post/postman-login-with-csrftoken/media/16173258219260_hud23b41a33a32b215b19ef445300fe136_48735_1024x0_resize_q75_box.jpg 1024w"
+width="1092"
+height="290"
+loading="lazy"
+alt="Environments">
+&lt;/a>
+&lt;figcaption>Environments&lt;/figcaption>
+&lt;/figure>&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>APP_URL&lt;/code> 应用的 base url，便于切换不同环境（local、staging 等），eg: &lt;code>https://app.test&lt;/code>&lt;/li>
 &lt;li>&lt;code>USER_EMAIL&lt;/code> 登录使用的邮箱&lt;/li>
