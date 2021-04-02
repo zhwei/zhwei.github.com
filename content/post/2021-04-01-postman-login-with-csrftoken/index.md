@@ -13,6 +13,7 @@ Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇
 
 脚本中使用了多个环境变量，需要切换身份登陆时可以通过切换不同 Environment 实现。用到的环境变量如下：
 
+![Environments](media/16173258219260.jpg)
 - `APP_URL` 应用的 base url，便于切换不同环境（local、staging 等），eg: `https://app.test`
 - `USER_EMAIL` 登录使用的邮箱
 - `USER_PASSWORD` 登陆使用的密码
