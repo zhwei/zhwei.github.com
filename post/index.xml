@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on zhwei's Blog</title><link>https://zhw.in/post/</link><description>Recent content in Posts on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Postman 实现带 csrf_token 的表单登录</title><link>https://zhw.in/post/postman-login-with-csrftoken/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/postman-login-with-csrftoken/</guid><description>Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇百怪，完全遵照 OAuth 等标准授权协议的项目简直是凤毛麟角。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on zhwei's Blog</title><link>https://zhw.in/post/</link><description>Recent content in Posts on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/post/index.xml" rel="self" type="application/rss+xml"/><item><title>《重来3》书摘</title><link>https://zhw.in/post/rework-book-excerpt/</link><pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/rework-book-excerpt/</guid><description>重来3：跳出疯狂的忙碌 贾森·弗里德 戴维·海涅迈尔·汉森 9个笔记
+◆ 边走边摸索
++1s
+要想把舵掌稳，那就在前行中及时做出微调，一千次也不怕，这肯定比一上来就猛打几次舵轮强得多。
+◆ 信任犹如电池
+当员工刚进公司时，这个电池的电量是50%。此后，你每跟他打一次交道，你们之间的这节信任电池就要么充电，要么耗电，具体取决于你是否能兑现承诺的事。
+◆ 低处的果子未必摘得到
+把一项不熟悉的任务比作长在低处的果子，基本上只能说明你对要做的事情一点儿都不了解。
+◆ 不做薪酬谈判
+我们许下承诺，万一有一天我们把公司卖掉了，我们就拿出收益的5%来分给现有的全体员工。不必追看股价，不必担心估值。
+◆ 群聊的害处
+“在少数情况下实时沟通，在大部分情况下不必”，以及“如果这件事很重要，那就慢慢来”。
+◆ 逼死人的截止日期
+固定的截止日期，可变的工作量
+◆ 完成比完美更重要
+完成比完美更重要
+◆ 故意放弃
+我们从第一天起，就拒绝了按人数收费的商业模式。这不是因为我们不喜欢钱，而是因为我们更加喜欢自由！</description></item><item><title>Postman 实现带 csrf_token 的表单登录</title><link>https://zhw.in/post/postman-login-with-csrftoken/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/postman-login-with-csrftoken/</guid><description>Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇百怪，完全遵照 OAuth 等标准授权协议的项目简直是凤毛麟角。
 下面使用 Postman 的 Pre-request Script 实现了 csrf_token 解析，然后与邮箱密码一起发起登录请求。
 脚本中使用了多个环境变量，需要切换身份登陆时可以通过切换不同 Environment 实现。用到的环境变量如下：
 Environments
