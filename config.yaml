@@ -139,3 +139,7 @@ markup:
         noClasses: false
 
 googleAnalytics: "UA-189071452-1"
+
+
+imaging:
+    quality: 100
