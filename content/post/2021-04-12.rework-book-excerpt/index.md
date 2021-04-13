@@ -2,6 +2,7 @@
 title: 《重来3》书摘
 date: 2021-04-12
 slug: rework-book-excerpt
+image: media/16182845694795.jpg
 tags:
     - Reading
 ---
