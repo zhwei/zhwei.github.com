@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>《重来3》书摘</title><link>https://zhw.in/post/rework-book-excerpt/</link><pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/rework-book-excerpt/</guid><description>&lt;p>重来3：跳出疯狂的忙碌
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>《重来3》书摘</title><link>https://zhw.in/post/rework-book-excerpt/</link><pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/rework-book-excerpt/</guid><description>&lt;img src="https://zhw.in/post/rework-book-excerpt/media/16182845694795.jpg" alt="Featured image of post 《重来3》书摘" />&lt;p>重来3：跳出疯狂的忙碌
 贾森·弗里德 戴维·海涅迈尔·汉森
 9个笔记&lt;/p>
 &lt;p>◆ 边走边摸索&lt;/p>
@@ -135,7 +135,7 @@ alt="多种账户类型-w413">
 &lt;li>储蓄卡，日常很少使用，最长每周记录一次账，每次付款时招行都会发送通知邮件，处理邮件这种事再得心应手不过了。&lt;/li>
 &lt;/ul>
 &lt;h3 id="后记">后记&lt;/h3>
-&lt;p>开始精细记账后，凭借自己写的一些小脚本也没有花费太多时间，看到一笔笔明细进入账本，成就满满。到目前总共一个月多点，还没有太多感想，时间长一些后再来更新。&lt;/p></description></item><item><title>Postman 实现带 csrf_token 的表单登录</title><link>https://zhw.in/post/postman-login-with-csrftoken/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/postman-login-with-csrftoken/</guid><description>&lt;p>Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇百怪，完全遵照 OAuth 等标准授权协议的项目简直是凤毛麟角。&lt;/p>
+&lt;p>开始精细记账后，凭借自己写的一些小脚本也没有花费太多时间，看到一笔笔明细进入账本，成就满满。到目前总共一个月多点，还没有太多感想，时间长一些后再来更新。&lt;/p></description></item><item><title>Postman 实现带 csrf_token 的表单登录</title><link>https://zhw.in/post/postman-login-with-csrftoken/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/postman-login-with-csrftoken/</guid><description>&lt;img src="https://zhw.in/post/postman-login-with-csrftoken/media/16182844347133.jpg" alt="Featured image of post Postman 实现带 csrf_token 的表单登录" />&lt;p>Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇百怪，完全遵照 OAuth 等标准授权协议的项目简直是凤毛麟角。&lt;/p>
 &lt;p>下面使用 Postman 的 Pre-request Script 实现了 csrf_token 解析，然后与邮箱密码一起发起登录请求。&lt;/p>
 &lt;p>脚本中使用了多个环境变量，需要切换身份登陆时可以通过切换不同 Environment 实现。用到的环境变量如下：&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 376; flex-basis: 903px">
