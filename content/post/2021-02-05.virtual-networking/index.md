@@ -5,6 +5,7 @@ slug: virtual-networking
 image: media/world-1264062_1920.jpg
 tags:
     - Tools
+lastmod: 2021-04-28 20:49:43
 ---
 
 ## 引子
@@ -51,6 +52,9 @@ tags:
 - 商业公司（各有利弊吧）
 - 免费套餐有节点数目限制
 
+> 2021-04-28 更新：
+>
+> 文章刚发出不久就发现 ZeroTier 的官方节点被拦截了，然后花了些时间把家庭网络切换到了 WireGuard
 
 
 ### Nebula
@@ -90,15 +94,46 @@ Slack 出品的开源项目
 - 人工管理证书，人工分发，相对麻烦
 
 
+### WireGuard
+
+> https://www.wireguard.com
+
+优点
+- 开源
+- P2P
+- Interface 节点支持流量转发
+- Windows 平台带 UI 界面
+- 老牌子，tailscale 基于它开发的
+- 安装简单
+- 支持连接保活，可以设定每 x 秒发起一次通信，保证连接不断开
+
+现阶段轻度使用没遇到太明显的缺点
+
+
+### SoftEther
+
+> https://www.softether.org
+
+很强大的 VPN 软件，小型企业完全可以用来实现多办公室局域网和日常 VPN 需求。
+
+优点
+- 开源
+- 安装简单
+- 管理软件很好很强大
+    - 目前用到了用户管理、访问列表、安全策略，即强大又灵活
+- 备份简单（只需要备份一个文本文件）
+- 跨平台客户端
+- 支持 IPsec/L2TP、OpenVPN/MS-SSTP 常见 VPN 协议接入
+
+缺点
+- 管理软件有点复杂（好像也不是缺点）
+
+
 ### 其他
 
 tailscale，<https://tailscale.com>
 - 也是个商业服务，没有使用过，暂不评价
 
-WireGuard，<https://www.wireguard.com>
-- 也是老牌子了，tailscale 基于它开发的
-- 之前在生产项目中也尝试过，但它对内核有要求，需要重启机器，弃用了
-- 没有深度使用，无法评价优缺点
 
 ### 内网穿透代理
 
