@@ -236,6 +236,10 @@ alt="Request">
 &lt;li>商业公司（各有利弊吧）&lt;/li>
 &lt;li>免费套餐有节点数目限制&lt;/li>
 &lt;/ul>
+&lt;blockquote>
+&lt;p>2021-04-28 更新：&lt;/p>
+&lt;p>文章刚发出不久就发现 ZeroTier 的官方节点被拦截了，然后花了些时间把家庭网络切换到了 WireGuard&lt;/p>
+&lt;/blockquote>
 &lt;h3 id="nebula">Nebula&lt;/h3>
 &lt;blockquote>
 &lt;p>&lt;a href="https://github.com/slackhq/nebula">https://github.com/slackhq/nebula&lt;/a>&lt;/p>
@@ -278,16 +282,47 @@ alt="Request">
 &lt;ul>
 &lt;li>人工管理证书，人工分发，相对麻烦&lt;/li>
 &lt;/ul>
+&lt;h3 id="wireguard">WireGuard&lt;/h3>
+&lt;blockquote>
+&lt;p>&lt;a href="https://www.wireguard.com">https://www.wireguard.com&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>优点&lt;/p>
+&lt;ul>
+&lt;li>开源&lt;/li>
+&lt;li>P2P&lt;/li>
+&lt;li>Interface 节点支持流量转发&lt;/li>
+&lt;li>Windows 平台带 UI 界面&lt;/li>
+&lt;li>老牌子，tailscale 基于它开发的&lt;/li>
+&lt;li>安装简单&lt;/li>
+&lt;li>支持连接保活，可以设定每 x 秒发起一次通信，保证连接不断开&lt;/li>
+&lt;/ul>
+&lt;p>现阶段轻度使用没遇到太明显的缺点&lt;/p>
+&lt;h3 id="softether">SoftEther&lt;/h3>
+&lt;blockquote>
+&lt;p>&lt;a href="https://www.softether.org">https://www.softether.org&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>很强大的 VPN 软件，小型企业完全可以用来实现多办公室局域网和日常 VPN 需求。&lt;/p>
+&lt;p>优点&lt;/p>
+&lt;ul>
+&lt;li>开源&lt;/li>
+&lt;li>安装简单&lt;/li>
+&lt;li>管理软件很好很强大
+&lt;ul>
+&lt;li>目前用到了用户管理、访问列表、安全策略，即强大又灵活&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>备份简单（只需要备份一个文本文件）&lt;/li>
+&lt;li>跨平台客户端&lt;/li>
+&lt;li>支持 IPsec/L2TP、OpenVPN/MS-SSTP 常见 VPN 协议接入&lt;/li>
+&lt;/ul>
+&lt;p>缺点&lt;/p>
+&lt;ul>
+&lt;li>管理软件有点复杂（好像也不是缺点）&lt;/li>
+&lt;/ul>
 &lt;h3 id="其他">其他&lt;/h3>
 &lt;p>tailscale，&lt;a href="https://tailscale.com">https://tailscale.com&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>也是个商业服务，没有使用过，暂不评价&lt;/li>
-&lt;/ul>
-&lt;p>WireGuard，&lt;a href="https://www.wireguard.com">https://www.wireguard.com&lt;/a>&lt;/p>
-&lt;ul>
-&lt;li>也是老牌子了，tailscale 基于它开发的&lt;/li>
-&lt;li>之前在生产项目中也尝试过，但它对内核有要求，需要重启机器，弃用了&lt;/li>
-&lt;li>没有深度使用，无法评价优缺点&lt;/li>
 &lt;/ul>
 &lt;h3 id="内网穿透代理">内网穿透代理&lt;/h3>
 &lt;p>下面两个工具和前面提到的虚拟组网并不是一类工具，但在特定场景用起来会非常方便。例如，在本地开发时需要接受第三方服务的 callback 时，可以使用下面工具临时暴露本地服务到公网。&lt;/p>
