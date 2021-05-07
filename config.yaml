@@ -45,11 +45,11 @@ params:
 
     comments:
         enabled: true
-        provider: disqus
+        provider: utterances
         utterances:
-            repo:
-            issueTerm: pathname
-            label:
+            repo: zhwei/zhwei.github.com
+            issueTerm: title
+            label: Comment
             theme: preferred-color-scheme
 
     widgets:
