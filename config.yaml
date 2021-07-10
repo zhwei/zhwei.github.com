@@ -39,6 +39,7 @@ params:
 
     article:
         math: false
+        toc: true
         license:
             enabled: true
             default: Licensed under CC BY-NC-SA 4.0
@@ -135,6 +136,10 @@ related:
           weight: 200
 
 markup:
+    tableOfContents:
+        endLevel: 4
+        ordered: true
+        startLevel: 2
     highlight:
         noClasses: false
 
