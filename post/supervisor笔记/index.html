@@ -29,8 +29,7 @@ echo_supervisord_conf &amp;gt; /etc/supervisord.conf  调整配置文件  增加
 [inet_http_server] port=*:9001 username=your_username ; (default is no username (open server)) password=your_password ; (default is no password (open server)) 添加服务 配置文件详解
 [supervisorctl] serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL for a unix socket ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket ;username=chris ; should be same as http_username if set ;password=123 ; should be same as http_password if set ;prompt=mysupervisor ; cmd line prompt (default &amp;#34;supervisor&amp;#34;) ;history_file=~/.">
 <link rel="shortcut icon" href=/images/favicon.ico>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4SQ7SNGGS"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-Q4SQ7SNGGS',{anonymize_ip:!1})}</script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-189071452-1','auto'),ga('send','pageview'))</script>
 </head>
 <body class="article-page has-toc">
 <script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
