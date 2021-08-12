@@ -1,4 +1,6 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Gotit gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名gotit.aisa, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.
+<!doctype html><html lang=zh-cn>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Gotit gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名gotit.aisa, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.
 2013-01-09至2013-07-31
 最初方法 使用urllib2模拟登录,然后使用BeaufitualSoup解析出所需的表格内容. 登录难点是url中有一段随机字符串,需要先将其匹配出来获得base_url, 一开始时是每一次登录都匹配一次该随机字符串,也就是说查询一次成绩程序要访问两次正方教务系统, 现在使用了马伟伟同学写的cache模块,每500秒获取一次该字符串,提高了成绩查询速度.另一个就是模拟登录时的post内容中有一个VIEWSTATE值, 类似与csrf_token吧, 登录时需要先抓取该值然后post.
 test 部署相关  web.py  话说第一次上线比较急, 是直接通过web.py直接跑的, 不过也没怎么有压力, 估计是当初PV太低了
@@ -9,7 +11,10 @@ apache + gunicorn  话说我是不太喜欢用apache的, 因为每次重启服�
 nginx + gunicorn  现在用的, 换了一台服务器, 配置好些, 原来的做备份用了.
 中文验证码 正方教务系统从原来的数字验证码到现在的中文验证码，尝试过验证码识别， 但是都不怎么理想，所以选择了让用户自己识别验证码，我们只模拟登陆。这样需要满足几个条件。
 首先，成功获取验证码并保存为图片，其中图片命名遇到了问题，起初选择了使用随机整型数字命名，由于程序中的随机都是伪随机， 重合率很高！后来选择了使用时间的MD5值，一直沿用到现在作为用户的唯一识别码，使time.time()获得的时间精确到0.001秒，以现在的用户访问量遇到在同一0.001秒同时访问几乎是不可能的，并且事实也是如此。
-用户需要在页面上直接输入学号、密码和验证码， 这就需要我们在用户第一次访问时就为其抓取下验证码供其识别，用户填写后由后台使用用户的数据进行模拟登陆从而抓取下成绩内容或者其他信息。而此处的难点是：怎样保证用户识别的验证码和他应该提交的验证码是同一个。因为正方系统还为每一个页面状态提供了一个VIEWSTATE参数，每次post都需要提供该参数。我一开始的想法是能够解析出每次抓取时的COOKIE不过后来想通了，由于每次都是在服务端抓取， 每次的COOKIE都是一样的，而每次的VIEWSTATE却是不一样的，所以这个方法被否定了。"><title>Gotit从零开始</title><link rel=canonical href=https://zhw.in/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Gotit从零开始"><meta property="og:description" content="Gotit gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名gotit.aisa, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.
+用户需要在页面上直接输入学号、密码和验证码， 这就需要我们在用户第一次访问时就为其抓取下验证码供其识别，用户填写后由后台使用用户的数据进行模拟登陆从而抓取下成绩内容或者其他信息。而此处的难点是：怎样保证用户识别的验证码和他应该提交的验证码是同一个。因为正方系统还为每一个页面状态提供了一个VIEWSTATE参数，每次post都需要提供该参数。我一开始的想法是能够解析出每次抓取时的COOKIE不过后来想通了，由于每次都是在服务端抓取， 每次的COOKIE都是一样的，而每次的VIEWSTATE却是不一样的，所以这个方法被否定了。"><title>Gotit从零开始</title>
+<link rel=canonical href=https://zhw.in/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/>
+<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Gotit从零开始">
+<meta property="og:description" content="Gotit gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名gotit.aisa, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.
 2013-01-09至2013-07-31
 最初方法 使用urllib2模拟登录,然后使用BeaufitualSoup解析出所需的表格内容. 登录难点是url中有一段随机字符串,需要先将其匹配出来获得base_url, 一开始时是每一次登录都匹配一次该随机字符串,也就是说查询一次成绩程序要访问两次正方教务系统, 现在使用了马伟伟同学写的cache模块,每500秒获取一次该字符串,提高了成绩查询速度.另一个就是模拟登录时的post内容中有一个VIEWSTATE值, 类似与csrf_token吧, 登录时需要先抓取该值然后post.
 test 部署相关  web.py  话说第一次上线比较急, 是直接通过web.py直接跑的, 不过也没怎么有压力, 估计是当初PV太低了
@@ -20,7 +25,13 @@ apache + gunicorn  话说我是不太喜欢用apache的, 因为每次重启服�
 nginx + gunicorn  现在用的, 换了一台服务器, 配置好些, 原来的做备份用了.
 中文验证码 正方教务系统从原来的数字验证码到现在的中文验证码，尝试过验证码识别， 但是都不怎么理想，所以选择了让用户自己识别验证码，我们只模拟登陆。这样需要满足几个条件。
 首先，成功获取验证码并保存为图片，其中图片命名遇到了问题，起初选择了使用随机整型数字命名，由于程序中的随机都是伪随机， 重合率很高！后来选择了使用时间的MD5值，一直沿用到现在作为用户的唯一识别码，使time.time()获得的时间精确到0.001秒，以现在的用户访问量遇到在同一0.001秒同时访问几乎是不可能的，并且事实也是如此。
-用户需要在页面上直接输入学号、密码和验证码， 这就需要我们在用户第一次访问时就为其抓取下验证码供其识别，用户填写后由后台使用用户的数据进行模拟登陆从而抓取下成绩内容或者其他信息。而此处的难点是：怎样保证用户识别的验证码和他应该提交的验证码是同一个。因为正方系统还为每一个页面状态提供了一个VIEWSTATE参数，每次post都需要提供该参数。我一开始的想法是能够解析出每次抓取时的COOKIE不过后来想通了，由于每次都是在服务端抓取， 每次的COOKIE都是一样的，而每次的VIEWSTATE却是不一样的，所以这个方法被否定了。"><meta property="og:url" content="https://zhw.in/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/"><meta property="og:site_name" content="zhwei's Blog"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Gotit"><meta property="article:published_time" content="2013-07-31T00:00:00+00:00"><meta property="article:modified_time" content="2013-07-31T00:00:00+00:00"><meta name=twitter:site content="@zhwei_"><meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="Gotit从零开始"><meta name=twitter:description content="Gotit gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名gotit.aisa, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.
+用户需要在页面上直接输入学号、密码和验证码， 这就需要我们在用户第一次访问时就为其抓取下验证码供其识别，用户填写后由后台使用用户的数据进行模拟登陆从而抓取下成绩内容或者其他信息。而此处的难点是：怎样保证用户识别的验证码和他应该提交的验证码是同一个。因为正方系统还为每一个页面状态提供了一个VIEWSTATE参数，每次post都需要提供该参数。我一开始的想法是能够解析出每次抓取时的COOKIE不过后来想通了，由于每次都是在服务端抓取， 每次的COOKIE都是一样的，而每次的VIEWSTATE却是不一样的，所以这个方法被否定了。">
+<meta property="og:url" content="https://zhw.in/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/">
+<meta property="og:site_name" content="zhwei's Blog">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Gotit"><meta property="article:published_time" content="2013-07-31T00:00:00+00:00"><meta property="article:modified_time" content="2013-07-31T00:00:00+00:00">
+<meta name=twitter:site content="@zhwei_">
+<meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="Gotit从零开始">
+<meta name=twitter:description content="Gotit gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名gotit.aisa, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.
 2013-01-09至2013-07-31
 最初方法 使用urllib2模拟登录,然后使用BeaufitualSoup解析出所需的表格内容. 登录难点是url中有一段随机字符串,需要先将其匹配出来获得base_url, 一开始时是每一次登录都匹配一次该随机字符串,也就是说查询一次成绩程序要访问两次正方教务系统, 现在使用了马伟伟同学写的cache模块,每500秒获取一次该字符串,提高了成绩查询速度.另一个就是模拟登录时的post内容中有一个VIEWSTATE值, 类似与csrf_token吧, 登录时需要先抓取该值然后post.
 test 部署相关  web.py  话说第一次上线比较急, 是直接通过web.py直接跑的, 不过也没怎么有压力, 估计是当初PV太低了
@@ -31,13 +42,174 @@ apache + gunicorn  话说我是不太喜欢用apache的, 因为每次重启服�
 nginx + gunicorn  现在用的, 换了一台服务器, 配置好些, 原来的做备份用了.
 中文验证码 正方教务系统从原来的数字验证码到现在的中文验证码，尝试过验证码识别， 但是都不怎么理想，所以选择了让用户自己识别验证码，我们只模拟登陆。这样需要满足几个条件。
 首先，成功获取验证码并保存为图片，其中图片命名遇到了问题，起初选择了使用随机整型数字命名，由于程序中的随机都是伪随机， 重合率很高！后来选择了使用时间的MD5值，一直沿用到现在作为用户的唯一识别码，使time.time()获得的时间精确到0.001秒，以现在的用户访问量遇到在同一0.001秒同时访问几乎是不可能的，并且事实也是如此。
-用户需要在页面上直接输入学号、密码和验证码， 这就需要我们在用户第一次访问时就为其抓取下验证码供其识别，用户填写后由后台使用用户的数据进行模拟登陆从而抓取下成绩内容或者其他信息。而此处的难点是：怎样保证用户识别的验证码和他应该提交的验证码是同一个。因为正方系统还为每一个页面状态提供了一个VIEWSTATE参数，每次post都需要提供该参数。我一开始的想法是能够解析出每次抓取时的COOKIE不过后来想通了，由于每次都是在服务端抓取， 每次的COOKIE都是一样的，而每次的VIEWSTATE却是不一样的，所以这个方法被否定了。"><link rel="shortcut icon" href=/images/favicon.ico><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-189071452-1','auto');ga('send','pageview');}</script></head><body class=article-page><script>(function(){const colorSchemeKey='StackColorScheme';if(!localStorage.getItem(colorSchemeKey)){localStorage.setItem(colorSchemeKey,"auto");}})();</script><script>(function(){const colorSchemeKey='StackColorScheme';const colorSchemeItem=localStorage.getItem(colorSchemeKey);const supportDarkMode=window.matchMedia('(prefers-color-scheme: dark)').matches===true;if(colorSchemeItem=='dark'||colorSchemeItem==='auto'&&supportDarkMode){document.documentElement.dataset.scheme='dark';}else{document.documentElement.dataset.scheme='light';}})();</script><div class="container main-container flex
-on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hua214120a4d200677a7520b2605f86182_99547_300x0_resize_box_2.png width=300 height=282 class=site-logo loading=lazy alt=Avatar>
-<span class=emoji>🏠</span></figure><h1 class=site-name><a href=https://zhw.in>zhwei's Blog</a></h1><h2 class=site-description>Be Your Personal Best</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>About</span></a></li><li><a href=/archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><li><a href=https://github.com/zhwei><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0c-2.4-1.6-3.5-1.3-3.5-1.3a4.2 4.2.0 00-.1 3.2 4.6 4.6.0 00-1.3 3.2c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg><span>GitHub</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>Dark Mode</span></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><h2 class=article-title><a href=/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/>Gotit从零开始</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2013-07-31</time></footer></div></header><section class=article-content><h1 id=gotit>Gotit</h1><p>gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名<a class=link href=http://gotit.asia target=_blank rel=noopener>gotit.aisa</a>, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.</p><p>2013-01-09至2013-07-31</p><p><img src=http://ww3.sinaimg.cn/mw1024/9f62afa1jw1e76c7fq088j20ur0cbwh7.jpg alt=至今趋势></p><h1 id=最初方法>最初方法</h1><p>使用<code>urllib2</code>模拟登录,然后使用<code>BeaufitualSoup</code>解析出所需的表格内容. 登录难点是<code>url</code>中有一段随机字符串,需要先将其匹配出来获得<code>base_url</code>, 一开始时是每一次登录都匹配一次该随机字符串,也就是说查询一次成绩程序要访问两次正方教务系统, 现在使用了马伟伟同学写的<code>cache</code>模块,每500秒获取一次该字符串,提高了成绩查询速度.另一个就是模拟登录时的<code>post</code>内容中有一个<code>VIEWSTATE</code>值, 类似与<code>csrf_token</code>吧, 登录时需要先抓取该值然后<code>post</code>.</p><h2 id=test>test</h2><h1 id=部署相关>部署相关</h1><ol><li>web.py</li></ol><p>话说第一次上线比较急, 是直接通过web.py直接跑的, 不过也没怎么有压力, 估计是当初PV太低了</p><ol start=2><li>apache + mod_wsgi</li></ol><p>这才算是第一次部署吧, 通过apache和mod_wsgi跑的web.py, 不过由于服务器上没有公网IP, 所以外面又加了一个nginx反向代理</p><p>详见: <a class=link href=http://zhwei.42qu.com/14334743#h21 target=_blank rel=noopener>http://zhwei.42qu.com/14334743#h21</a></p><ol start=3><li>apache + gunicorn</li></ol><p>话说我是不太喜欢用apache的, 因为每次重启服务时还需要重启下apache, 太蛋疼了, 不过机器上的nginx是当初lnmp一键安装包里的, 很难用, 只能用自己装的apache了, gunicorn更pythoner点, 另外支持多线程.</p><p>详见<a class=link href=http://zhwei.42qu.com/14840780 target=_blank rel=noopener>http://zhwei.42qu.com/14840780</a></p><ol start=4><li>nginx + gunicorn</li></ol><p>现在用的, 换了一台服务器, 配置好些, 原来的做备份用了.</p><h1 id=中文验证码>中文验证码</h1><p>正方教务系统从原来的数字验证码到现在的中文验证码，尝试过验证码识别， 但是都不怎么理想，所以选择了让用户自己识别验证码，我们只模拟登陆。这样需要满足几个条件。</p><p>首先，成功获取验证码并保存为图片，其中图片命名遇到了问题，起初选择了使用随机整型数字命名，由于程序中的随机都是伪随机， 重合率很高！后来选择了使用时间的MD5值，一直沿用到现在作为用户的唯一识别码，使<code>time.time()</code>获得的时间精确到0.001秒，以现在的用户访问量遇到在同一0.001秒同时访问几乎是不可能的，并且事实也是如此。</p><p>用户需要在页面上直接输入学号、密码和验证码， 这就需要我们在用户第一次访问时就为其抓取下验证码供其识别，用户填写后由后台使用用户的数据进行模拟登陆从而抓取下成绩内容或者其他信息。而此处的难点是：怎样保证用户识别的验证码和他应该提交的验证码是同一个。因为正方系统还为每一个页面状态提供了一个<code>VIEWSTATE</code>参数，每次post都需要提供该参数。我一开始的想法是能够解析出每次抓取时的COOKIE不过后来想通了，由于每次都是在服务端抓取， 每次的COOKIE都是一样的，而每次的VIEWSTATE却是不一样的，所以这个方法被否定了。</p><p><a class=link href=http://ma6174.github.io target=_blank rel=noopener>ma6174</a>同学想出了另一个方法，就是：创建一个独立于<code>WEB.PY</code>之外的字典，通过键值对的方式，将每一次处理时的对象直接保存起来，此处对象中有两个关键方法，一个是<code>pre_login</code>另一个是<code>login</code>，前者用于抓取验证码、viewstate，并且将此处的对象内容以某一KEY保存在字典中，该KEY开始时直接使用的VIEWSTATE，不过在本学期末发现: VIEWSTATE在一段时间内不变了, 这就导致了字典中的某一值一直被重写，不过这种情况在本地测试是正常的，因为只有一个人访问。为了避免这个问题就再次使用了上面说的<code>time_md5</code>。</p><p>现在的做法就是：以<code>time_md5</code>为键，将由VIEWSTATE和对象组成的元组保存在全局字典中，验证码图片也是直接以<code>time_md5</code>命名，由于http的无状态，我们也懒得再弄一个cookie，所以直接将<code>time_md5</code>传到页面作为一个hidden input，之后再从post值中取出使用。</p><h1 id=url中的随机字符串>URL中的随机字符串</h1><p>相对来说，这个问题算很小的了，不过已有一些小纠结。第一次由于132的链接登陆后内容异常，只能使用133，而133的链接就多了这里的主角<code>随机字符串</code>, 当然这里随机是对我们来说的，正方教务系统后台肯定会有所控制，该字符串在一段时间内是不会发生改变的，我也只等了五分钟，对用户来说五分钟已经足够完成正常的查询功能了。</p><p>解决方案: 每次抓取前先获取一下重定向后的链接, 匹配出随机字符串, 因为之后所有访问的url都需要此字符串, 这里也要保证登陆的url和登陆成功后抓取的url中的字符串是一致的, 不然肯定抓不到页面.</p><p>之后有了中文验证码后, 再次使用133连接时(平时132能正常使用), 按以前的方法却出现了问题, 每次抓取前获取随即字符串在真正模拟登陆时却总是不行, 随后把获取重定向url的方法直接放在对象(保存到字典中的对象)中后就没问题了.</p><h1 id=apis>APIs</h1><p>提供api&mldr; 挺蛋疼的一件事&mldr;现在提供的json格式的api, 文档见<a class=link href=https://github.com/zhwei/gotit/blob/gunicorn/doc/api.markdown target=_blank rel=noopener>这里</a>, 现在主要是完成了正方教务系统里的成绩查询, 考试时间查询和课表查询的格式还没有处理好.</p></section><footer class=article-footer><section class=article-tags><a href=/tags/gotit/>Gotit</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper></aside><footer class=site-footer><section class=copyright>&copy;
+用户需要在页面上直接输入学号、密码和验证码， 这就需要我们在用户第一次访问时就为其抓取下验证码供其识别，用户填写后由后台使用用户的数据进行模拟登陆从而抓取下成绩内容或者其他信息。而此处的难点是：怎样保证用户识别的验证码和他应该提交的验证码是同一个。因为正方系统还为每一个页面状态提供了一个VIEWSTATE参数，每次post都需要提供该参数。我一开始的想法是能够解析出每次抓取时的COOKIE不过后来想通了，由于每次都是在服务端抓取， 每次的COOKIE都是一样的，而每次的VIEWSTATE却是不一样的，所以这个方法被否定了。">
+<link rel="shortcut icon" href=/images/favicon.ico>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-189071452-1','auto'),ga('send','pageview'))</script>
+</head>
+<body class=article-page>
+<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
+<div class="container main-container flex
+on-phone--column extended">
+<aside class="sidebar left-sidebar sticky">
+<button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box>
+<span class=hamburger-inner></span>
+</span>
+</button>
+<header class=site-info>
+<figure class=site-avatar>
+<img src=/img/avatar_hua214120a4d200677a7520b2605f86182_99547_300x0_resize_box_3.png width=300 height=282 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>🏠</span>
+</figure>
+<h1 class=site-name><a href=https://zhw.in>zhwei's Blog</a></h1>
+<h2 class=site-description>Be Your Personal Best</h2>
+</header>
+<ol class=menu id=main-menu>
+<li>
+<a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span>
+</a>
+</li>
+<li>
+<a href=/about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About</span>
+</a>
+</li>
+<li>
+<a href=/archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span>
+</a>
+</li>
+<li>
+<a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span>
+</a>
+</li>
+<li>
+<a href=https://github.com/zhwei><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+<span>GitHub</span>
+</a>
+</li>
+<li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span>
+</li>
+</ol>
+</aside>
+<main class="main full-width">
+<article class=main-article>
+<header class=article-header>
+<div class=article-details>
+<h2 class=article-title>
+<a href=/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/>Gotit从零开始</a>
+</h2>
+<footer class=article-time>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2013-07-31</time>
+</div>
+</footer>
+</div>
+</header>
+<section class=article-content>
+<h1 id=gotit>Gotit</h1>
+<p>gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名<a class=link href=http://gotit.asia target=_blank rel=noopener>gotit.aisa</a>, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.</p>
+<p>2013-01-09至2013-07-31</p>
+<p><img src=http://ww3.sinaimg.cn/mw1024/9f62afa1jw1e76c7fq088j20ur0cbwh7.jpg alt=至今趋势></p>
+<h1 id=最初方法>最初方法</h1>
+<p>使用<code>urllib2</code>模拟登录,然后使用<code>BeaufitualSoup</code>解析出所需的表格内容. 登录难点是<code>url</code>中有一段随机字符串,需要先将其匹配出来获得<code>base_url</code>, 一开始时是每一次登录都匹配一次该随机字符串,也就是说查询一次成绩程序要访问两次正方教务系统, 现在使用了马伟伟同学写的<code>cache</code>模块,每500秒获取一次该字符串,提高了成绩查询速度.另一个就是模拟登录时的<code>post</code>内容中有一个<code>VIEWSTATE</code>值, 类似与<code>csrf_token</code>吧, 登录时需要先抓取该值然后<code>post</code>.</p>
+<h2 id=test>test</h2>
+<h1 id=部署相关>部署相关</h1>
+<ol>
+<li>web.py</li>
+</ol>
+<p>话说第一次上线比较急, 是直接通过web.py直接跑的, 不过也没怎么有压力, 估计是当初PV太低了</p>
+<ol start=2>
+<li>apache + mod_wsgi</li>
+</ol>
+<p>这才算是第一次部署吧, 通过apache和mod_wsgi跑的web.py, 不过由于服务器上没有公网IP, 所以外面又加了一个nginx反向代理</p>
+<p>详见: <a class=link href=http://zhwei.42qu.com/14334743#h21 target=_blank rel=noopener>http://zhwei.42qu.com/14334743#h21</a></p>
+<ol start=3>
+<li>apache + gunicorn</li>
+</ol>
+<p>话说我是不太喜欢用apache的, 因为每次重启服务时还需要重启下apache, 太蛋疼了, 不过机器上的nginx是当初lnmp一键安装包里的, 很难用, 只能用自己装的apache了, gunicorn更pythoner点, 另外支持多线程.</p>
+<p>详见<a class=link href=http://zhwei.42qu.com/14840780 target=_blank rel=noopener>http://zhwei.42qu.com/14840780</a></p>
+<ol start=4>
+<li>nginx + gunicorn</li>
+</ol>
+<p>现在用的, 换了一台服务器, 配置好些, 原来的做备份用了.</p>
+<h1 id=中文验证码>中文验证码</h1>
+<p>正方教务系统从原来的数字验证码到现在的中文验证码，尝试过验证码识别， 但是都不怎么理想，所以选择了让用户自己识别验证码，我们只模拟登陆。这样需要满足几个条件。</p>
+<p>首先，成功获取验证码并保存为图片，其中图片命名遇到了问题，起初选择了使用随机整型数字命名，由于程序中的随机都是伪随机， 重合率很高！后来选择了使用时间的MD5值，一直沿用到现在作为用户的唯一识别码，使<code>time.time()</code>获得的时间精确到0.001秒，以现在的用户访问量遇到在同一0.001秒同时访问几乎是不可能的，并且事实也是如此。</p>
+<p>用户需要在页面上直接输入学号、密码和验证码， 这就需要我们在用户第一次访问时就为其抓取下验证码供其识别，用户填写后由后台使用用户的数据进行模拟登陆从而抓取下成绩内容或者其他信息。而此处的难点是：怎样保证用户识别的验证码和他应该提交的验证码是同一个。因为正方系统还为每一个页面状态提供了一个<code>VIEWSTATE</code>参数，每次post都需要提供该参数。我一开始的想法是能够解析出每次抓取时的COOKIE不过后来想通了，由于每次都是在服务端抓取， 每次的COOKIE都是一样的，而每次的VIEWSTATE却是不一样的，所以这个方法被否定了。</p>
+<p><a class=link href=http://ma6174.github.io target=_blank rel=noopener>ma6174</a>同学想出了另一个方法，就是：创建一个独立于<code>WEB.PY</code>之外的字典，通过键值对的方式，将每一次处理时的对象直接保存起来，此处对象中有两个关键方法，一个是<code>pre_login</code>另一个是<code>login</code>，前者用于抓取验证码、viewstate，并且将此处的对象内容以某一KEY保存在字典中，该KEY开始时直接使用的VIEWSTATE，不过在本学期末发现: VIEWSTATE在一段时间内不变了, 这就导致了字典中的某一值一直被重写，不过这种情况在本地测试是正常的，因为只有一个人访问。为了避免这个问题就再次使用了上面说的<code>time_md5</code>。</p>
+<p>现在的做法就是：以<code>time_md5</code>为键，将由VIEWSTATE和对象组成的元组保存在全局字典中，验证码图片也是直接以<code>time_md5</code>命名，由于http的无状态，我们也懒得再弄一个cookie，所以直接将<code>time_md5</code>传到页面作为一个hidden input，之后再从post值中取出使用。</p>
+<h1 id=url中的随机字符串>URL中的随机字符串</h1>
+<p>相对来说，这个问题算很小的了，不过已有一些小纠结。第一次由于132的链接登陆后内容异常，只能使用133，而133的链接就多了这里的主角<code>随机字符串</code>, 当然这里随机是对我们来说的，正方教务系统后台肯定会有所控制，该字符串在一段时间内是不会发生改变的，我也只等了五分钟，对用户来说五分钟已经足够完成正常的查询功能了。</p>
+<p>解决方案: 每次抓取前先获取一下重定向后的链接, 匹配出随机字符串, 因为之后所有访问的url都需要此字符串, 这里也要保证登陆的url和登陆成功后抓取的url中的字符串是一致的, 不然肯定抓不到页面.</p>
+<p>之后有了中文验证码后, 再次使用133连接时(平时132能正常使用), 按以前的方法却出现了问题, 每次抓取前获取随即字符串在真正模拟登陆时却总是不行, 随后把获取重定向url的方法直接放在对象(保存到字典中的对象)中后就没问题了.</p>
+<h1 id=apis>APIs</h1>
+<p>提供api&mldr; 挺蛋疼的一件事&mldr;现在提供的json格式的api, 文档见<a class=link href=https://github.com/zhwei/gotit/blob/gunicorn/doc/api.markdown target=_blank rel=noopener>这里</a>, 现在主要是完成了正方教务系统里的成绩查询, 考试时间查询和课表查询的格式还没有处理好.</p>
+</section>
+<footer class=article-footer>
+<section class=article-tags>
+<a href=/tags/gotit/>Gotit</a>
+</section>
+<section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span>
+</section>
+</footer>
+</article>
+<aside class=related-contents--wrapper>
+</aside>
+<footer class=site-footer>
+<section class=copyright>
+&copy;
 2012 -
-2021 zhwei's Blog</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.5.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+2021 zhwei's Blog
+</section>
+<section class=powerby>
+Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> <br>
+Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>
+</section>
+</footer>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const customFont=document.createElement('link');customFont.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";customFont.type="text/css";customFont.rel="stylesheet";document.head.appendChild(customFont);}());</script></body></html>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous>
+</main>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</body>
+</html>

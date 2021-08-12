@@ -1,31 +1,219 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="起因 团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。
+<!doctype html><html lang=zh-cn>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="起因 团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。
 最近遇到了测试时的并发问题，由于 Jenkins 需要在 PR 更新时重新检查，每完整测试一次需要 10 到 15 分钟，同时有很多开发者提交 PR 时，就会导致长时间无意义的等待，有此希望能提高 Jenkins 的并发测试能力。
 选择方案 先介绍下项目测试时依赖的环境：
 - PHP - Redis - MySQL - ElasticSearch  多个 PR 测试进程之间，ES、Redis 是可以共享的，但 MySQL 不可以，其中考虑的方案是考虑能否通过改变项目中的数据库名称从而共享同一台 MySQL Server ，但实际调试中发现除去 ORM 能够简单变更数据库外，还是有很多场景中的数据库名称是写死在代码里面的，所以这条方案宣告放弃。
 如标题所说，我们的 Jenkins 是运行在 docker 中的，那测试是不是也可以在 docker 中运行呢，所有依赖环境、软件包，全部通过 docker 打包整理，最终 Jenkins 在发起测试时需要调用的是一个 docker 命令，那么问题来了，怎样让 Jenkins 调用 docker ？想到的有以下两个思路：
   Jenkins 中完整安装 docker ，关注点：
- 需要重新 build jenkins image，调试会很麻烦 性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例 网络会不会有问题？172 这个网段会不会混乱（还是调试问题）    Jenkins 中调用宿主机的 docker ，关注点："><title>Docker Jenkins Run Tests in Docker</title><link rel=canonical href=https://zhw.in/post/docker-jenkins-run-tests-in-docker/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Docker Jenkins Run Tests in Docker"><meta property="og:description" content="起因 团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。
+ 需要重新 build jenkins image，调试会很麻烦 性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例 网络会不会有问题？172 这个网段会不会混乱（还是调试问题）    Jenkins 中调用宿主机的 docker ，关注点："><title>Docker Jenkins Run Tests in Docker</title>
+<link rel=canonical href=https://zhw.in/post/docker-jenkins-run-tests-in-docker/>
+<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Docker Jenkins Run Tests in Docker">
+<meta property="og:description" content="起因 团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。
 最近遇到了测试时的并发问题，由于 Jenkins 需要在 PR 更新时重新检查，每完整测试一次需要 10 到 15 分钟，同时有很多开发者提交 PR 时，就会导致长时间无意义的等待，有此希望能提高 Jenkins 的并发测试能力。
 选择方案 先介绍下项目测试时依赖的环境：
 - PHP - Redis - MySQL - ElasticSearch  多个 PR 测试进程之间，ES、Redis 是可以共享的，但 MySQL 不可以，其中考虑的方案是考虑能否通过改变项目中的数据库名称从而共享同一台 MySQL Server ，但实际调试中发现除去 ORM 能够简单变更数据库外，还是有很多场景中的数据库名称是写死在代码里面的，所以这条方案宣告放弃。
 如标题所说，我们的 Jenkins 是运行在 docker 中的，那测试是不是也可以在 docker 中运行呢，所有依赖环境、软件包，全部通过 docker 打包整理，最终 Jenkins 在发起测试时需要调用的是一个 docker 命令，那么问题来了，怎样让 Jenkins 调用 docker ？想到的有以下两个思路：
   Jenkins 中完整安装 docker ，关注点：
- 需要重新 build jenkins image，调试会很麻烦 性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例 网络会不会有问题？172 这个网段会不会混乱（还是调试问题）    Jenkins 中调用宿主机的 docker ，关注点："><meta property="og:url" content="https://zhw.in/post/docker-jenkins-run-tests-in-docker/"><meta property="og:site_name" content="zhwei's Blog"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Docker"><meta property="article:published_time" content="2017-12-04T00:00:00+00:00"><meta property="article:modified_time" content="2017-12-04T00:00:00+00:00"><meta name=twitter:site content="@zhwei_"><meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="Docker Jenkins Run Tests in Docker"><meta name=twitter:description content="起因 团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。
+ 需要重新 build jenkins image，调试会很麻烦 性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例 网络会不会有问题？172 这个网段会不会混乱（还是调试问题）    Jenkins 中调用宿主机的 docker ，关注点：">
+<meta property="og:url" content="https://zhw.in/post/docker-jenkins-run-tests-in-docker/">
+<meta property="og:site_name" content="zhwei's Blog">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Docker"><meta property="article:published_time" content="2017-12-04T00:00:00+00:00"><meta property="article:modified_time" content="2017-12-04T00:00:00+00:00">
+<meta name=twitter:site content="@zhwei_">
+<meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="Docker Jenkins Run Tests in Docker">
+<meta name=twitter:description content="起因 团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。
 最近遇到了测试时的并发问题，由于 Jenkins 需要在 PR 更新时重新检查，每完整测试一次需要 10 到 15 分钟，同时有很多开发者提交 PR 时，就会导致长时间无意义的等待，有此希望能提高 Jenkins 的并发测试能力。
 选择方案 先介绍下项目测试时依赖的环境：
 - PHP - Redis - MySQL - ElasticSearch  多个 PR 测试进程之间，ES、Redis 是可以共享的，但 MySQL 不可以，其中考虑的方案是考虑能否通过改变项目中的数据库名称从而共享同一台 MySQL Server ，但实际调试中发现除去 ORM 能够简单变更数据库外，还是有很多场景中的数据库名称是写死在代码里面的，所以这条方案宣告放弃。
 如标题所说，我们的 Jenkins 是运行在 docker 中的，那测试是不是也可以在 docker 中运行呢，所有依赖环境、软件包，全部通过 docker 打包整理，最终 Jenkins 在发起测试时需要调用的是一个 docker 命令，那么问题来了，怎样让 Jenkins 调用 docker ？想到的有以下两个思路：
   Jenkins 中完整安装 docker ，关注点：
- 需要重新 build jenkins image，调试会很麻烦 性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例 网络会不会有问题？172 这个网段会不会混乱（还是调试问题）    Jenkins 中调用宿主机的 docker ，关注点："><link rel="shortcut icon" href=/images/favicon.ico><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-189071452-1','auto');ga('send','pageview');}</script></head><body class="article-page has-toc"><script>(function(){const colorSchemeKey='StackColorScheme';if(!localStorage.getItem(colorSchemeKey)){localStorage.setItem(colorSchemeKey,"auto");}})();</script><script>(function(){const colorSchemeKey='StackColorScheme';const colorSchemeItem=localStorage.getItem(colorSchemeKey);const supportDarkMode=window.matchMedia('(prefers-color-scheme: dark)').matches===true;if(colorSchemeItem=='dark'||colorSchemeItem==='auto'&&supportDarkMode){document.documentElement.dataset.scheme='dark';}else{document.documentElement.dataset.scheme='light';}})();</script><div class="container main-container flex
-extended"><div id=article-toolbar><a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><h2 class=article-title><a href=/post/docker-jenkins-run-tests-in-docker/>Docker Jenkins Run Tests in Docker</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2017-12-04</time></footer></div></header><section class=article-content><h2 id=起因>起因</h2><p>团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。</p><p>最近遇到了测试时的并发问题，由于 Jenkins 需要在 PR 更新时重新检查，每完整测试一次需要 10 到 15 分钟，同时有很多开发者提交 PR 时，就会导致长时间无意义的等待，有此希望能提高 Jenkins 的并发测试能力。</p><h2 id=选择方案>选择方案</h2><p>先介绍下项目测试时依赖的环境：</p><pre><code>- PHP
+ 需要重新 build jenkins image，调试会很麻烦 性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例 网络会不会有问题？172 这个网段会不会混乱（还是调试问题）    Jenkins 中调用宿主机的 docker ，关注点：">
+<link rel="shortcut icon" href=/images/favicon.ico>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-189071452-1','auto'),ga('send','pageview'))</script>
+</head>
+<body class="article-page has-toc">
+<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
+<div class="container main-container flex
+extended">
+<div id=article-toolbar>
+<a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+<span>Back</span>
+</a>
+</div>
+<main class="main full-width">
+<article class=main-article>
+<header class=article-header>
+<div class=article-details>
+<h2 class=article-title>
+<a href=/post/docker-jenkins-run-tests-in-docker/>Docker Jenkins Run Tests in Docker</a>
+</h2>
+<footer class=article-time>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2017-12-04</time>
+</div>
+</footer>
+</div>
+</header>
+<section class=article-content>
+<h2 id=起因>起因</h2>
+<p>团队使用 Jenkins CI 来对 Pull Request 进行上线前的检查，例如：编码风格、静态分析、测试等。</p>
+<p>最近遇到了测试时的并发问题，由于 Jenkins 需要在 PR 更新时重新检查，每完整测试一次需要 10 到 15 分钟，同时有很多开发者提交 PR 时，就会导致长时间无意义的等待，有此希望能提高 Jenkins 的并发测试能力。</p>
+<h2 id=选择方案>选择方案</h2>
+<p>先介绍下项目测试时依赖的环境：</p>
+<pre><code>- PHP
 - Redis
 - MySQL
 - ElasticSearch
-</code></pre><p>多个 PR 测试进程之间，ES、Redis 是可以共享的，但 MySQL 不可以，其中考虑的方案是考虑能否通过改变项目中的数据库名称从而共享同一台 MySQL Server ，但实际调试中发现除去 ORM 能够简单变更数据库外，还是有很多场景中的数据库名称是写死在代码里面的，所以这条方案宣告放弃。</p><p>如标题所说，我们的 Jenkins 是运行在 docker 中的，那测试是不是也可以在 docker 中运行呢，所有依赖环境、软件包，全部通过 docker 打包整理，最终 Jenkins 在发起测试时需要调用的是一个 docker 命令，那么问题来了，怎样让 Jenkins 调用 docker ？想到的有以下两个思路：</p><ul><li><p>Jenkins 中完整安装 docker ，关注点：</p><ul><li>需要重新 build jenkins image，调试会很麻烦</li><li>性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例</li><li>网络会不会有问题？172 这个网段会不会混乱（还是调试问题）</li></ul></li><li><p>Jenkins 中调用宿主机的 docker ，关注点：</p><ul><li><strong>是否可行？</strong></li><li>优点：不需要重新 build jenkins image ，开箱即用，扩展 slave 会很方便</li></ul></li></ul><blockquote><p>后来发现前者的思路就是 GitLab CI 的测试方式，不过当时为了调试方便，以及减轻后续 jenkins 镜像升级的痛苦，选择了后者，也在网上确认到了确实有人这么实践过，并且 work 。</p></blockquote><h2 id=使用宿主机-docker-运行测试>使用宿主机 docker 运行测试</h2><p>Jenkins 调用宿主机 docker 的方法其实很简单：</p><ul><li><p>jenkins 中需要安装 docker client</p><blockquote><p>推荐 <a class=link href=https://docs.docker.com/engine/installation/linux/docker-ce/binaries/ target=_blank rel=noopener>Docker CE</a> ，二进制文件，下载下来就能用</p></blockquote></li><li><p>映射宿主机的 <code>/var/run/docker.sock</code> 到 jenkins</p><blockquote><p>这样我们上面安装的 docker client 可以直接通过此 socket 文件与宿主机的 docker daemon 通信</p></blockquote></li></ul><p>之后可以测试下能否正常通信：<code>./docker ps</code>，打印出的应该是宿主机中正在运行的容器。</p><blockquote><p>由于 Jenkins 容器的运行用户为 <code>jenkins</code> ，而挂载的 volume 默认用户是 root ，所以需要在容器运行后修改一下 <code>docker.sock</code> 文件的权限，这里我的容器是使用 <code>docker compose</code> 启动的，所以使用了命令：<code>docker-compose exec --user=0 master chmod o+rw /var/run/docker.sock</code> 来赋予 <code>jenkins</code> 读写 sock 文件的权限</p></blockquote><p>这样 jenkins 中的 docker 就能够与宿主机的 docker daemon 通信了。</p><h2 id=测试中的坑>测试中的坑</h2><ul><li>volume 映射</li></ul><blockquote><p>由于 jenkins 运行 docker 时实际是在宿主机运行的，所以如果你需要将代码库位置映射进测试容器，那映射的真实路径应该是宿主机的路径，如下：</p><ul><li>宿主机的 JENKINS_HOME ：<code>/home/docker/jenkins/volume/master</code></li><li>Jenkins 中的 HOME ：<code>/var/jenkins_home/</code></li><li>Jenkins 运行测试时的映射命令：<blockquote><p><code>... -v /home/docker/jenkins/volume/master/workspaces/ProjectName:/ProjectName</code></p></blockquote></li></ul></blockquote><ul><li>环境变量</li></ul><p>如上 volume 映射，也要再设置一遍</p><pre><code>... -e &quot;MYSQL_HOST=${MYSQL_HOST}&quot;
-</code></pre><h2 id=参考链接>参考链接</h2><ul><li><a class=link href=http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/ target=_blank rel=noopener>Using Docker-in-Docker for your CI or testing environment? Think twice.</a></li><li><a class=link href=https://github.com/jpetazzo/dind target=_blank rel=noopener>Docker-in-Docker</a></li></ul></section><footer class=article-footer><section class=article-tags><a href=/tags/docker/>Docker</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper></aside><footer class=site-footer><section class=copyright>&copy;
+</code></pre>
+<p>多个 PR 测试进程之间，ES、Redis 是可以共享的，但 MySQL 不可以，其中考虑的方案是考虑能否通过改变项目中的数据库名称从而共享同一台 MySQL Server ，但实际调试中发现除去 ORM 能够简单变更数据库外，还是有很多场景中的数据库名称是写死在代码里面的，所以这条方案宣告放弃。</p>
+<p>如标题所说，我们的 Jenkins 是运行在 docker 中的，那测试是不是也可以在 docker 中运行呢，所有依赖环境、软件包，全部通过 docker 打包整理，最终 Jenkins 在发起测试时需要调用的是一个 docker 命令，那么问题来了，怎样让 Jenkins 调用 docker ？想到的有以下两个思路：</p>
+<ul>
+<li>
+<p>Jenkins 中完整安装 docker ，关注点：</p>
+<ul>
+<li>需要重新 build jenkins image，调试会很麻烦</li>
+<li>性能会不会有问题？docker 中运行了一个 docker ，然后在这个 docker 里运行了四个实例</li>
+<li>网络会不会有问题？172 这个网段会不会混乱（还是调试问题）</li>
+</ul>
+</li>
+<li>
+<p>Jenkins 中调用宿主机的 docker ，关注点：</p>
+<ul>
+<li><strong>是否可行？</strong></li>
+<li>优点：不需要重新 build jenkins image ，开箱即用，扩展 slave 会很方便</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>后来发现前者的思路就是 GitLab CI 的测试方式，不过当时为了调试方便，以及减轻后续 jenkins 镜像升级的痛苦，选择了后者，也在网上确认到了确实有人这么实践过，并且 work 。</p>
+</blockquote>
+<h2 id=使用宿主机-docker-运行测试>使用宿主机 docker 运行测试</h2>
+<p>Jenkins 调用宿主机 docker 的方法其实很简单：</p>
+<ul>
+<li>
+<p>jenkins 中需要安装 docker client</p>
+<blockquote>
+<p>推荐 <a class=link href=https://docs.docker.com/engine/installation/linux/docker-ce/binaries/ target=_blank rel=noopener>Docker CE</a> ，二进制文件，下载下来就能用</p>
+</blockquote>
+</li>
+<li>
+<p>映射宿主机的 <code>/var/run/docker.sock</code> 到 jenkins</p>
+<blockquote>
+<p>这样我们上面安装的 docker client 可以直接通过此 socket 文件与宿主机的 docker daemon 通信</p>
+</blockquote>
+</li>
+</ul>
+<p>之后可以测试下能否正常通信：<code>./docker ps</code>，打印出的应该是宿主机中正在运行的容器。</p>
+<blockquote>
+<p>由于 Jenkins 容器的运行用户为 <code>jenkins</code> ，而挂载的 volume 默认用户是 root ，所以需要在容器运行后修改一下 <code>docker.sock</code> 文件的权限，这里我的容器是使用 <code>docker compose</code> 启动的，所以使用了命令：<code>docker-compose exec --user=0 master chmod o+rw /var/run/docker.sock</code> 来赋予 <code>jenkins</code> 读写 sock 文件的权限</p>
+</blockquote>
+<p>这样 jenkins 中的 docker 就能够与宿主机的 docker daemon 通信了。</p>
+<h2 id=测试中的坑>测试中的坑</h2>
+<ul>
+<li>volume 映射</li>
+</ul>
+<blockquote>
+<p>由于 jenkins 运行 docker 时实际是在宿主机运行的，所以如果你需要将代码库位置映射进测试容器，那映射的真实路径应该是宿主机的路径，如下：</p>
+<ul>
+<li>宿主机的 JENKINS_HOME ：<code>/home/docker/jenkins/volume/master</code></li>
+<li>Jenkins 中的 HOME ：<code>/var/jenkins_home/</code></li>
+<li>Jenkins 运行测试时的映射命令：
+<blockquote>
+<p><code>... -v /home/docker/jenkins/volume/master/workspaces/ProjectName:/ProjectName</code></p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>环境变量</li>
+</ul>
+<p>如上 volume 映射，也要再设置一遍</p>
+<pre><code>... -e &quot;MYSQL_HOST=${MYSQL_HOST}&quot;
+</code></pre><h2 id=参考链接>参考链接</h2>
+<ul>
+<li><a class=link href=http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/ target=_blank rel=noopener>Using Docker-in-Docker for your CI or testing environment? Think twice.</a></li>
+<li><a class=link href=https://github.com/jpetazzo/dind target=_blank rel=noopener>Docker-in-Docker</a></li>
+</ul>
+</section>
+<footer class=article-footer>
+<section class=article-tags>
+<a href=/tags/docker/>Docker</a>
+</section>
+<section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span>
+</section>
+</footer>
+</article>
+<aside class=related-contents--wrapper>
+</aside>
+<footer class=site-footer>
+<section class=copyright>
+&copy;
 2012 -
-2021 zhwei's Blog</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.5.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+2021 zhwei's Blog
+</section>
+<section class=powerby>
+Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> <br>
+Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>
+</section>
+</footer>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#起因>起因</a></li><li><a href=#选择方案>选择方案</a></li><li><a href=#使用宿主机-docker-运行测试>使用宿主机 docker 运行测试</a></li><li><a href=#测试中的坑>测试中的坑</a></li><li><a href=#参考链接>参考链接</a></li></ol></nav></div></section></aside></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const customFont=document.createElement('link');customFont.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";customFont.type="text/css";customFont.rel="stylesheet";document.head.appendChild(customFont);}());</script></body></html>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous>
+</main>
+<aside class="sidebar right-sidebar sticky">
+<section class="widget archives">
+<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+</div>
+<h2 class="widget-title section-title">Table of contents</h2>
+<div class=widget--toc>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#起因>起因</a></li>
+<li><a href=#选择方案>选择方案</a></li>
+<li><a href=#使用宿主机-docker-运行测试>使用宿主机 docker 运行测试</a></li>
+<li><a href=#测试中的坑>测试中的坑</a></li>
+<li><a href=#参考链接>参考链接</a></li>
+</ol>
+</nav>
+</div>
+</section>
+</aside>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</body>
+</html>

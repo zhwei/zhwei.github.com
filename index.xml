@@ -67,7 +67,7 @@ alt="蓝猫泡泡">
 &lt;p>远程工作也是需要付出一些代价的。坐班工作时除去技术层面的成长外，还可能有机会走向管理岗位，但远程是极少有管理岗位机会的，甚至在技术成长层面也会很容易进入吃老本的地步。所以更需要对自己提高要求，更主动地从多方面提升自己。&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 133; flex-basis: 319px">
 &lt;a href="https://zhw.in/post/remote-work-001/media/qingdao-002.png" data-size="3225x2419">&lt;img src="https://zhw.in/post/remote-work-001/media/qingdao-002.png"
-srcset="https://zhw.in/post/remote-work-001/media/qingdao-002_hu5495f8b2a0232dc635f23a82a0609de6_925419_480x0_resize_box_2.png 480w, https://zhw.in/post/remote-work-001/media/qingdao-002_hu5495f8b2a0232dc635f23a82a0609de6_925419_1024x0_resize_box_2.png 1024w"
+srcset="https://zhw.in/post/remote-work-001/media/qingdao-002_hu5495f8b2a0232dc635f23a82a0609de6_925419_480x0_resize_box_3.png 480w, https://zhw.in/post/remote-work-001/media/qingdao-002_hu5495f8b2a0232dc635f23a82a0609de6_925419_1024x0_resize_box_3.png 1024w"
 width="3225"
 height="2419"
 loading="lazy"
@@ -242,7 +242,7 @@ alt="Environments">
 --form 'password=&amp;quot;123456&amp;quot;' \
 --form '_csrf_token=&amp;quot;hmXaw7m2Mgyinr7yPHPgPbfVmtH4dOSwOUXykhC0&amp;quot;'
 &lt;/code>&lt;/pre>&lt;p>在 Pre-request Script 中发起 GET 请求解析 csrf token：&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="c1">// 先清理 cookie (登陆状态)
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="c1">// 先清理 cookie (登陆状态)
 &lt;/span>&lt;span class="c1">// 需要预先配置域名到 Whitelist Domains，否则无法使用 Script 清理
 &lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="nx">pm&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">cookies&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">jar&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="nx">clear&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">pm&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">environment&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;APP_URL&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">clearError&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">=&amp;gt;&lt;/span> &lt;span class="p">{&lt;/span>
 &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">clearError&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
@@ -294,7 +294,8 @@ alt="Request">
 &lt;p>下面列一下从开始使用到目前为止遇到的组网工具机器优缺点。&lt;/p>
 &lt;h3 id="zerotier">ZeroTier&lt;/h3>
 &lt;blockquote>
-&lt;p>&lt;a href="https://www.zerotier.com">https://www.zerotier.com&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.zerotier.com" target="_blank" rel="noopener"
+>https://www.zerotier.com&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;p>我目前用的工具，放在最开始并不意味着它是最好的，但它是最适合我的个人场景的。&lt;/p>
 &lt;p>优点&lt;/p>
@@ -325,7 +326,8 @@ alt="Request">
 &lt;/blockquote>
 &lt;h3 id="nebula">Nebula&lt;/h3>
 &lt;blockquote>
-&lt;p>&lt;a href="https://github.com/slackhq/nebula">https://github.com/slackhq/nebula&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/slackhq/nebula" target="_blank" rel="noopener"
+>https://github.com/slackhq/nebula&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;p>Slack 出品的开源项目&lt;/p>
 &lt;p>优点&lt;/p>
@@ -351,7 +353,8 @@ alt="Request">
 &lt;/ul>
 &lt;h3 id="tinc">Tinc&lt;/h3>
 &lt;blockquote>
-&lt;p>&lt;a href="https://www.tinc-vpn.org">https://www.tinc-vpn.org&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.tinc-vpn.org" target="_blank" rel="noopener"
+>https://www.tinc-vpn.org&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;p>老牌 VPN ，看官网样式就能 GET 到了。我在另一个生产环境用到了 Tinc，虽然 ZeroTier 也不错，但毕竟是个商业服务，不如开源项目用起来放心 + &lt;strong>便宜&lt;/strong>。&lt;/p>
 &lt;p>优点&lt;/p>
@@ -367,7 +370,8 @@ alt="Request">
 &lt;/ul>
 &lt;h3 id="wireguard">WireGuard&lt;/h3>
 &lt;blockquote>
-&lt;p>&lt;a href="https://www.wireguard.com">https://www.wireguard.com&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.wireguard.com" target="_blank" rel="noopener"
+>https://www.wireguard.com&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;p>优点&lt;/p>
 &lt;ul>
@@ -382,7 +386,8 @@ alt="Request">
 &lt;p>现阶段轻度使用没遇到太明显的缺点&lt;/p>
 &lt;h3 id="softether">SoftEther&lt;/h3>
 &lt;blockquote>
-&lt;p>&lt;a href="https://www.softether.org">https://www.softether.org&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.softether.org" target="_blank" rel="noopener"
+>https://www.softether.org&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;p>很强大的 VPN 软件，小型企业完全可以用来实现多办公室局域网和日常 VPN 需求。&lt;/p>
 &lt;p>优点&lt;/p>
@@ -403,15 +408,18 @@ alt="Request">
 &lt;li>管理软件有点复杂（好像也不是缺点）&lt;/li>
 &lt;/ul>
 &lt;h3 id="其他">其他&lt;/h3>
-&lt;p>tailscale，&lt;a href="https://tailscale.com">https://tailscale.com&lt;/a>&lt;/p>
+&lt;p>tailscale，&lt;a class="link" href="https://tailscale.com" target="_blank" rel="noopener"
+>https://tailscale.com&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>也是个商业服务，没有使用过，暂不评价&lt;/li>
 &lt;/ul>
 &lt;h3 id="内网穿透代理">内网穿透代理&lt;/h3>
 &lt;p>下面两个工具和前面提到的虚拟组网并不是一类工具，但在特定场景用起来会非常方便。例如，在本地开发时需要接受第三方服务的 callback 时，可以使用下面工具临时暴露本地服务到公网。&lt;/p>
 &lt;ul>
-&lt;li>ngrok，&lt;a href="https://ngrok.com">https://ngrok.com&lt;/a>&lt;/li>
-&lt;li>frp，&lt;a href="https://github.com/fatedier/frp">https://github.com/fatedier/frp&lt;/a>&lt;/li>
+&lt;li>ngrok，&lt;a class="link" href="https://ngrok.com" target="_blank" rel="noopener"
+>https://ngrok.com&lt;/a>&lt;/li>
+&lt;li>frp，&lt;a class="link" href="https://github.com/fatedier/frp" target="_blank" rel="noopener"
+>https://github.com/fatedier/frp&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h3 id="配置过程中的一些参考文章">配置过程中的一些参考文章&lt;/h3>
 &lt;ul>
@@ -596,12 +604,12 @@ Teahour 更新频率较低，作为古早的播客，能年更也可以作为遗
 >http://en.wikipedia.org/wiki/POST_(HTTP)&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="http://en.wikipedia.org/wiki/GET%5c_%5c%28HTTP%5c%29#Request_methods" target="_blank" rel="noopener"
 >http://en.wikipedia.org/wiki/GET_(HTTP)&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Web敏捷开发</title><link>https://zhw.in/post/web%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</link><pubDate>Fri, 13 Jun 2014 00:00:00 +0000</pubDate><guid>https://zhw.in/post/web%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</guid><description>&lt;p>&lt;a class="link" href="https://zhw.in/slide/agile-web-development.html" >AGILE WEB DEVELOPMENT WITH DJANGO&lt;/a>&lt;/p></description></item><item><title>django从一个form保存到两个model</title><link>https://zhw.in/post/django%E4%BB%8E%E4%B8%80%E4%B8%AAform%E4%BF%9D%E5%AD%98%E5%88%B0%E4%B8%A4%E4%B8%AAmodel/</link><pubDate>Wed, 19 Feb 2014 00:00:00 +0000</pubDate><guid>https://zhw.in/post/django%E4%BB%8E%E4%B8%80%E4%B8%AAform%E4%BF%9D%E5%AD%98%E5%88%B0%E4%B8%A4%E4%B8%AAmodel/</guid><description>&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="kn">from&lt;/span> &lt;span class="nn">django.forms.models&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">model_to_dict&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fields_for_model&lt;/span>
+&lt;/ul></description></item><item><title>Web敏捷开发</title><link>https://zhw.in/post/web%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</link><pubDate>Fri, 13 Jun 2014 00:00:00 +0000</pubDate><guid>https://zhw.in/post/web%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/</guid><description>&lt;p>&lt;a class="link" href="https://zhw.in/slide/agile-web-development.html" >AGILE WEB DEVELOPMENT WITH DJANGO&lt;/a>&lt;/p></description></item><item><title>django从一个form保存到两个model</title><link>https://zhw.in/post/django%E4%BB%8E%E4%B8%80%E4%B8%AAform%E4%BF%9D%E5%AD%98%E5%88%B0%E4%B8%A4%E4%B8%AAmodel/</link><pubDate>Wed, 19 Feb 2014 00:00:00 +0000</pubDate><guid>https://zhw.in/post/django%E4%BB%8E%E4%B8%80%E4%B8%AAform%E4%BF%9D%E5%AD%98%E5%88%B0%E4%B8%A4%E4%B8%AAmodel/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="kn">from&lt;/span> &lt;span class="nn">django.forms.models&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">model_to_dict&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fields_for_model&lt;/span>
 &lt;span class="k">class&lt;/span> &lt;span class="nc">UserDetailsForm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ModelForm&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="bp">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">kwargs&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">kwargs&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="n">_fields&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;first_name&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;last_name&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;email&amp;#39;&lt;/span>&lt;span class="p">,)&lt;/span>
 &lt;span class="n">_initial&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">kwargs&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pop&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;initial&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># pop出initial参数&lt;/span>
-&lt;span class="n">_initial&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">model_to_dict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">instance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">_fields&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">instance&lt;/span> &lt;span class="ow">is&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="bp">None&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{}&lt;/span>
+&lt;span class="n">_initial&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">model_to_dict&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">instance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">_fields&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="n">instance&lt;/span> &lt;span class="ow">is&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="kc">None&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{}&lt;/span>
 &lt;span class="nb">super&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">UserDetailsForm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">initial&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">_initial&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">instance&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">kwargs&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fields&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fields_for_model&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">User&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">_fields&lt;/span>&lt;span class="p">))&lt;/span>
 &lt;span class="k">class&lt;/span> &lt;span class="nc">Meta&lt;/span>&lt;span class="p">:&lt;/span>
@@ -615,7 +623,8 @@ Teahour 更新频率较低，作为古早的播客，能年更也可以作为遗
 &lt;span class="n">u&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">save&lt;/span>&lt;span class="p">()&lt;/span>
 &lt;span class="n">profile&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">super&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">UserDetailsForm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">save&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="n">kwargs&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="k">return&lt;/span> &lt;span class="n">profile&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>取自 &lt;a href="http://stackoverflow.com/questions/15889794/creating-one-django-form-to-save-two-models">http://stackoverflow.com/questions/15889794/creating-one-django-form-to-save-two-models&lt;/a>&lt;/p>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>取自 &lt;a class="link" href="http://stackoverflow.com/questions/15889794/creating-one-django-form-to-save-two-models" target="_blank" rel="noopener"
+>http://stackoverflow.com/questions/15889794/creating-one-django-form-to-save-two-models&lt;/a>&lt;/p>
 &lt;p>不过原文中的代码会出现 &lt;code>__init__() got multiple values for keyword argument&lt;/code> 报错。&lt;/p>
 &lt;p>是因为kwargs中已经包含initial参数，而在调用父类的初始化方法时候将initial独立传递, 这样就造成了传递了两次 initial参数，所以会报出上面的错误。只要将 initial从kwargs中pop出来就可以了。&lt;/p></description></item><item><title>Gotit改进与待做</title><link>https://zhw.in/post/gotit%E6%94%B9%E8%BF%9B%E4%B8%8E%E5%BE%85%E5%81%9A/</link><pubDate>Tue, 18 Feb 2014 00:00:00 +0000</pubDate><guid>https://zhw.in/post/gotit%E6%94%B9%E8%BF%9B%E4%B8%8E%E5%BE%85%E5%81%9A/</guid><description>&lt;p>Gotit 近段时间的改进和以后一段时间内的更新计划，挖坑的时间到了，准备跳票。&lt;/p>
 &lt;h1 id="改进">改进&lt;/h1>
@@ -685,10 +694,11 @@ loading="lazy"
 &lt;/a>
 &lt;/figure>&lt;/p></description></item><item><title>Supervisor笔记</title><link>https://zhw.in/post/supervisor%E7%AC%94%E8%AE%B0/</link><pubDate>Sat, 14 Dec 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/supervisor%E7%AC%94%E8%AE%B0/</guid><description>&lt;p>Supervisor是一个C/S系统，用来监控和控制多个服务进程，只限于UNIX-like操作系统。&lt;/p>
 &lt;h1 id="官方文档">官方文档&lt;/h1>
-&lt;p>&lt;a href="http://supervisord.org/">http://supervisord.org/&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="http://supervisord.org/" target="_blank" rel="noopener"
+>http://supervisord.org/&lt;/a>&lt;/p>
 &lt;h1 id="安装">安装&lt;/h1>
 &lt;p>setuptools&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash"> pip install supervisor
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash"> pip install supervisor
 &lt;span class="c1"># or&lt;/span>
 easy_install supervisor
 &lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="初始使用">初始使用&lt;/h1>
@@ -701,13 +711,13 @@ easy_install supervisor
 &lt;li>增加web管理界面&lt;/li>
 &lt;/ul>
 &lt;p>取消配置文件中的下列行，并按需配置用户名密码&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="k">[inet_http_server]&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="k">[inet_http_server]&lt;/span>
 &lt;span class="na">port&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">*:9001&lt;/span>
 &lt;span class="na">username&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">your_username ; (default is no username (open server))&lt;/span>
 &lt;span class="na">password&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">your_password ; (default is no password (open server))&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="添加服务">添加服务&lt;/h2>
 &lt;p>配置文件详解&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-ini" data-lang="ini"> &lt;span class="k">[supervisorctl]&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini"> &lt;span class="k">[supervisorctl]&lt;/span>
 &lt;span class="na">serverurl&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">unix:///tmp/supervisor.sock ; use a unix:// URL for a unix socket
 &lt;/span>&lt;span class="s"> ;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket
 &lt;/span>&lt;span class="s"> ;username=chris ; should be same as http_username if set
@@ -747,7 +757,7 @@ easy_install supervisor
 &lt;span class="c1">;environment=A=&amp;#34;1&amp;#34;,B=&amp;#34;2&amp;#34; ; 进程附加环境 (def no adds)&lt;/span>
 &lt;span class="c1">;serverurl=AUTO ; override serverurl computation (childutils)&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="添加事件监听器">添加事件监听器&lt;/h2>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-ini" data-lang="ini">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">
 &lt;span class="c1">; The below sample eventlistener section shows all possible&lt;/span>
 &lt;span class="c1">; eventlistener subsection values, create one or more &amp;#39;real&amp;#39;&lt;/span>
 &lt;span class="c1">; eventlistener: sections to be able to handle event notifications&lt;/span>
@@ -786,7 +796,7 @@ easy_install supervisor
 &lt;span class="c1">;environment=A=&amp;#34;1&amp;#34;,B=&amp;#34;2&amp;#34; ; process environment additions&lt;/span>
 &lt;span class="c1">;serverurl=AUTO ; override serverurl computation (childutils)&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="添加进程组">添加进程组&lt;/h2>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-ini" data-lang="ini"> &lt;span class="c1">; The below sample group section shows all possible group values,&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini"> &lt;span class="c1">; The below sample group section shows all possible group values,&lt;/span>
 &lt;span class="c1">; create one or more &amp;#39;real&amp;#39; group: sections to create &amp;#34;heterogeneous&amp;#34;&lt;/span>
 &lt;span class="c1">; process groups.&lt;/span>
 &lt;span class="c1">; 下面是进程组的可选配置，可以创建一个或多个进程组。&lt;/span>
@@ -795,7 +805,7 @@ easy_install supervisor
 &lt;span class="c1">;priority=999 ; the relative start priority (default 999)&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="命令行工具-supervisorctl">命令行工具 supervisorctl&lt;/h2>
 &lt;p>查看所有命令&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">
 $ supervisorctl &lt;span class="nb">help&lt;/span>
 default commands &lt;span class="o">(&lt;/span>&lt;span class="nb">type&lt;/span> &lt;span class="nb">help&lt;/span> &lt;span class="o">)&lt;/span>:
 &lt;span class="o">=====================================&lt;/span>
@@ -871,7 +881,7 @@ vgremove /dev/test0
 pvremove /dev/sda{3..5}
 &lt;/code>&lt;/pre>
 &lt;p>#更多用法&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">
 $ sudo lvm
 lvm&amp;gt;&lt;span class="p">;&lt;/span> &lt;span class="nb">help&lt;/span>
 Available lvm commands:
@@ -972,7 +982,7 @@ alt="t">
 &lt;/code>&lt;/pre>&lt;p>在注册表中找不到python，使用下面的一个脚本放在c盘根目录执行下就可以, 见&lt;a class="link" href="http://www.cnblogs.com/min0208/archive/2012/05/24/2515584.html" target="_blank" rel="noopener"
 >Link&lt;/a>&lt;/p>
 &lt;h2 id="程序">程序&lt;/h2>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">
 &lt;span class="c1"># SmallestService.py&lt;/span>
 &lt;span class="c1">#&lt;/span>
 &lt;span class="c1"># A sample demonstrating the smallest possible service written in Python.&lt;/span>
@@ -986,7 +996,7 @@ alt="t">
 &lt;span class="n">win32serviceutil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ServiceFramework&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="c1"># Create an event which we will use to wait on.&lt;/span>
 &lt;span class="c1"># The &amp;#34;service stop&amp;#34; request will set this event.&lt;/span>
-&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hWaitStop&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">win32event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CreateEvent&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">None&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hWaitStop&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">win32event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CreateEvent&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="nf">SvcStop&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="c1"># Before we do anything, tell the SCM we are starting the stop process.&lt;/span>
 &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ReportServiceStatus&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">win32service&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SERVICE_STOP_PENDING&lt;/span>&lt;span class="p">)&lt;/span>
@@ -1002,7 +1012,7 @@ alt="t">
 &lt;p>因为RPCServer会一直阻塞线程，这里创建了一个子线程创建RPCServer，使用一个循环条件来控制线程的终结Link，这样不会导致window服务无法停止的问题。 需要在SvcStop方法最后加上所执行的程序的终结方法就可以。&lt;/p></description></item><item><title>windows service example using pyInstaller</title><link>https://zhw.in/post/windows-service-example-using-pyinstaller/</link><pubDate>Sat, 09 Nov 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/windows-service-example-using-pyinstaller/</guid><description>&lt;ul>
 &lt;li>用python写的windows服务，支持pyinstaller打包。&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">
 &lt;span class="c1"># Usage:&lt;/span>
 &lt;span class="c1"># service.exe install&lt;/span>
 &lt;span class="c1"># service.exe start&lt;/span>
@@ -1025,8 +1035,8 @@ alt="t">
 &lt;span class="n">_svc_deps_&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;EventLog&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="n">win32serviceutil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ServiceFramework&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hWaitStop&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">win32event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CreateEvent&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">None&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">isAlive&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="bp">True&lt;/span>
+&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hWaitStop&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">win32event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CreateEvent&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">isAlive&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="nf">SvcStop&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="c1"># tell Service Manager we are trying to stop (required)&lt;/span>
 &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ReportServiceStatus&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">win32service&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SERVICE_STOP_PENDING&lt;/span>&lt;span class="p">)&lt;/span>
@@ -1035,7 +1045,7 @@ alt="t">
 &lt;span class="c1"># servicemanager.LogInfoMsg(&amp;#34;aservice - Recieved stop signal&amp;#34;)&lt;/span>
 &lt;span class="c1"># set the event to call&lt;/span>
 &lt;span class="n">win32event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SetEvent&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hWaitStop&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">isAlive&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="bp">False&lt;/span>
+&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">isAlive&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">False&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="nf">SvcDoRun&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="kn">import&lt;/span> &lt;span class="nn">servicemanager&lt;/span>
 &lt;span class="c1"># Write a &amp;#39;started&amp;#39; event to the event log... (not required)&lt;/span>
@@ -1049,7 +1059,7 @@ alt="t">
 &lt;span class="k">while&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">isAlive&lt;/span>&lt;span class="p">:&lt;/span>
 &lt;span class="c1"># wait for service stop signal, if timeout, loop again&lt;/span>
 &lt;span class="n">rc&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">win32event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">WaitForSingleObject&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hWaitStop&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">timeout&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="k">print&lt;/span> &lt;span class="s2">&amp;#34;looping&amp;#34;&lt;/span>
+&lt;span class="nb">print&lt;/span> &lt;span class="s2">&amp;#34;looping&amp;#34;&lt;/span>
 &lt;span class="c1"># and write a &amp;#39;stopped&amp;#39; event to the event log (not required)&lt;/span>
 &lt;span class="c1">#&lt;/span>
 &lt;span class="n">win32evtlogutil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ReportEvent&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_svc_name_&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">servicemanager&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">PYS_SERVICE_STOPPED&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span>
@@ -1075,7 +1085,8 @@ alt="t">
 &lt;/ul></description></item><item><title>pySerial -- Python的串口通讯模块</title><link>https://zhw.in/post/pyserial-python%E7%9A%84%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E6%A8%A1%E5%9D%97/</link><pubDate>Sat, 26 Oct 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/pyserial-python%E7%9A%84%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E6%A8%A1%E5%9D%97/</guid><description>&lt;h2 id="介绍">介绍&lt;/h2>
 &lt;p>pySerial&lt;/p>
 &lt;p>封装了串口通讯模块，支持Linux、Windows、BSD(可能支持所有支持POSIX的操作系统)，支持Jython(Java)和IconPython(.NET and Mono).&lt;/p>
-&lt;p>首页 &lt;a href="http://pyserial.sf.net/">http://pyserial.sf.net/&lt;/a>&lt;/p>
+&lt;p>首页 &lt;a class="link" href="http://pyserial.sf.net/" target="_blank" rel="noopener"
+>http://pyserial.sf.net/&lt;/a>&lt;/p>
 &lt;h2 id="特性">特性&lt;/h2>
 &lt;ul>
 &lt;li>所有平台使用同样的类接口&lt;/li>
@@ -1095,7 +1106,8 @@ alt="t">
 easy_install pyserial
 &lt;/code>&lt;/pre>
 &lt;p>&lt;em>windows&lt;/em>&lt;/p>
-&lt;p>下载地址 ： &lt;a href="http://sourceforge.net/project/showfiles.php?group_id=46487">http://sourceforge.net/project/showfiles.php?group_id=46487&lt;/a>&lt;/p>
+&lt;p>下载地址 ： &lt;a class="link" href="http://sourceforge.net/project/showfiles.php?group_id=46487" target="_blank" rel="noopener"
+>http://sourceforge.net/project/showfiles.php?group_id=46487&lt;/a>&lt;/p>
 &lt;h2 id="快速上手">快速上手&lt;/h2>
 &lt;p>Open port 0 at &amp;ldquo;9600,8,N,1&amp;rdquo;, no timeout&lt;/p>
 &lt;pre>&lt;code>&amp;gt;&amp;gt;&amp;gt; import serial
@@ -1194,15 +1206,15 @@ serial.EIGHTBITS
 官方文档：http://pyserial.sf.net/&lt;/p></description></item><item><title>使用django框架的reloader重载WSGI app</title><link>https://zhw.in/post/%E4%BD%BF%E7%94%A8django%E6%A1%86%E6%9E%B6%E7%9A%84reloader%E9%87%8D%E8%BD%BDwsgi-app/</link><pubDate>Sat, 28 Sep 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E4%BD%BF%E7%94%A8django%E6%A1%86%E6%9E%B6%E7%9A%84reloader%E9%87%8D%E8%BD%BDwsgi-app/</guid><description>&lt;p>使用django框架的autoreload在网站程序代码改动时重载应用。&lt;/p>
 &lt;p>一般来说这种方法适用与所有的wsgi app, 这里只说下web.py和bottle&lt;/p>
 &lt;p>&lt;strong>bottle&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="kn">from&lt;/span> &lt;span class="nn">bottle&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">run&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Bottle&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="kn">from&lt;/span> &lt;span class="nn">bottle&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">run&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Bottle&lt;/span>
 &lt;span class="n">app&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Bottle&lt;/span>&lt;span class="p">()&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="nf">dev_server&lt;/span>&lt;span class="p">():&lt;/span>
-&lt;span class="n">run&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;0.0.0.0&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">8080&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">debug&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="bp">True&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="n">run&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;0.0.0.0&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">8080&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">debug&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="k">if&lt;/span> &lt;span class="s1">&amp;#39;__main__&amp;#39;&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="vm">__name__&lt;/span>&lt;span class="p">:&lt;/span>
 &lt;span class="kn">from&lt;/span> &lt;span class="nn">django.utils&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">autoreload&lt;/span>
 &lt;span class="n">autoreload&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dev_server&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>web.py&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="kn">from&lt;/span> &lt;span class="nn">code&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">app&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="kn">from&lt;/span> &lt;span class="nn">code&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">app&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="nf">dev_server&lt;/span>&lt;span class="p">():&lt;/span>
 &lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">run&lt;/span>&lt;span class="p">()&lt;/span>
 &lt;span class="k">if&lt;/span> &lt;span class="vm">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
@@ -1295,7 +1307,7 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;h1 id="未完">(未完)&lt;/h1></description></item><item><title>django相关笔记</title><link>https://zhw.in/post/django%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/</link><pubDate>Sun, 04 Aug 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/django%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="权限判断的装饰符">权限判断的装饰符&lt;/h1>
 &lt;h2 id="判断用户是否staff">判断用户是否staff&lt;/h2>
 &lt;p>is_staff isn&amp;rsquo;t a permission so instead of permission_required you could use:&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="nd">@user_passes_test&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">lambda&lt;/span> &lt;span class="n">u&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">u&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_staff&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="nd">@user_passes_test&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">lambda&lt;/span> &lt;span class="n">u&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">u&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_staff&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="c1">#或者&lt;/span>
 &lt;span class="kn">from&lt;/span> &lt;span class="nn">django.contrib.admin.views.decorators&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">staff_member_required&lt;/span>
 &lt;span class="nd">@staff_member_required&lt;/span>
@@ -1304,7 +1316,7 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 >link&lt;/a>&lt;/p>
 &lt;h2 id="如果已经登陆则跳转">如果已经登陆则跳转&lt;/h2>
 &lt;h3 id="适用于方法">适用于方法&lt;/h3>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">def&lt;/span> &lt;span class="nf">ver_not_login&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">func&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">def&lt;/span> &lt;span class="nf">ver_not_login&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">func&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="nf">ver&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="n">request&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>
 &lt;span class="k">if&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_authenticated&lt;/span>&lt;span class="p">():&lt;/span>
@@ -1313,11 +1325,11 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;span class="k">return&lt;/span> &lt;span class="n">func&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="k">return&lt;/span> &lt;span class="n">ver&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;h4 id="使用">使用&lt;/h4>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="nd">@ver_not_login&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="nd">@ver_not_login&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="nf">register&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="k">pass&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;h3 id="适用于url">适用于url&lt;/h3>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">def&lt;/span> &lt;span class="nf">ver_not_login_with_template&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">func&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">def&lt;/span> &lt;span class="nf">ver_not_login_with_template&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">func&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="nf">ver&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">kwargs&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="n">request&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>
 &lt;span class="n">template_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">kwargs&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;template_name&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
@@ -1327,17 +1339,17 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;span class="k">return&lt;/span> &lt;span class="n">func&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">template_name&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="k">return&lt;/span> &lt;span class="n">ver&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;h4 id="使用-1">使用&lt;/h4>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="n">url&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">r&lt;/span>&lt;span class="s1">&amp;#39;^$&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ver_not_login_with_template&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">login&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="n">url&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">r&lt;/span>&lt;span class="s1">&amp;#39;^$&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ver_not_login_with_template&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">login&lt;/span>&lt;span class="p">),&lt;/span>
 &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;template_name&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s1">&amp;#39;login.html&amp;#39;&lt;/span>&lt;span class="p">},&lt;/span>
 &lt;span class="p">),&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;h1 id="用户操作相关">用户操作相关&lt;/h1>
 &lt;h2 id="组管理">组管理&lt;/h2>
 &lt;p>添加用户到组
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="n">dian&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Group&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">filter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;dian&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="n">dian&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Group&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">filter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;dian&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>
 &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">groups&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dian&lt;/span>&lt;span class="p">)&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
 &lt;h1 id="其他">其他&lt;/h1>
 &lt;h2 id="调用django项目环境">调用django项目环境&lt;/h2>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="kn">from&lt;/span> &lt;span class="nn">django.core.management&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">setup_environ&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="kn">from&lt;/span> &lt;span class="nn">django.core.management&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">setup_environ&lt;/span>
 &lt;span class="kn">import&lt;/span> &lt;span class="nn">webtest.settings&lt;/span>
 &lt;span class="n">setup_environ&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">webtest&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">settings&lt;/span>&lt;span class="p">)&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;h2 id="django-form-choicefields">django form ChoiceFields&lt;/h2>
@@ -1346,7 +1358,8 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;p>遭遇 &lt;code>IOError: decoder jpeg not available&lt;/code>&lt;/p>
 &lt;p>安装libjpeg8-dev&lt;/p>
 &lt;p>此处使用PIL或者pillow均可以，只要修改setup.py文件中库的引用位置&lt;/p>
-&lt;p>&lt;a href="http://three99.com/posts/how-to-install-pil-on-ubuntu-with-jpeg-support/">http://three99.com/posts/how-to-install-pil-on-ubuntu-with-jpeg-support/&lt;/a>&lt;/p></description></item><item><title>Gotit从零开始</title><link>https://zhw.in/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</link><pubDate>Wed, 31 Jul 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</guid><description>&lt;h1 id="gotit">Gotit&lt;/h1>
+&lt;p>&lt;a class="link" href="http://three99.com/posts/how-to-install-pil-on-ubuntu-with-jpeg-support/" target="_blank" rel="noopener"
+>http://three99.com/posts/how-to-install-pil-on-ubuntu-with-jpeg-support/&lt;/a>&lt;/p></description></item><item><title>Gotit从零开始</title><link>https://zhw.in/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</link><pubDate>Wed, 31 Jul 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/gotit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</guid><description>&lt;h1 id="gotit">Gotit&lt;/h1>
 &lt;p>gotit开始时叫做正方教务系统查询工具, 仅用来帮助校外同学们查询本学期的成绩. gotit的名字只来源于我偶然买到的这个域名&lt;a class="link" href="http://gotit.asia" target="_blank" rel="noopener"
 >gotit.aisa&lt;/a>, 当初.asia域名首年十八元促销, 就买到了这个. Gotit维护至今, 一直没有好好总结一下, 期间停停落落, 真的体会到了做产品的艰难, 出状况的时间不是自己说了算的, 使用人数多的时候每一秒都有十几个人同时访问, 每一个小小的失误, 都会给很多用户造成极大的困扰.&lt;/p>
 &lt;p>2013-01-09至2013-07-31&lt;/p>
@@ -1391,14 +1404,14 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 >这里&lt;/a>, 现在主要是完成了正方教务系统里的成绩查询, 考试时间查询和课表查询的格式还没有处理好.&lt;/p></description></item><item><title>本站用的管理工具</title><link>https://zhw.in/post/%E6%9C%AC%E7%AB%99%E7%94%A8%E7%9A%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</link><pubDate>Tue, 18 Jun 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E6%9C%AC%E7%AB%99%E7%94%A8%E7%9A%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</guid><description>&lt;p>脚本可见 &lt;a class="link" href="https://gist.github.com/zhwei/5613474" target="_blank" rel="noopener"
 >https://gist.github.com/zhwei/5613474&lt;/a>&lt;/p>
 &lt;h2 id="字典排序-line118">字典排序 line.118&lt;/h2>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="n">dict1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">sorted&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dict1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">iteritems&lt;/span>&lt;span class="p">(),&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="n">dict1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">sorted&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dict1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">iteritems&lt;/span>&lt;span class="p">(),&lt;/span>
 &lt;span class="n">key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">lambda&lt;/span> &lt;span class="n">k_v&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">k_v&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">k_v&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]),&lt;/span>
-&lt;span class="n">reverse&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="bp">True&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># 字典按值排序, 生成元组列表&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;span class="n">reverse&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># 字典按值排序, 生成元组列表&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;p>通过&lt;code>.iteritems()&lt;/code>方法将字典转化成元组列表, 然后按元组的第二元素进行排序.&lt;/p>
 &lt;h2 id="文章查找--line128">文章查找 line.128&lt;/h2>
 &lt;p>将博客文件读入列表&lt;br>
 对每一元素&lt;code>pop()&lt;/code>使用&lt;code>find()&lt;/code>方法查找关键词, 如果找到则将其插入列表首部, 循环一个列表长度后剩下的元素均是包含关键词的&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="k">for&lt;/span> &lt;span class="n">key&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">keys&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="k">for&lt;/span> &lt;span class="n">key&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">keys&lt;/span>&lt;span class="p">:&lt;/span>
 &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>
 &lt;span class="n">leng&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">len&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">artlist&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="k">while&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">leng&lt;/span>&lt;span class="p">:&lt;/span>
@@ -1412,7 +1425,7 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;h2 id="操作git-line177">操作git line.177&lt;/h2>
 &lt;p>每次敲git命令也是挺麻烦的, 做了一个全自动的, 除了需要自己写 &lt;code>commit message&lt;/code>&lt;/p>
 &lt;p>需要安装&lt;code>sh&lt;/code>模块&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">def&lt;/span> &lt;span class="nf">git&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">def&lt;/span> &lt;span class="nf">git&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;
 &lt;/span>&lt;span class="s2"> 将修改提交到git仓库
 &lt;/span>&lt;span class="s2"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
@@ -1420,24 +1433,24 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;span class="kn">import&lt;/span> &lt;span class="nn">sh&lt;/span>
 &lt;span class="n">git&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sh&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">bake&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">_cwd&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">ROOT_FILE&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># 初始化 git, ROOT_FILE 为 .git 文件夹所在目录&lt;/span>
 &lt;span class="k">except&lt;/span> &lt;span class="ne">ImportError&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;请安装 sh 模块&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;请安装 sh 模块&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
 &lt;span class="n">argv&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="c1"># 如果还有其他参数就返回 git status&lt;/span>
-&lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="p">())&lt;/span>
 &lt;span class="k">except&lt;/span> &lt;span class="ne">IndexError&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;.&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="p">())&lt;/span>
-&lt;span class="n">m&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">raw_input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;|--commit message --&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">commit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;.&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="n">m&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">raw_input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;|--commit message --&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">git&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">commit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="p">))&lt;/span>
 &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">chdir&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ROOT_FILE&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;span class="k">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;|--pushing to &amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">ORIGIN&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;|--pushing to &amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">ORIGIN&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">system&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;git push origin &amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">ORIGIN&lt;/span>&lt;span class="p">)&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;p>git = sh.git.bake(_cwd=ROOT_FILE)&lt;/p>
 &lt;p>初始化 git, ROOT_FILE 为 .git 文件夹所在目录&lt;/p></description></item><item><title>响应式页面设计</title><link>https://zhw.in/post/%E5%93%8D%E5%BA%94%E5%BC%8F%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1/</link><pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E5%93%8D%E5%BA%94%E5%BC%8F%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1/</guid><description>&lt;p>要交web基础作业了, 一直没想出做什么页面, 想起自己的博客没有一个&lt;strong>aboutme&lt;/strong>页面, 又想学一下响应式布局, 所以, 如你所见: &lt;a class="link" href="http://zhangweide.cn/about" target="_blank" rel="noopener"
 >aboutme&lt;/a>&lt;/p>
 &lt;p>要针对不同的终端写不同的 css&lt;/p>
 &lt;p>这是 bootstrap 的分辨率区间划分&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="c">/* 大屏幕 */&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="c">/* 大屏幕 */&lt;/span>
 &lt;span class="p">@&lt;/span>&lt;span class="k">media&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">min-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">1200px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="p">}&lt;/span>
 &lt;span class="c">/* 平板电脑和小屏电脑之间的分辨率 */&lt;/span>
 &lt;span class="p">@&lt;/span>&lt;span class="k">media&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">min-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">768px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="nt">and&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">max-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">979px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="p">}&lt;/span>
@@ -1446,10 +1459,10 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;span class="c">/* 横向放置的手机及分辨率更小的设备 */&lt;/span>
 &lt;span class="p">@&lt;/span>&lt;span class="k">media&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">max-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">480px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="p">}&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;p>首先要在 head 里面加上
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="nt">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;viewport&amp;#34;&lt;/span> &lt;span class="nt">content&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="nt">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;viewport&amp;#34;&lt;/span> &lt;span class="nt">content&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
 &lt;p>然后在上面大括号中写不同分辨率的 css 样式就可以了&lt;/p>
 &lt;p>这是我的&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="c">/* 大屏幕 */&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="c">/* 大屏幕 */&lt;/span>
 &lt;span class="p">@&lt;/span>&lt;span class="k">media&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">min-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">1200px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="o">..&lt;/span> &lt;span class="p">}&lt;/span>
 &lt;span class="c">/* 横向放置的手机及分辨率更小的设备 */&lt;/span>
 &lt;span class="p">@&lt;/span>&lt;span class="k">media&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">max-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">480px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="p">{&lt;/span>
@@ -1460,7 +1473,7 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;span class="c">/* 大屏小屏之间的分辨率 */&lt;/span>
 &lt;span class="p">@&lt;/span>&lt;span class="k">media&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">min-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">980px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="nt">and&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">max-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">1199px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="p">{&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;p>在某一分辨率区间的css时, 我的做法是直接将网页内容宽度直接定义为分辨率区间的最小值:&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="c">/* 小显示屏与横向平板之间的分辨率 */&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="c">/* 小显示屏与横向平板之间的分辨率 */&lt;/span>
 &lt;span class="p">@&lt;/span>&lt;span class="k">media&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">min-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">768px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="nt">and&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="nt">max-width&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nt">979px&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="p">{&lt;/span>
 &lt;span class="p">.&lt;/span>&lt;span class="nc">container&lt;/span> &lt;span class="p">{&lt;/span>
 &lt;span class="k">width&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">768&lt;/span>&lt;span class="kt">px&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c">/* &amp;lt;-- */&lt;/span>
@@ -1470,11 +1483,10 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;p>这样可以保证在此区间变动时, 网页样式不会发生变化.&lt;/p>
 &lt;h2 id="ot">OT&lt;/h2>
 &lt;p>一个简单的jquery对话框例子&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-javascript" data-lang="javascript"> &lt;span class="nx">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">document&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">ready&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">(){&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript"> &lt;span class="nx">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">document&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">ready&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">(){&lt;/span>
 &lt;span class="nx">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;#me&amp;#39;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">click&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">(){&lt;/span>&lt;span class="nx">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;#layer&amp;#39;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">fadeIn&lt;/span>&lt;span class="p">();});&lt;/span> &lt;span class="c1">//弹出层
 &lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="nx">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;#close&amp;#39;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">click&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span>&lt;span class="p">(){&lt;/span>&lt;span class="nx">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;#layer&amp;#39;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">fadeOut&lt;/span>&lt;span class="p">();});&lt;/span> &lt;span class="c1">//关闭层
-&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="p">});&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="p">});&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;p>点击 #me 的元素时, 弹出对话框, 对话框内容为 #layer, 可以在 #layer 中添加链接 #close , 点击可以关闭对话框.&lt;/p></description></item><item><title>这就是搜索引擎 整理</title><link>https://zhw.in/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/</link><pubDate>Sat, 15 Jun 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/</guid><description>&lt;h1 id="网络爬虫">网络爬虫&lt;/h1>
 &lt;ul>
 &lt;li>
@@ -1548,7 +1560,7 @@ xh : 查询者的学号, 供二次查询时其他查询使用&lt;/p>
 &lt;p>官网下载安装好后, 运行提示没有权限控制usb子系统, 需要将用户添加到&lt;code>vboxusers&lt;/code>用户组.&lt;/p>
 &lt;p>&lt;code>&amp;quot;FAILED TO ACCESS THE USB SUBSYSTEM.....&lt;/code>&lt;/p>
 &lt;p>执行:
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash"> sudo usermod -a -G vboxusers youruser&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash"> sudo usermod -a -G vboxusers youruser&lt;/code>&lt;/pre>&lt;/div>&lt;/p>
 &lt;p>建议注销一下&lt;/p>
 &lt;p>&lt;code>-a&lt;/code> 参数是将你的用户添加到新的用户组而不将你从原来的用户组中删除.&lt;/p>
 &lt;p>现在已经能够进行usb映射了,如果是笔记本的话还能够自动识别内置摄像头.&lt;/p>
@@ -1659,7 +1671,7 @@ Version 1.17&lt;/p>
 &lt;li>如果&lt;code>__new__&lt;/code>和&lt;code>__init__&lt;/code>组成了对象的构造函数, 那么&lt;code>__del__&lt;/code>就是析构函数. 它的功能不是通过&lt;code>del x&lt;/code>来实现(那样的话代码会被转换成&lt;code>x.__del__()&lt;/code>). 事实上, 它定义了当一个对象在垃圾回收时候的行为, 它对那些有可能不仅仅需要删除还需要额外清理的对象非常有用, 就像sockets或者文件对象(file objects). 但是要小心, 因为&lt;code>__del__&lt;/code>没有任何保证不会在对象存活时间或者当解释器正在运行的时候运行. 所以&lt;code>__del__&lt;/code>不能当做好的编码实践的替代品(有可能经常在你正在处理的时候断开链接). 其实, &lt;code>__del__&lt;/code>最好永远不用, 因为当你调用它之后你已经处于&amp;quot;危险环境&amp;quot;之内, 一定要小心使用!&lt;/li>
 &lt;/ul>
 &lt;p>这里有一个&lt;code>__init__&lt;/code>和&lt;code>__del__&lt;/code>在实际中的使用:&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="kn">from&lt;/span> &lt;span class="nn">os.path&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">join&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="kn">from&lt;/span> &lt;span class="nn">os.path&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">join&lt;/span>
 &lt;span class="k">class&lt;/span> &lt;span class="nc">FileObject&lt;/span>&lt;span class="p">:&lt;/span>
 &lt;span class="s1">&amp;#39;&amp;#39;&amp;#39;Wrapper for file objects to make sure the file gets closed on deletion.&amp;#39;&amp;#39;&amp;#39;&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filepath&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;~&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;sample.txt&amp;#39;&lt;/span>&lt;span class="p">):&lt;/span>
@@ -1670,10 +1682,10 @@ Version 1.17&lt;/p>
 &lt;span class="k">del&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">file&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;h2 id="让运算符在任意类中使用">让运算符在任意类中使用&lt;/h2>
 &lt;p>python magic methods最大的优势就是能够让对象向内置类型一样进行运算, 并且使用简单! 这就意味着你能够避免使用丑陋 违反语感 不标准的方法来实现基本运算符. 在很多语言中, 通常使用这种方法实现:&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="k">if&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">equals&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">other_instance&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="k">if&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">equals&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">other_instance&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="c1"># do something&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;p>当然你也可以在python中这样实现, 但这样添了很多不必要的麻烦. 不同的函数库也许使用不同的名字来命名相同的操作, 但这样会让客户端做很多额外的工作. 现在见识下 magic methods的强大之处吧, 我们可以定义这样一个方法(在案例中是&lt;code>__eq__&lt;/code>), 然后我们能够实现:&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="k">if&lt;/span> &lt;span class="n">instance&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">other_instance&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python"> &lt;span class="k">if&lt;/span> &lt;span class="n">instance&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">other_instance&lt;/span>&lt;span class="p">:&lt;/span>
 &lt;span class="c1">#do something&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>
 &lt;p>这是python magic methods的强大的一方面, magic methods中的绝大部分是让我们能够定义运算符的实际操作, 从而使我们的类能够像内置类型一样进行各种运算.&lt;/p>
@@ -1710,12 +1722,12 @@ Version 1.17&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;p>比如，我们把一个类想做一个单词，我们有可能需要按照字典的规则(字母表的顺序)比较, 而单词默认的比较是按照字符串比较。我们也有可能需要按照其他的标准来比较，诸如长度、数字、音节等，在下面的例子中我们按照单词的长度来比较，下面是具体实现：&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">class&lt;/span> &lt;span class="nc">Word&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="k">class&lt;/span> &lt;span class="nc">Word&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="s1">&amp;#39;&amp;#39;&amp;#39;单词类, 依据单词的长度比较单词大小&amp;#39;&amp;#39;&amp;#39;&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="fm">__new__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">cls&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">word&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;span class="c1"># 注意到我们用了__new__方法, 因为字符串是不可变类型，这样我们初始化是更加方便。&lt;/span>
 &lt;span class="k">if&lt;/span> &lt;span class="s1">&amp;#39; &amp;#39;&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">word&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;span class="k">print&lt;/span> &lt;span class="s2">&amp;#34;单词中包含空格，这里取第一个空格前的单词.&amp;#34;&lt;/span>
+&lt;span class="nb">print&lt;/span> &lt;span class="s2">&amp;#34;单词中包含空格，这里取第一个空格前的单词.&amp;#34;&lt;/span>
 &lt;span class="n">word&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">word&lt;/span>&lt;span class="p">[:&lt;/span>&lt;span class="n">word&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39; &amp;#39;&lt;/span>&lt;span class="p">)]&lt;/span> &lt;span class="c1"># Word is now all chars before first space&lt;/span>
 &lt;span class="k">return&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="fm">__new__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">cls&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">word&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;span class="k">def&lt;/span> &lt;span class="fm">__gt__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">other&lt;/span>&lt;span class="p">):&lt;/span>
@@ -1795,7 +1807,8 @@ Enter password: &amp;lt;输入新设的密码newpassword&amp;gt;
 &lt;pre>&lt;code>select top 5 * from temp_table order by id desc
 &lt;/code>&lt;/pre></description></item><item><title>sublime text 2 备忘</title><link>https://zhw.in/post/sublime-text-2-%E5%A4%87%E5%BF%98/</link><pubDate>Mon, 25 Mar 2013 00:00:00 +0000</pubDate><guid>https://zhw.in/post/sublime-text-2-%E5%A4%87%E5%BF%98/</guid><description>&lt;h3 id="安装包管理">安装包管理&lt;/h3>
 &lt;p>&lt;strong>Ctrl + `&lt;/strong>
-import urllib2,os; pf=&amp;lsquo;Package Control.sublime-package&amp;rsquo;; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),&amp;lsquo;wb&amp;rsquo;).write(urllib2.urlopen(&amp;lsquo;&lt;a href="http://sublime.wbond.net/'+pf.replace('">http://sublime.wbond.net/'+pf.replace('&lt;/a> &amp;lsquo;,'%20&amp;rsquo;)).read()); print &amp;lsquo;Please restart Sublime Text to finish installation&amp;rsquo;
+import urllib2,os; pf=&amp;lsquo;Package Control.sublime-package&amp;rsquo;; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),&amp;lsquo;wb&amp;rsquo;).write(urllib2.urlopen(&amp;lsquo;&lt;a class="link" href="http://sublime.wbond.net/%27&amp;#43;pf.replace%28%27" target="_blank" rel="noopener"
+>http://sublime.wbond.net/'+pf.replace('&lt;/a> &amp;lsquo;,'%20&amp;rsquo;)).read()); print &amp;lsquo;Please restart Sublime Text to finish installation&amp;rsquo;
 回车&lt;/p>
 &lt;h3 id="快捷键">快捷键&lt;/h3>
 &lt;p>安装插件,以Alignment为例&lt;/p>
@@ -1880,7 +1893,8 @@ sudo apt-get install build-essential cdbs fakeroot dh-make debhelper debconf lib
 &lt;p>###如果是64位ubuntu,安装32位库:
 sudo apt-get install ia32-libs&lt;/p>
 &lt;p>###然后下载最新催化剂驱动&lt;br>
-wget &lt;a href="http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip">http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip&lt;/a>&lt;br>
+wget &lt;a class="link" href="http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip" target="_blank" rel="noopener"
+>http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip&lt;/a>&lt;br>
 unzip amd-driver-installer-catalyst-12.10-x86.x86_64.zip&lt;br>
 chmod +x amd-driver-installer-catalyst-12.10-x86.x86_64.run&lt;/p>
 &lt;p>###创建&lt;code>deb&lt;/code>安装包并安装&lt;br>

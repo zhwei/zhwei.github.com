@@ -1,43 +1,111 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="介绍 pySerial
+<!doctype html><html lang=zh-cn>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="介绍 pySerial
 封装了串口通讯模块，支持Linux、Windows、BSD(可能支持所有支持POSIX的操作系统)，支持Jython(Java)和IconPython(.NET and Mono).
 首页 http://pyserial.sf.net/
 特性  所有平台使用同样的类接口 端口号默认从0开始，程序中不需要知道端口名称 像文件读写一样的API，read、write（readline等也受支持） 所有程序全由Python完成，除了标准库外不依赖其他包，除了pywin32(windows)、JavaComm(Jython). POSIX(Linux, BSD) 只依赖Python标准库。  依赖环境  Python2.2或更新版本 windows 上的 pywin32扩展 Java/Jython上的 &amp;ldquo;Java Communications&amp;rdquo; (JavaComm)或者兼容包  安装 pip/easy_install
 pip install pyserial easy_install pyserial  windows
 下载地址 ： http://sourceforge.net/project/showfiles.php?group_id=46487
 快速上手 Open port 0 at &amp;ldquo;9600,8,N,1&amp;rdquo;, no timeout
-&amp;gt;&amp;gt;&amp;gt; import serial &amp;gt;&amp;gt;&amp;gt; ser = serial.Serial(0) # open first serial port &amp;gt;&amp;gt;&amp;gt; print ser.portstr # check which port was really used &amp;gt;&amp;gt;&amp;gt; ser."><title>pySerial -- Python的串口通讯模块</title><link rel=canonical href=https://zhw.in/post/pyserial-python%E7%9A%84%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E6%A8%A1%E5%9D%97/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="pySerial -- Python的串口通讯模块"><meta property="og:description" content="介绍 pySerial
+&amp;gt;&amp;gt;&amp;gt; import serial &amp;gt;&amp;gt;&amp;gt; ser = serial.Serial(0) # open first serial port &amp;gt;&amp;gt;&amp;gt; print ser.portstr # check which port was really used &amp;gt;&amp;gt;&amp;gt; ser."><title>pySerial -- Python的串口通讯模块</title>
+<link rel=canonical href=https://zhw.in/post/pyserial-python%E7%9A%84%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E6%A8%A1%E5%9D%97/>
+<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="pySerial -- Python的串口通讯模块">
+<meta property="og:description" content="介绍 pySerial
 封装了串口通讯模块，支持Linux、Windows、BSD(可能支持所有支持POSIX的操作系统)，支持Jython(Java)和IconPython(.NET and Mono).
 首页 http://pyserial.sf.net/
 特性  所有平台使用同样的类接口 端口号默认从0开始，程序中不需要知道端口名称 像文件读写一样的API，read、write（readline等也受支持） 所有程序全由Python完成，除了标准库外不依赖其他包，除了pywin32(windows)、JavaComm(Jython). POSIX(Linux, BSD) 只依赖Python标准库。  依赖环境  Python2.2或更新版本 windows 上的 pywin32扩展 Java/Jython上的 &amp;ldquo;Java Communications&amp;rdquo; (JavaComm)或者兼容包  安装 pip/easy_install
 pip install pyserial easy_install pyserial  windows
 下载地址 ： http://sourceforge.net/project/showfiles.php?group_id=46487
 快速上手 Open port 0 at &amp;ldquo;9600,8,N,1&amp;rdquo;, no timeout
-&amp;gt;&amp;gt;&amp;gt; import serial &amp;gt;&amp;gt;&amp;gt; ser = serial.Serial(0) # open first serial port &amp;gt;&amp;gt;&amp;gt; print ser.portstr # check which port was really used &amp;gt;&amp;gt;&amp;gt; ser."><meta property="og:url" content="https://zhw.in/post/pyserial-python%E7%9A%84%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E6%A8%A1%E5%9D%97/"><meta property="og:site_name" content="zhwei's Blog"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Python"><meta property="article:published_time" content="2013-10-26T00:00:00+00:00"><meta property="article:modified_time" content="2013-10-26T00:00:00+00:00"><meta name=twitter:site content="@zhwei_"><meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="pySerial -- Python的串口通讯模块"><meta name=twitter:description content="介绍 pySerial
+&amp;gt;&amp;gt;&amp;gt; import serial &amp;gt;&amp;gt;&amp;gt; ser = serial.Serial(0) # open first serial port &amp;gt;&amp;gt;&amp;gt; print ser.portstr # check which port was really used &amp;gt;&amp;gt;&amp;gt; ser.">
+<meta property="og:url" content="https://zhw.in/post/pyserial-python%E7%9A%84%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E6%A8%A1%E5%9D%97/">
+<meta property="og:site_name" content="zhwei's Blog">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Python"><meta property="article:published_time" content="2013-10-26T00:00:00+00:00"><meta property="article:modified_time" content="2013-10-26T00:00:00+00:00">
+<meta name=twitter:site content="@zhwei_">
+<meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="pySerial -- Python的串口通讯模块">
+<meta name=twitter:description content="介绍 pySerial
 封装了串口通讯模块，支持Linux、Windows、BSD(可能支持所有支持POSIX的操作系统)，支持Jython(Java)和IconPython(.NET and Mono).
 首页 http://pyserial.sf.net/
 特性  所有平台使用同样的类接口 端口号默认从0开始，程序中不需要知道端口名称 像文件读写一样的API，read、write（readline等也受支持） 所有程序全由Python完成，除了标准库外不依赖其他包，除了pywin32(windows)、JavaComm(Jython). POSIX(Linux, BSD) 只依赖Python标准库。  依赖环境  Python2.2或更新版本 windows 上的 pywin32扩展 Java/Jython上的 &amp;ldquo;Java Communications&amp;rdquo; (JavaComm)或者兼容包  安装 pip/easy_install
 pip install pyserial easy_install pyserial  windows
 下载地址 ： http://sourceforge.net/project/showfiles.php?group_id=46487
 快速上手 Open port 0 at &amp;ldquo;9600,8,N,1&amp;rdquo;, no timeout
-&amp;gt;&amp;gt;&amp;gt; import serial &amp;gt;&amp;gt;&amp;gt; ser = serial.Serial(0) # open first serial port &amp;gt;&amp;gt;&amp;gt; print ser.portstr # check which port was really used &amp;gt;&amp;gt;&amp;gt; ser."><link rel="shortcut icon" href=/images/favicon.ico><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-189071452-1','auto');ga('send','pageview');}</script></head><body class="article-page has-toc"><script>(function(){const colorSchemeKey='StackColorScheme';if(!localStorage.getItem(colorSchemeKey)){localStorage.setItem(colorSchemeKey,"auto");}})();</script><script>(function(){const colorSchemeKey='StackColorScheme';const colorSchemeItem=localStorage.getItem(colorSchemeKey);const supportDarkMode=window.matchMedia('(prefers-color-scheme: dark)').matches===true;if(colorSchemeItem=='dark'||colorSchemeItem==='auto'&&supportDarkMode){document.documentElement.dataset.scheme='dark';}else{document.documentElement.dataset.scheme='light';}})();</script><div class="container main-container flex
-extended"><div id=article-toolbar><a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><h2 class=article-title><a href=/post/pyserial-python%E7%9A%84%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E6%A8%A1%E5%9D%97/>pySerial -- Python的串口通讯模块</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2013-10-26</time></footer></div></header><section class=article-content><h2 id=介绍>介绍</h2><p>pySerial</p><p>封装了串口通讯模块，支持Linux、Windows、BSD(可能支持所有支持POSIX的操作系统)，支持Jython(Java)和IconPython(.NET and Mono).</p><p>首页 <a href=http://pyserial.sf.net/>http://pyserial.sf.net/</a></p><h2 id=特性>特性</h2><ul><li>所有平台使用同样的类接口</li><li>端口号默认从0开始，程序中不需要知道端口名称</li><li>像文件读写一样的API，<code>read</code>、<code>write</code>（<code>readline</code>等也受支持）</li><li>所有程序全由Python完成，除了标准库外不依赖其他包，除了pywin32(windows)、JavaComm(Jython). POSIX(Linux, BSD) 只依赖Python标准库。</li></ul><h2 id=依赖环境>依赖环境</h2><ul><li>Python2.2或更新版本</li><li>windows 上的 pywin32扩展</li><li>Java/Jython上的 &ldquo;Java Communications&rdquo; (JavaComm)或者兼容包</li></ul><h2 id=安装>安装</h2><p><em>pip/easy_install</em></p><pre><code>pip install pyserial 
+&amp;gt;&amp;gt;&amp;gt; import serial &amp;gt;&amp;gt;&amp;gt; ser = serial.Serial(0) # open first serial port &amp;gt;&amp;gt;&amp;gt; print ser.portstr # check which port was really used &amp;gt;&amp;gt;&amp;gt; ser.">
+<link rel="shortcut icon" href=/images/favicon.ico>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-189071452-1','auto'),ga('send','pageview'))</script>
+</head>
+<body class="article-page has-toc">
+<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
+<div class="container main-container flex
+extended">
+<div id=article-toolbar>
+<a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+<span>Back</span>
+</a>
+</div>
+<main class="main full-width">
+<article class=main-article>
+<header class=article-header>
+<div class=article-details>
+<h2 class=article-title>
+<a href=/post/pyserial-python%E7%9A%84%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E6%A8%A1%E5%9D%97/>pySerial -- Python的串口通讯模块</a>
+</h2>
+<footer class=article-time>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2013-10-26</time>
+</div>
+</footer>
+</div>
+</header>
+<section class=article-content>
+<h2 id=介绍>介绍</h2>
+<p>pySerial</p>
+<p>封装了串口通讯模块，支持Linux、Windows、BSD(可能支持所有支持POSIX的操作系统)，支持Jython(Java)和IconPython(.NET and Mono).</p>
+<p>首页 <a class=link href=http://pyserial.sf.net/ target=_blank rel=noopener>http://pyserial.sf.net/</a></p>
+<h2 id=特性>特性</h2>
+<ul>
+<li>所有平台使用同样的类接口</li>
+<li>端口号默认从0开始，程序中不需要知道端口名称</li>
+<li>像文件读写一样的API，<code>read</code>、<code>write</code>（<code>readline</code>等也受支持）</li>
+<li>所有程序全由Python完成，除了标准库外不依赖其他包，除了pywin32(windows)、JavaComm(Jython). POSIX(Linux, BSD) 只依赖Python标准库。</li>
+</ul>
+<h2 id=依赖环境>依赖环境</h2>
+<ul>
+<li>Python2.2或更新版本</li>
+<li>windows 上的 pywin32扩展</li>
+<li>Java/Jython上的 &ldquo;Java Communications&rdquo; (JavaComm)或者兼容包</li>
+</ul>
+<h2 id=安装>安装</h2>
+<p><em>pip/easy_install</em></p>
+<pre><code>pip install pyserial 
 
 easy_install pyserial 
-</code></pre><p><em>windows</em></p><p>下载地址 ： <a href="http://sourceforge.net/project/showfiles.php?group_id=46487">http://sourceforge.net/project/showfiles.php?group_id=46487</a></p><h2 id=快速上手>快速上手</h2><p>Open port 0 at &ldquo;9600,8,N,1&rdquo;, no timeout</p><pre><code>&gt;&gt;&gt; import serial  
+</code></pre>
+<p><em>windows</em></p>
+<p>下载地址 ： <a class=link href="http://sourceforge.net/project/showfiles.php?group_id=46487" target=_blank rel=noopener>http://sourceforge.net/project/showfiles.php?group_id=46487</a></p>
+<h2 id=快速上手>快速上手</h2>
+<p>Open port 0 at &ldquo;9600,8,N,1&rdquo;, no timeout</p>
+<pre><code>&gt;&gt;&gt; import serial  
 &gt;&gt;&gt; ser = serial.Serial(0)  # open first serial port  
 &gt;&gt;&gt; print ser.portstr       # check which port was really used  
 &gt;&gt;&gt; ser.write(&quot;hello&quot;)      # write a string  
 &gt;&gt;&gt; ser.close()             # close port 
-</code></pre><p>Open named port at &ldquo;19200,8,N,1&rdquo;, 1s timeout</p><pre><code>&gt;&gt;&gt; ser = serial.Serial('/dev/ttyS1', 19200, timeout=1)  
+</code></pre>
+<p>Open named port at &ldquo;19200,8,N,1&rdquo;, 1s timeout</p>
+<pre><code>&gt;&gt;&gt; ser = serial.Serial('/dev/ttyS1', 19200, timeout=1)  
 &gt;&gt;&gt; x = ser.read()          # read one byte  
 &gt;&gt;&gt; s = ser.read(10)        # read up to ten bytes (timeout)  
 &gt;&gt;&gt; line = ser.readline()   # read a '/n' terminated line  
 &gt;&gt;&gt; ser.close()  
-</code></pre><p>Open second port at &ldquo;38400,8,E,1&rdquo;, non blocking HW handshaking</p><pre><code>&gt;&gt;&gt; ser = serial.Serial(1, 38400, timeout=0,  
+</code></pre>
+<p>Open second port at &ldquo;38400,8,E,1&rdquo;, non blocking HW handshaking</p>
+<pre><code>&gt;&gt;&gt; ser = serial.Serial(1, 38400, timeout=0,  
 ...                     parity=serial.PARITY_EVEN, rtscts=1)  
 &gt;&gt;&gt; s = ser.read(100)       # read up to one hundred bytes  
 ...                         # or as much is in the buffer  
-</code></pre><p>Get a Serial instance and configure/open it later</p><pre><code>&gt;&gt;&gt; ser = serial.Serial()  
+</code></pre>
+<p>Get a Serial instance and configure/open it later</p>
+<pre><code>&gt;&gt;&gt; ser = serial.Serial()  
 &gt;&gt;&gt; ser.baudrate = 19200  
 &gt;&gt;&gt; ser.port = 0  
 &gt;&gt;&gt; ser  
@@ -48,10 +116,14 @@ True
 &gt;&gt;&gt; ser.close()  
 &gt;&gt;&gt; ser.isOpen()  
 False  
-</code></pre><p>如果给定端口，端口将在创建对象之后立即打开，如果没有给定端口，可选<code>timeout</code>参数</p><pre><code>timeout=None            # wait forever  
+</code></pre>
+<p>如果给定端口，端口将在创建对象之后立即打开，如果没有给定端口，可选<code>timeout</code>参数</p>
+<pre><code>timeout=None            # wait forever  
 timeout=0               # non-blocking mode (return immediately on read)  
 timeout=x               # set timeout to x seconds (float allowed)  
-</code></pre><h2 id=serial实例的可用方法>Serial实例的可用方法</h2><pre><code>open()                  # 打开端口
+</code></pre>
+<h2 id=serial实例的可用方法>Serial实例的可用方法</h2>
+<pre><code>open()                  # 打开端口
 close()                 # 立即关闭端口  
 setBaudrate(baudrate)   # change baud rate on an open port  
 inWaiting()             # return the number of chars in the receive buffer  
@@ -66,12 +138,17 @@ getCTS()                # return the state of the CTS line
 getDSR()                # return the state of the DSR line  
 getRI()                 # return the state of the RI line  
 getCD()                 # return the state of the CD line
-</code></pre><h2 id=serial实例的属性>Serial实例的属性</h2><p>只读</p><pre><code>portstr                 # 设备名称  
+</code></pre>
+<h2 id=serial实例的属性>Serial实例的属性</h2>
+<p>只读</p>
+<pre><code>portstr                 # 设备名称  
 BAUDRATES               # list of valid baudrates  
 BYTESIZES               # list of valid byte sizes  
 PARITIES                # list of valid parities  
 STOPBITS                # list of valid stop bit widths  
-</code></pre><p>下面属性值被更改后端口会重新配置，即使端口已经打开</p><pre><code>port                    # port name/number as set by the user  
+</code></pre>
+<p>下面属性值被更改后端口会重新配置，即使端口已经打开</p>
+<pre><code>port                    # port name/number as set by the user  
 baudrate                # current baud rate setting  
 bytesize                # byte size in bits  
 parity                  # parity setting  
@@ -79,21 +156,113 @@ stopbits                # stop bit with (1,2)
 timeout                 # timeout setting  
 xonxoff                 # if Xon/Xoff flow control is enabled  
 rtscts                  # if hardware flow control is enabled  
-</code></pre><h2 id=异常>异常</h2><pre><code>serial.SerialException  
-</code></pre><h2 id=常量>常量</h2><p>parity:</p><pre><code>serial.PARITY_NONE  
+</code></pre>
+<h2 id=异常>异常</h2>
+<pre><code>serial.SerialException  
+</code></pre>
+<h2 id=常量>常量</h2>
+<p>parity:</p>
+<pre><code>serial.PARITY_NONE  
 serial.PARITY_EVEN  
 serial.PARITY_ODD  
-</code></pre><p>stopbits</p><pre><code>serial.STOPBITS_ONE  
+</code></pre>
+<p>stopbits</p>
+<pre><code>serial.STOPBITS_ONE  
 al.STOPBITS_TWO 
-</code></pre><p>bytesize:</p><pre><code>serial.FIVEBITS  
+</code></pre>
+<p>bytesize:</p>
+<pre><code>serial.FIVEBITS  
 serial.SIXBITS  
 serial.SEVENBITS  
 serial.EIGHTBITS  
-</code></pre><p>翻译(有删减)仅供参考</p><p>原文地址：http://blog.csdn.net/dainiao01/article/details/5885122
-官方文档：http://pyserial.sf.net/</p></section><footer class=article-footer><section class=article-tags><a href=/tags/python/>Python</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper></aside><footer class=site-footer><section class=copyright>&copy;
+</code></pre>
+<p>翻译(有删减)仅供参考</p>
+<p>原文地址：http://blog.csdn.net/dainiao01/article/details/5885122
+官方文档：http://pyserial.sf.net/</p>
+</section>
+<footer class=article-footer>
+<section class=article-tags>
+<a href=/tags/python/>Python</a>
+</section>
+<section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span>
+</section>
+</footer>
+</article>
+<aside class=related-contents--wrapper>
+</aside>
+<footer class=site-footer>
+<section class=copyright>
+&copy;
 2012 -
-2021 zhwei's Blog</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.5.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+2021 zhwei's Blog
+</section>
+<section class=powerby>
+Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> <br>
+Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>
+</section>
+</footer>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#介绍>介绍</a></li><li><a href=#特性>特性</a></li><li><a href=#依赖环境>依赖环境</a></li><li><a href=#安装>安装</a></li><li><a href=#快速上手>快速上手</a></li><li><a href=#serial实例的可用方法>Serial实例的可用方法</a></li><li><a href=#serial实例的属性>Serial实例的属性</a></li><li><a href=#异常>异常</a></li><li><a href=#常量>常量</a></li></ol></nav></div></section></aside></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const customFont=document.createElement('link');customFont.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";customFont.type="text/css";customFont.rel="stylesheet";document.head.appendChild(customFont);}());</script></body></html>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous>
+</main>
+<aside class="sidebar right-sidebar sticky">
+<section class="widget archives">
+<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+</div>
+<h2 class="widget-title section-title">Table of contents</h2>
+<div class=widget--toc>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#介绍>介绍</a></li>
+<li><a href=#特性>特性</a></li>
+<li><a href=#依赖环境>依赖环境</a></li>
+<li><a href=#安装>安装</a></li>
+<li><a href=#快速上手>快速上手</a></li>
+<li><a href=#serial实例的可用方法>Serial实例的可用方法</a></li>
+<li><a href=#serial实例的属性>Serial实例的属性</a></li>
+<li><a href=#异常>异常</a></li>
+<li><a href=#常量>常量</a></li>
+</ol>
+</nav>
+</div>
+</section>
+</aside>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</body>
+</html>

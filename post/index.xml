@@ -232,7 +232,8 @@ sudo apt-get install build-essential cdbs fakeroot dh-make debhelper debconf lib
 &lt;p>###如果是64位ubuntu,安装32位库:
 sudo apt-get install ia32-libs&lt;/p>
 &lt;p>###然后下载最新催化剂驱动&lt;br>
-wget &lt;a href="http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip">http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip&lt;/a>&lt;br>
+wget &lt;a class="link" href="http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip" target="_blank" rel="noopener"
+>http://www2.ati.com/drivers/linux/amd-driver-installer-catalyst-12.10-x86.x86_64.zip&lt;/a>&lt;br>
 unzip amd-driver-installer-catalyst-12.10-x86.x86_64.zip&lt;br>
 chmod +x amd-driver-installer-catalyst-12.10-x86.x86_64.run&lt;/p></description></item><item><title>11月月度总结</title><link>https://zhw.in/post/11%E6%9C%88%E6%9C%88%E5%BA%A6%E6%80%BB%E7%BB%93/</link><pubDate>Mon, 03 Dec 2012 00:00:00 +0000</pubDate><guid>https://zhw.in/post/11%E6%9C%88%E6%9C%88%E5%BA%A6%E6%80%BB%E7%BB%93/</guid><description>&lt;p>###总结
 刚刚看了&lt;a class="link" href="http://www.cnblogs.com/fuyunbiyi" target="_blank" rel="noopener"

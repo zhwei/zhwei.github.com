@@ -1,28 +1,206 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="网络爬虫   抓取策略
+<!doctype html><html lang=zh-cn>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="网络爬虫   抓取策略
  宽度优先 非完全pagerank opic策略(cash) 大站优先    更新策略
  历史参考(泊松建模) 用户体验 聚类抽样    暗网抓取
   分布式爬虫
  主从式 url 对等式 (哈希取模 \ 一致性哈希 )    搜索引擎索引 基础  单词-文档 倒排  单词字典  哈希加链表 树形结构  倒排列表 单词 &amp;ndash;&amp;gt; 倒排列表
 建立列表  两遍 排序 单词id -&amp;gt; 文档ID -&amp;gt; 频率 归并  1 2 5 6 1 2 3 4
-索引更新  完全重建 再合并 原地更新 混合策略  查询  一次一文档 一次单词 跳跃指针 `&amp;lt;5 Pos1&amp;gt; 5,1 2,1 5,2 &amp;lt;13 Pos2&amp;gt; 13,1 2,1 5,2"><title>这就是搜索引擎 整理</title><link rel=canonical href=https://zhw.in/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="这就是搜索引擎 整理"><meta property="og:description" content="网络爬虫   抓取策略
+索引更新  完全重建 再合并 原地更新 混合策略  查询  一次一文档 一次单词 跳跃指针 `&amp;lt;5 Pos1&amp;gt; 5,1 2,1 5,2 &amp;lt;13 Pos2&amp;gt; 13,1 2,1 5,2  "><title>这就是搜索引擎 整理</title>
+<link rel=canonical href=https://zhw.in/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/>
+<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="这就是搜索引擎 整理">
+<meta property="og:description" content="网络爬虫   抓取策略
  宽度优先 非完全pagerank opic策略(cash) 大站优先    更新策略
  历史参考(泊松建模) 用户体验 聚类抽样    暗网抓取
   分布式爬虫
  主从式 url 对等式 (哈希取模 \ 一致性哈希 )    搜索引擎索引 基础  单词-文档 倒排  单词字典  哈希加链表 树形结构  倒排列表 单词 &amp;ndash;&amp;gt; 倒排列表
 建立列表  两遍 排序 单词id -&amp;gt; 文档ID -&amp;gt; 频率 归并  1 2 5 6 1 2 3 4
-索引更新  完全重建 再合并 原地更新 混合策略  查询  一次一文档 一次单词 跳跃指针 `&amp;lt;5 Pos1&amp;gt; 5,1 2,1 5,2 &amp;lt;13 Pos2&amp;gt; 13,1 2,1 5,2"><meta property="og:url" content="https://zhw.in/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/"><meta property="og:site_name" content="zhwei's Blog"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Notes"><meta property="article:published_time" content="2013-06-15T00:00:00+00:00"><meta property="article:modified_time" content="2013-06-15T00:00:00+00:00"><meta name=twitter:site content="@zhwei_"><meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="这就是搜索引擎 整理"><meta name=twitter:description content="网络爬虫   抓取策略
+索引更新  完全重建 再合并 原地更新 混合策略  查询  一次一文档 一次单词 跳跃指针 `&amp;lt;5 Pos1&amp;gt; 5,1 2,1 5,2 &amp;lt;13 Pos2&amp;gt; 13,1 2,1 5,2  ">
+<meta property="og:url" content="https://zhw.in/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/">
+<meta property="og:site_name" content="zhwei's Blog">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Notes"><meta property="article:published_time" content="2013-06-15T00:00:00+00:00"><meta property="article:modified_time" content="2013-06-15T00:00:00+00:00">
+<meta name=twitter:site content="@zhwei_">
+<meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="这就是搜索引擎 整理">
+<meta name=twitter:description content="网络爬虫   抓取策略
  宽度优先 非完全pagerank opic策略(cash) 大站优先    更新策略
  历史参考(泊松建模) 用户体验 聚类抽样    暗网抓取
   分布式爬虫
  主从式 url 对等式 (哈希取模 \ 一致性哈希 )    搜索引擎索引 基础  单词-文档 倒排  单词字典  哈希加链表 树形结构  倒排列表 单词 &amp;ndash;&amp;gt; 倒排列表
 建立列表  两遍 排序 单词id -&amp;gt; 文档ID -&amp;gt; 频率 归并  1 2 5 6 1 2 3 4
-索引更新  完全重建 再合并 原地更新 混合策略  查询  一次一文档 一次单词 跳跃指针 `&amp;lt;5 Pos1&amp;gt; 5,1 2,1 5,2 &amp;lt;13 Pos2&amp;gt; 13,1 2,1 5,2"><link rel="shortcut icon" href=/images/favicon.ico><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-189071452-1','auto');ga('send','pageview');}</script></head><body class="article-page has-toc"><script>(function(){const colorSchemeKey='StackColorScheme';if(!localStorage.getItem(colorSchemeKey)){localStorage.setItem(colorSchemeKey,"auto");}})();</script><script>(function(){const colorSchemeKey='StackColorScheme';const colorSchemeItem=localStorage.getItem(colorSchemeKey);const supportDarkMode=window.matchMedia('(prefers-color-scheme: dark)').matches===true;if(colorSchemeItem=='dark'||colorSchemeItem==='auto'&&supportDarkMode){document.documentElement.dataset.scheme='dark';}else{document.documentElement.dataset.scheme='light';}})();</script><div class="container main-container flex
-extended"><div id=article-toolbar><a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><h2 class=article-title><a href=/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/>这就是搜索引擎 整理</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2013-06-15</time></footer></div></header><section class=article-content><h1 id=网络爬虫>网络爬虫</h1><ul><li><p>抓取策略</p><ul><li>宽度优先</li><li>非完全pagerank</li><li>opic策略(cash)</li><li>大站优先</li></ul></li><li><p>更新策略</p><ul><li>历史参考(泊松建模)</li><li>用户体验</li><li>聚类抽样</li></ul></li><li><p><strong>暗网抓取</strong></p></li><li><p>分布式爬虫</p><ul><li>主从式 url</li><li>对等式 (哈希取模 \ 一致性哈希 )</li></ul></li></ul><h1 id=搜索引擎索引>搜索引擎索引</h1><h2 id=基础>基础</h2><ul><li>单词-文档</li><li>倒排</li></ul><h2 id=单词字典>单词字典</h2><ul><li>哈希加链表</li><li>树形结构</li></ul><h2 id=倒排列表>倒排列表</h2><p>单词 &ndash;> 倒排列表</p><h2 id=建立列表>建立列表</h2><ul><li>两遍</li><li>排序
-单词id -> 文档ID -> 频率</li><li>归并</li></ul><p>1 2 5 6 1 2 3 4</p><h2 id=索引更新>索引更新</h2><ul><li>完全重建</li><li>再合并</li><li>原地更新</li><li>混合策略</li></ul><h2 id=查询>查询</h2><ul><li>一次一文档</li><li>一次单词</li><li>跳跃指针
-`&lt;5 Pos1> 5,1 2,1 5,2 &lt;13 Pos2> 13,1 2,1 5,2</li></ul></section><footer class=article-footer><section class=article-tags><a href=/tags/notes/>Notes</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper></aside><footer class=site-footer><section class=copyright>&copy;
+索引更新  完全重建 再合并 原地更新 混合策略  查询  一次一文档 一次单词 跳跃指针 `&amp;lt;5 Pos1&amp;gt; 5,1 2,1 5,2 &amp;lt;13 Pos2&amp;gt; 13,1 2,1 5,2  ">
+<link rel="shortcut icon" href=/images/favicon.ico>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-189071452-1','auto'),ga('send','pageview'))</script>
+</head>
+<body class="article-page has-toc">
+<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
+<div class="container main-container flex
+extended">
+<div id=article-toolbar>
+<a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+<span>Back</span>
+</a>
+</div>
+<main class="main full-width">
+<article class=main-article>
+<header class=article-header>
+<div class=article-details>
+<h2 class=article-title>
+<a href=/post/%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-%E6%95%B4%E7%90%86/>这就是搜索引擎 整理</a>
+</h2>
+<footer class=article-time>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2013-06-15</time>
+</div>
+</footer>
+</div>
+</header>
+<section class=article-content>
+<h1 id=网络爬虫>网络爬虫</h1>
+<ul>
+<li>
+<p>抓取策略</p>
+<ul>
+<li>宽度优先</li>
+<li>非完全pagerank</li>
+<li>opic策略(cash)</li>
+<li>大站优先</li>
+</ul>
+</li>
+<li>
+<p>更新策略</p>
+<ul>
+<li>历史参考(泊松建模)</li>
+<li>用户体验</li>
+<li>聚类抽样</li>
+</ul>
+</li>
+<li>
+<p><strong>暗网抓取</strong></p>
+</li>
+<li>
+<p>分布式爬虫</p>
+<ul>
+<li>主从式 url</li>
+<li>对等式 (哈希取模 \ 一致性哈希 )</li>
+</ul>
+</li>
+</ul>
+<h1 id=搜索引擎索引>搜索引擎索引</h1>
+<h2 id=基础>基础</h2>
+<ul>
+<li>单词-文档</li>
+<li>倒排</li>
+</ul>
+<h2 id=单词字典>单词字典</h2>
+<ul>
+<li>哈希加链表</li>
+<li>树形结构</li>
+</ul>
+<h2 id=倒排列表>倒排列表</h2>
+<p>单词 &ndash;> 倒排列表</p>
+<h2 id=建立列表>建立列表</h2>
+<ul>
+<li>两遍</li>
+<li>排序
+单词id -> 文档ID -> 频率</li>
+<li>归并</li>
+</ul>
+<p>1 2 5 6 1 2 3 4</p>
+<h2 id=索引更新>索引更新</h2>
+<ul>
+<li>完全重建</li>
+<li>再合并</li>
+<li>原地更新</li>
+<li>混合策略</li>
+</ul>
+<h2 id=查询>查询</h2>
+<ul>
+<li>一次一文档</li>
+<li>一次单词</li>
+<li>跳跃指针
+`&lt;5 Pos1> 5,1 2,1 5,2 &lt;13 Pos2> 13,1 2,1 5,2</li>
+</ul>
+</section>
+<footer class=article-footer>
+<section class=article-tags>
+<a href=/tags/notes/>Notes</a>
+</section>
+<section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span>
+</section>
+</footer>
+</article>
+<aside class=related-contents--wrapper>
+</aside>
+<footer class=site-footer>
+<section class=copyright>
+&copy;
 2012 -
-2021 zhwei's Blog</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.5.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+2021 zhwei's Blog
+</section>
+<section class=powerby>
+Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> <br>
+Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>
+</section>
+</footer>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#基础>基础</a></li><li><a href=#单词字典>单词字典</a></li><li><a href=#倒排列表>倒排列表</a></li><li><a href=#建立列表>建立列表</a></li><li><a href=#索引更新>索引更新</a></li><li><a href=#查询>查询</a></li></ol></nav></div></section></aside></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const customFont=document.createElement('link');customFont.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";customFont.type="text/css";customFont.rel="stylesheet";document.head.appendChild(customFont);}());</script></body></html>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous>
+</main>
+<aside class="sidebar right-sidebar sticky">
+<section class="widget archives">
+<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+</div>
+<h2 class="widget-title section-title">Table of contents</h2>
+<div class=widget--toc>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#基础>基础</a></li>
+<li><a href=#单词字典>单词字典</a></li>
+<li><a href=#倒排列表>倒排列表</a></li>
+<li><a href=#建立列表>建立列表</a></li>
+<li><a href=#索引更新>索引更新</a></li>
+<li><a href=#查询>查询</a></li>
+</ol>
+</nav>
+</div>
+</section>
+</aside>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</body>
+</html>

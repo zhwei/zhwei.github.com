@@ -1,4 +1,6 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="原文作者:Rafe Kettler
+<!doctype html><html lang=zh-cn>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="原文作者:Rafe Kettler
 原文链接: A Guide to Python&amp;rsquo;s Magic Methods
 Copyright © 2012 Rafe Kettler
 Version 1.17
@@ -7,7 +9,10 @@ Version 1.17
  介绍 构造和初始化 在任意类中使用运算符 - 比较 magic methods - 数值 magic methods  介绍 这篇方法引导总结了几个月来的博客文章. 它的标题是 magic methods.
 什么事 magic methods? 它是面向对象的python中的所有东西. 它们是你能够自己向类中定义的特殊方法, 能够给你的类带来魔法般的效果! 它们以__开头以__结尾(eg: __init__或者__lt__). 它们的文档也比所期望的要少得多. python魔法方法总是出现在python文档的相同部分, 但是总是松散的, 并且很难在其中找到响应的案例, 当然也有可能是故意的, 所有的魔法方法在_语言参考 (language reference)_都有详细地列了出来, 附加还有令人厌烦的语法说明等等.
 所以呢, 为了修复我所感受到的python文档的不完美之处, 我着手为python magic methods准备一些更简明并且有详细案例的文档. 我开始每周整理一篇博客, 到现在为止我已经全部完成了, 整理成了这篇指导.
-我希望你能喜欢, 把它当做一篇教程 复习资料或者参考, 我仅仅希望他能作为一篇人性化的python magic methods指导."><title>[翻译]A Guide to Python's Magic Methods</title><link rel=canonical href=https://zhw.in/post/%E7%BF%BB%E8%AF%91a-guide-to-pythons-magic-methods/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="[翻译]A Guide to Python's Magic Methods"><meta property="og:description" content="原文作者:Rafe Kettler
+我希望你能喜欢, 把它当做一篇教程 复习资料或者参考, 我仅仅希望他能作为一篇人性化的python magic methods指导."><title>[翻译]A Guide to Python's Magic Methods</title>
+<link rel=canonical href=https://zhw.in/post/%E7%BF%BB%E8%AF%91a-guide-to-pythons-magic-methods/>
+<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="[翻译]A Guide to Python's Magic Methods">
+<meta property="og:description" content="原文作者:Rafe Kettler
 原文链接: A Guide to Python&amp;rsquo;s Magic Methods
 Copyright © 2012 Rafe Kettler
 Version 1.17
@@ -16,7 +21,13 @@ Version 1.17
  介绍 构造和初始化 在任意类中使用运算符 - 比较 magic methods - 数值 magic methods  介绍 这篇方法引导总结了几个月来的博客文章. 它的标题是 magic methods.
 什么事 magic methods? 它是面向对象的python中的所有东西. 它们是你能够自己向类中定义的特殊方法, 能够给你的类带来魔法般的效果! 它们以__开头以__结尾(eg: __init__或者__lt__). 它们的文档也比所期望的要少得多. python魔法方法总是出现在python文档的相同部分, 但是总是松散的, 并且很难在其中找到响应的案例, 当然也有可能是故意的, 所有的魔法方法在_语言参考 (language reference)_都有详细地列了出来, 附加还有令人厌烦的语法说明等等.
 所以呢, 为了修复我所感受到的python文档的不完美之处, 我着手为python magic methods准备一些更简明并且有详细案例的文档. 我开始每周整理一篇博客, 到现在为止我已经全部完成了, 整理成了这篇指导.
-我希望你能喜欢, 把它当做一篇教程 复习资料或者参考, 我仅仅希望他能作为一篇人性化的python magic methods指导."><meta property="og:url" content="https://zhw.in/post/%E7%BF%BB%E8%AF%91a-guide-to-pythons-magic-methods/"><meta property="og:site_name" content="zhwei's Blog"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Trans"><meta property="article:published_time" content="2013-05-21T00:00:00+00:00"><meta property="article:modified_time" content="2013-05-21T00:00:00+00:00"><meta name=twitter:site content="@zhwei_"><meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="[翻译]A Guide to Python's Magic Methods"><meta name=twitter:description content="原文作者:Rafe Kettler
+我希望你能喜欢, 把它当做一篇教程 复习资料或者参考, 我仅仅希望他能作为一篇人性化的python magic methods指导.">
+<meta property="og:url" content="https://zhw.in/post/%E7%BF%BB%E8%AF%91a-guide-to-pythons-magic-methods/">
+<meta property="og:site_name" content="zhwei's Blog">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Trans"><meta property="article:published_time" content="2013-05-21T00:00:00+00:00"><meta property="article:modified_time" content="2013-05-21T00:00:00+00:00">
+<meta name=twitter:site content="@zhwei_">
+<meta name=twitter:creator content="@zhwei_"><meta name=twitter:title content="[翻译]A Guide to Python's Magic Methods">
+<meta name=twitter:description content="原文作者:Rafe Kettler
 原文链接: A Guide to Python&amp;rsquo;s Magic Methods
 Copyright © 2012 Rafe Kettler
 Version 1.17
@@ -25,10 +36,76 @@ Version 1.17
  介绍 构造和初始化 在任意类中使用运算符 - 比较 magic methods - 数值 magic methods  介绍 这篇方法引导总结了几个月来的博客文章. 它的标题是 magic methods.
 什么事 magic methods? 它是面向对象的python中的所有东西. 它们是你能够自己向类中定义的特殊方法, 能够给你的类带来魔法般的效果! 它们以__开头以__结尾(eg: __init__或者__lt__). 它们的文档也比所期望的要少得多. python魔法方法总是出现在python文档的相同部分, 但是总是松散的, 并且很难在其中找到响应的案例, 当然也有可能是故意的, 所有的魔法方法在_语言参考 (language reference)_都有详细地列了出来, 附加还有令人厌烦的语法说明等等.
 所以呢, 为了修复我所感受到的python文档的不完美之处, 我着手为python magic methods准备一些更简明并且有详细案例的文档. 我开始每周整理一篇博客, 到现在为止我已经全部完成了, 整理成了这篇指导.
-我希望你能喜欢, 把它当做一篇教程 复习资料或者参考, 我仅仅希望他能作为一篇人性化的python magic methods指导."><link rel="shortcut icon" href=/images/favicon.ico><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-189071452-1','auto');ga('send','pageview');}</script></head><body class="article-page has-toc"><script>(function(){const colorSchemeKey='StackColorScheme';if(!localStorage.getItem(colorSchemeKey)){localStorage.setItem(colorSchemeKey,"auto");}})();</script><script>(function(){const colorSchemeKey='StackColorScheme';const colorSchemeItem=localStorage.getItem(colorSchemeKey);const supportDarkMode=window.matchMedia('(prefers-color-scheme: dark)').matches===true;if(colorSchemeItem=='dark'||colorSchemeItem==='auto'&&supportDarkMode){document.documentElement.dataset.scheme='dark';}else{document.documentElement.dataset.scheme='light';}})();</script><div class="container main-container flex
-extended"><div id=article-toolbar><a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><h2 class=article-title><a href=/post/%E7%BF%BB%E8%AF%91a-guide-to-pythons-magic-methods/>[翻译]A Guide to Python's Magic Methods</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2013-05-21</time></footer></div></header><section class=article-content><blockquote><p>原文作者:<a class=link href=http://www.rafekettler.com target=_blank rel=noopener>Rafe Kettler</a><br>原文链接: <a class=link href=http://www.rafekettler.com/magicmethods.html target=_blank rel=noopener>A Guide to Python&rsquo;s Magic Methods</a><br>Copyright © 2012 Rafe Kettler<br>Version 1.17</p><p>本文档的英文pdf版本在<a class=link href=http://www.rafekettler.com/magicmethods.pdf target=_blank rel=noopener>pdf</a>或者<a class=link href=https://github.com/RafeKettler/magicmethods/raw/master/magicmethods.pdf target=_blank rel=noopener>Github</a>. 我在<a class=link href=http://www.github.com/RafeKettler/magicmethods target=_blank rel=noopener>这里</a>建了一个repo, 所有的issues可以在那里报告, 当然也可是是评论, 更可以是赞助!</p></blockquote><p>内容列表:</p><ol><li><a class=link href>介绍</a></li><li><a class=link href>构造和初始化</a></li><li><a class=link href>在任意类中使用运算符</a>
+我希望你能喜欢, 把它当做一篇教程 复习资料或者参考, 我仅仅希望他能作为一篇人性化的python magic methods指导.">
+<link rel="shortcut icon" href=/images/favicon.ico>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-189071452-1','auto'),ga('send','pageview'))</script>
+</head>
+<body class="article-page has-toc">
+<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
+<div class="container main-container flex
+extended">
+<div id=article-toolbar>
+<a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+<span>Back</span>
+</a>
+</div>
+<main class="main full-width">
+<article class=main-article>
+<header class=article-header>
+<div class=article-details>
+<h2 class=article-title>
+<a href=/post/%E7%BF%BB%E8%AF%91a-guide-to-pythons-magic-methods/>[翻译]A Guide to Python's Magic Methods</a>
+</h2>
+<footer class=article-time>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2013-05-21</time>
+</div>
+</footer>
+</div>
+</header>
+<section class=article-content>
+<blockquote>
+<p>原文作者:<a class=link href=http://www.rafekettler.com target=_blank rel=noopener>Rafe Kettler</a><br>
+原文链接: <a class=link href=http://www.rafekettler.com/magicmethods.html target=_blank rel=noopener>A Guide to Python&rsquo;s Magic Methods</a><br>
+Copyright © 2012 Rafe Kettler<br>
+Version 1.17</p>
+<p>本文档的英文pdf版本在<a class=link href=http://www.rafekettler.com/magicmethods.pdf target=_blank rel=noopener>pdf</a>或者<a class=link href=https://github.com/RafeKettler/magicmethods/raw/master/magicmethods.pdf target=_blank rel=noopener>Github</a>. 我在<a class=link href=http://www.github.com/RafeKettler/magicmethods target=_blank rel=noopener>这里</a>建了一个repo, 所有的issues可以在那里报告, 当然也可是是评论, 更可以是赞助!</p>
+</blockquote>
+<p>内容列表:</p>
+<ol>
+<li><a class=link href>介绍</a></li>
+<li><a class=link href>构造和初始化</a></li>
+<li><a class=link href>在任意类中使用运算符</a>
 - <a class=link href>比较 magic methods</a>
-- <a class=link href>数值 magic methods</a></li></ol><h2 id=介绍>介绍</h2><p>这篇方法引导总结了几个月来的博客文章. 它的标题是 magic methods.</p><p>什么事 magic methods? 它是面向对象的python中的所有东西. 它们是你能够自己向类中定义的特殊方法, 能够给你的类带来魔法般的效果! 它们以<code>__</code>开头以<code>__</code>结尾(eg: <code>__init__</code>或者<code>__lt__</code>). 它们的文档也比所期望的要少得多. python魔法方法总是出现在python文档的相同部分, 但是总是松散的, 并且很难在其中找到响应的案例, 当然也有可能是故意的, 所有的魔法方法在_语言参考 (language reference)_都有详细地列了出来, 附加还有令人厌烦的语法说明等等.</p><p>所以呢, 为了修复我所感受到的python文档的不完美之处, 我着手为python magic methods准备一些更简明并且有详细案例的文档. 我开始每周整理一篇博客, 到现在为止我已经全部完成了, 整理成了这篇指导.</p><p>我希望你能喜欢, 把它当做一篇教程 复习资料或者参考, 我仅仅希望他能作为一篇人性化的python magic methods指导.</p><h2 id=构造和初始化>构造和初始化</h2><p>每个人都知道最基础的 magic methods<code>__init__</code>, 我们可以用它来定义对象的初始化行为. 然而, 当我们调用<code>x = SomeClass()</code>时, <code>__init__</code>却不是第一个被调用的方法, 实际上被第一个调用的方法叫做<code>__new__</code>, 是它创建的实例并且将所有参数在创建的同时转递给初始化器. 在对象的预期的存活期限有一个<code>__del__</code>方法, 下面我们详细看下这三个方法:</p><ul><li><code>__new__(cls, [...)</code></li></ul><ul><li><code>__new__</code> 是在对象的初始化时调用的第一个方法, 它取走类然后将其他参数都传递给<code>__init__</code>, <code>__new__</code>用的真的很少, 但它也有其独到之处, 尤其是在将一个不可变的类型(例如元组或者字符串)子类化的时候. 我不想研究太多<code>__new__</code>的细节, 因为它用的真不怎么多, 但在<a class=link href=http://www.python.org/download/releases/2.2/descrintro/#__new__ target=_blank rel=noopener>python文档</a>里有详细的介绍.</li></ul><ul><li><code>__init__(self, [...)</code></li></ul><ul><li>类的初始化器. 它获取在主要构造函数被调用时伴随的所有参数(例如: 我们在调用<code>x = SomeClass(10, 'foo'))</code>时, <code>__init__</code>获取<code>10</code>和<code>'foo'</code>作为参数. 在python类的定义时, 几乎人人都能用到<code>__init__</code>.</li></ul><ul><li><code>__del(self)__</code></li></ul><ul><li>如果<code>__new__</code>和<code>__init__</code>组成了对象的构造函数, 那么<code>__del__</code>就是析构函数. 它的功能不是通过<code>del x</code>来实现(那样的话代码会被转换成<code>x.__del__()</code>). 事实上, 它定义了当一个对象在垃圾回收时候的行为, 它对那些有可能不仅仅需要删除还需要额外清理的对象非常有用, 就像sockets或者文件对象(file objects). 但是要小心, 因为<code>__del__</code>没有任何保证不会在对象存活时间或者当解释器正在运行的时候运行. 所以<code>__del__</code>不能当做好的编码实践的替代品(有可能经常在你正在处理的时候断开链接). 其实, <code>__del__</code>最好永远不用, 因为当你调用它之后你已经处于"危险环境"之内, 一定要小心使用!</li></ul><p>这里有一个<code>__init__</code>和<code>__del__</code>在实际中的使用:</p><div class=highlight><pre class=chroma><code class=language-python data-lang=python><span class=kn>from</span> <span class=nn>os.path</span> <span class=kn>import</span> <span class=n>join</span>
+- <a class=link href>数值 magic methods</a></li>
+</ol>
+<h2 id=介绍>介绍</h2>
+<p>这篇方法引导总结了几个月来的博客文章. 它的标题是 magic methods.</p>
+<p>什么事 magic methods? 它是面向对象的python中的所有东西. 它们是你能够自己向类中定义的特殊方法, 能够给你的类带来魔法般的效果! 它们以<code>__</code>开头以<code>__</code>结尾(eg: <code>__init__</code>或者<code>__lt__</code>). 它们的文档也比所期望的要少得多. python魔法方法总是出现在python文档的相同部分, 但是总是松散的, 并且很难在其中找到响应的案例, 当然也有可能是故意的, 所有的魔法方法在_语言参考 (language reference)_都有详细地列了出来, 附加还有令人厌烦的语法说明等等.</p>
+<p>所以呢, 为了修复我所感受到的python文档的不完美之处, 我着手为python magic methods准备一些更简明并且有详细案例的文档. 我开始每周整理一篇博客, 到现在为止我已经全部完成了, 整理成了这篇指导.</p>
+<p>我希望你能喜欢, 把它当做一篇教程 复习资料或者参考, 我仅仅希望他能作为一篇人性化的python magic methods指导.</p>
+<h2 id=构造和初始化>构造和初始化</h2>
+<p>每个人都知道最基础的 magic methods<code>__init__</code>, 我们可以用它来定义对象的初始化行为. 然而, 当我们调用<code>x = SomeClass()</code>时, <code>__init__</code>却不是第一个被调用的方法, 实际上被第一个调用的方法叫做<code>__new__</code>, 是它创建的实例并且将所有参数在创建的同时转递给初始化器. 在对象的预期的存活期限有一个<code>__del__</code>方法, 下面我们详细看下这三个方法:</p>
+<ul>
+<li><code>__new__(cls, [...)</code></li>
+</ul>
+<ul>
+<li><code>__new__</code> 是在对象的初始化时调用的第一个方法, 它取走类然后将其他参数都传递给<code>__init__</code>, <code>__new__</code>用的真的很少, 但它也有其独到之处, 尤其是在将一个不可变的类型(例如元组或者字符串)子类化的时候. 我不想研究太多<code>__new__</code>的细节, 因为它用的真不怎么多, 但在<a class=link href=http://www.python.org/download/releases/2.2/descrintro/#__new__ target=_blank rel=noopener>python文档</a>里有详细的介绍.</li>
+</ul>
+<ul>
+<li><code>__init__(self, [...)</code></li>
+</ul>
+<ul>
+<li>类的初始化器. 它获取在主要构造函数被调用时伴随的所有参数(例如: 我们在调用<code>x = SomeClass(10, 'foo'))</code>时, <code>__init__</code>获取<code>10</code>和<code>'foo'</code>作为参数. 在python类的定义时, 几乎人人都能用到<code>__init__</code>.</li>
+</ul>
+<ul>
+<li><code>__del(self)__</code></li>
+</ul>
+<ul>
+<li>如果<code>__new__</code>和<code>__init__</code>组成了对象的构造函数, 那么<code>__del__</code>就是析构函数. 它的功能不是通过<code>del x</code>来实现(那样的话代码会被转换成<code>x.__del__()</code>). 事实上, 它定义了当一个对象在垃圾回收时候的行为, 它对那些有可能不仅仅需要删除还需要额外清理的对象非常有用, 就像sockets或者文件对象(file objects). 但是要小心, 因为<code>__del__</code>没有任何保证不会在对象存活时间或者当解释器正在运行的时候运行. 所以<code>__del__</code>不能当做好的编码实践的替代品(有可能经常在你正在处理的时候断开链接). 其实, <code>__del__</code>最好永远不用, 因为当你调用它之后你已经处于"危险环境"之内, 一定要小心使用!</li>
+</ul>
+<p>这里有一个<code>__init__</code>和<code>__del__</code>在实际中的使用:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>from</span> <span class=nn>os.path</span> <span class=kn>import</span> <span class=n>join</span>
 
 <span class=k>class</span> <span class=nc>FileObject</span><span class=p>:</span>
   <span class=s1>&#39;&#39;&#39;Wrapper for file objects to make sure the file gets closed on deletion.&#39;&#39;&#39;</span>
@@ -39,16 +116,56 @@ extended"><div id=article-toolbar><a href=https://zhw.in class=back-home><svg xm
 
        <span class=k>def</span> <span class=fm>__del__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
          <span class=bp>self</span><span class=o>.</span><span class=n>file</span><span class=o>.</span><span class=n>close</span><span class=p>()</span>
-         <span class=k>del</span> <span class=bp>self</span><span class=o>.</span><span class=n>file</span></code></pre></div><h2 id=让运算符在任意类中使用>让运算符在任意类中使用</h2><p>python magic methods最大的优势就是能够让对象向内置类型一样进行运算, 并且使用简单! 这就意味着你能够避免使用丑陋 违反语感 不标准的方法来实现基本运算符. 在很多语言中, 通常使用这种方法实现:</p><div class=highlight><pre class=chroma><code class=language-python data-lang=python>    <span class=k>if</span> <span class=n>instance</span><span class=o>.</span><span class=n>equals</span><span class=p>(</span><span class=n>other_instance</span><span class=p>):</span>
-        <span class=c1># do something</span></code></pre></div><p>当然你也可以在python中这样实现, 但这样添了很多不必要的麻烦. 不同的函数库也许使用不同的名字来命名相同的操作, 但这样会让客户端做很多额外的工作. 现在见识下 magic methods的强大之处吧, 我们可以定义这样一个方法(在案例中是<code>__eq__</code>), 然后我们能够实现:</p><div class=highlight><pre class=chroma><code class=language-python data-lang=python>      <span class=k>if</span> <span class=n>instance</span> <span class=o>==</span> <span class=n>other_instance</span><span class=p>:</span>
+         <span class=k>del</span> <span class=bp>self</span><span class=o>.</span><span class=n>file</span></code></pre></div>
+<h2 id=让运算符在任意类中使用>让运算符在任意类中使用</h2>
+<p>python magic methods最大的优势就是能够让对象向内置类型一样进行运算, 并且使用简单! 这就意味着你能够避免使用丑陋 违反语感 不标准的方法来实现基本运算符. 在很多语言中, 通常使用这种方法实现:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>    <span class=k>if</span> <span class=n>instance</span><span class=o>.</span><span class=n>equals</span><span class=p>(</span><span class=n>other_instance</span><span class=p>):</span>
+        <span class=c1># do something</span></code></pre></div>
+<p>当然你也可以在python中这样实现, 但这样添了很多不必要的麻烦. 不同的函数库也许使用不同的名字来命名相同的操作, 但这样会让客户端做很多额外的工作. 现在见识下 magic methods的强大之处吧, 我们可以定义这样一个方法(在案例中是<code>__eq__</code>), 然后我们能够实现:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>      <span class=k>if</span> <span class=n>instance</span> <span class=o>==</span> <span class=n>other_instance</span><span class=p>:</span>
           <span class=c1>#do something</span>
-  </code></pre></div><p>这是python magic methods的强大的一方面, magic methods中的绝大部分是让我们能够定义运算符的实际操作, 从而使我们的类能够像内置类型一样进行各种运算.</p><h3 id=比较运算-magic-methods>比较运算 magic methods</h3><p>python中设计了大量的魔法方法来通过运算符实现对象之间直观的比较, 而不是调用笨拙的方法。另外也提供了一种方法去通过引用重写Python对象之间默认的比较行为。下面就是这样的一系列方法和用法：</p><ul><li><p><code>__cmp__(self, other)</code></p><p><code>__cmp__</code>方法是比较系列magic methods中最基础的方法。事实上它为其他的比较操作符(<code>&lt;, ==, !=</code> 等等)提供了提供了实现的方法,但是他的判断方式或许不是你想要的，比如说，判断某个实例是否与另一个实例相等是依据某个标准而是否大于则是依据另一个标准。<code>__cmp__</code>在<code>self &lt; other</code>时返回一个负数，相等的时候返回0, <code>self > other</code>时返回正数。一般来说，最好分别定义你需要的操作符行为而不是一次性定义全部。但是在当你需要的比较操作都是依赖相似的标准时，<code>__cmp__</code>也是一种好方法来避免重复并且也能让代码更整洁。</p></li><li><p><code>__eq__(self, other)</code></p><p>定义操作符**==**的行为</p></li><li><p><code>__ne__(self, other)</code></p><p>定义操作符**!=**的行为</p></li><li><p><code>__lt__(self, other)</code></p><p>定义操作符**&lt;**的行为</p></li><li><p><code>__gt__(self, other)</code></p><p>定义操作符**>**行为</p></li><li><p><code>__le__(self, other)</code></p><p>定义操作符**&lt;=**行为</p></li><li><p><code>__ge__(self, other)</code></p><p>定义操作符**>=**行为</p></li></ul><p>比如，我们把一个类想做一个单词，我们有可能需要按照字典的规则(字母表的顺序)比较, 而单词默认的比较是按照字符串比较。我们也有可能需要按照其他的标准来比较，诸如长度、数字、音节等，在下面的例子中我们按照单词的长度来比较，下面是具体实现：</p><div class=highlight><pre class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>Word</span><span class=p>(</span><span class=nb>str</span><span class=p>):</span>
+  </code></pre></div>
+<p>这是python magic methods的强大的一方面, magic methods中的绝大部分是让我们能够定义运算符的实际操作, 从而使我们的类能够像内置类型一样进行各种运算.</p>
+<h3 id=比较运算-magic-methods>比较运算 magic methods</h3>
+<p>python中设计了大量的魔法方法来通过运算符实现对象之间直观的比较, 而不是调用笨拙的方法。另外也提供了一种方法去通过引用重写Python对象之间默认的比较行为。下面就是这样的一系列方法和用法：</p>
+<ul>
+<li>
+<p><code>__cmp__(self, other)</code></p>
+<p><code>__cmp__</code>方法是比较系列magic methods中最基础的方法。事实上它为其他的比较操作符(<code>&lt;, ==, !=</code> 等等)提供了提供了实现的方法,但是他的判断方式或许不是你想要的，比如说，判断某个实例是否与另一个实例相等是依据某个标准而是否大于则是依据另一个标准。<code>__cmp__</code>在<code>self &lt; other</code>时返回一个负数，相等的时候返回0, <code>self > other</code>时返回正数。一般来说，最好分别定义你需要的操作符行为而不是一次性定义全部。但是在当你需要的比较操作都是依赖相似的标准时，<code>__cmp__</code>也是一种好方法来避免重复并且也能让代码更整洁。</p>
+</li>
+<li>
+<p><code>__eq__(self, other)</code></p>
+<p>定义操作符**==**的行为</p>
+</li>
+<li>
+<p><code>__ne__(self, other)</code></p>
+<p>定义操作符**!=**的行为</p>
+</li>
+<li>
+<p><code>__lt__(self, other)</code></p>
+<p>定义操作符**&lt;**的行为</p>
+</li>
+<li>
+<p><code>__gt__(self, other)</code></p>
+<p>定义操作符**>**行为</p>
+</li>
+<li>
+<p><code>__le__(self, other)</code></p>
+<p>定义操作符**&lt;=**行为</p>
+</li>
+<li>
+<p><code>__ge__(self, other)</code></p>
+<p>定义操作符**>=**行为</p>
+</li>
+</ul>
+<p>比如，我们把一个类想做一个单词，我们有可能需要按照字典的规则(字母表的顺序)比较, 而单词默认的比较是按照字符串比较。我们也有可能需要按照其他的标准来比较，诸如长度、数字、音节等，在下面的例子中我们按照单词的长度来比较，下面是具体实现：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>Word</span><span class=p>(</span><span class=nb>str</span><span class=p>):</span>
     <span class=s1>&#39;&#39;&#39;单词类, 依据单词的长度比较单词大小&#39;&#39;&#39;</span>
 
     <span class=k>def</span> <span class=fm>__new__</span><span class=p>(</span><span class=bp>cls</span><span class=p>,</span> <span class=n>word</span><span class=p>):</span>
         <span class=c1># 注意到我们用了__new__方法, 因为字符串是不可变类型，这样我们初始化是更加方便。</span>
         <span class=k>if</span> <span class=s1>&#39; &#39;</span> <span class=ow>in</span> <span class=n>word</span><span class=p>:</span>
-            <span class=k>print</span> <span class=s2>&#34;单词中包含空格，这里取第一个空格前的单词.&#34;</span>
+            <span class=nb>print</span> <span class=s2>&#34;单词中包含空格，这里取第一个空格前的单词.&#34;</span>
             <span class=n>word</span> <span class=o>=</span> <span class=n>word</span><span class=p>[:</span><span class=n>word</span><span class=o>.</span><span class=n>index</span><span class=p>(</span><span class=s1>&#39; &#39;</span><span class=p>)]</span> <span class=c1># Word is now all chars before first space</span>
         <span class=k>return</span> <span class=nb>str</span><span class=o>.</span><span class=fm>__new__</span><span class=p>(</span><span class=bp>cls</span><span class=p>,</span> <span class=n>word</span><span class=p>)</span>
 
@@ -59,10 +176,149 @@ extended"><div id=article-toolbar><a href=https://zhw.in class=back-home><svg xm
     <span class=k>def</span> <span class=fm>__ge__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>other</span><span class=p>):</span>
         <span class=k>return</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>&gt;=</span> <span class=nb>len</span><span class=p>(</span><span class=n>other</span><span class=p>)</span>
     <span class=k>def</span> <span class=fm>__le__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>other</span><span class=p>):</span>
-        <span class=k>return</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>&lt;=</span> <span class=nb>len</span><span class=p>(</span><span class=n>other</span><span class=p>)</span></code></pre></div><p>现在我们通过<code>Wrod("foo") and Word("bar")</code>可以创建两个实例, 然后通过判断它们的长度比较大小，注意到我们这里没有定义<code>__eq__</code>和<code>__ne__</code>方法，这是因为如果定义了会导致一些怪异的行为，尤其是判断<code>Word('foo') == Word('bar')</code>会返回<code>True</code>，这样通过长度判定两个单词相等是没有意义的，所以我们让回落到字符串的范畴中判断是否相等。</p><p>其实有时候我们需要大量比较操作的时候并不需要自己定义大量的magic method, 如果你只需要定义<code>__eq__</code>或者<code>__gt__</code>、<code>__lt__</code>等，Python的标准库<code>functools</code>中已经提供了一个很友好的类装饰器，这个特性只在Python2.7中可用，如果你有机会使用<code>@total_ordering</code>的话一定能节省大量的时间和精力。</p><h3 id=数值运算魔法方法>数值运算魔法方法</h3><p>就像你可以使用某种方法让类可以通过比较操作符进行比较一样，你也可应定义他们使用数学运算符时的表现行为。睁大眼睛注意了，其实有很多这样的魔法方法，为了条理清晰，我把它们分为五类：一元运算符、普通算数运算符、反射算数运算符(稍后详述)、增量赋值和类型转换。</p><h4 id=一元运算符和方法>一元运算符和方法</h4><p>一元运算符只有一个操作数，比如：取反、绝对值等。</p><p><code>__pos__(self)</code><br>一元运算符取正值的实现 (e.g. <code>+some_object</code>)</p><p><code>__neg__(self)</code><br>一元运算符取反的实现(e.g. <code>-some_object</code>)</p><p><code>__abs__(self)</code><br>定义使用内置<code>abs()</code>方法时的行为</p><p><code>__invert__(self)</code><br>定义使用内置操作符<code>～</code>时的行为，具体实例见<a class=link href=http://en.wikipedia.org/wiki/Bitwise_operation#NOT target=_blank rel=noopener>the Wikipedia article on bitwise operations</a></p><p><code>__round__(self, n)</code><br>定义使用内置方法<code>round()</code>时的行为, <code>n</code>是四舍五入时保留的小数位数</p><p><code>__floor__(self)</code><br>定义调用方法<code>math.floor()</code>时的行为， 返回离数字上舍整数</p><p><code>__ceil__(self)</code><br>定义调用方法<code>math.ceil()</code>时的行为， 返回离数字上舍整数</p><p><code>__trunc__(self)</code><br>定义调用方法<code>math.trunc()</code>时的行为， 截取数字的整数部分</p><h4 id=常用运算符>常用运算符</h4><p>现在我们来看下常用的二元运算符以及几个方法(像：<code>+</code>，<code>-</code>，<code>*</code>等等), 这些中的大部分是很通俗易懂的。</p><p><code>__add__(self, other)</code><br>定义加法</p><p><code>__sub__(self, other)</code><br>定义减法</p><p><code>__mul__(self, other)</code><br>定义乘法</p><p><code>__floordiv__(self, other)</code><br>定义整除</p><p><code>__div__(self, other)</code><br>定义除法</p><p><code>__truediv__(self, other)</code><br>定义整数除法，只有在<code>from __future__ import division</code> 时使用</p><p><code>__mod__(self, other)</code><br>定义取模运算</p><p><code>__divmod__(self, other)</code><br>定义长除法，调用<code>divmod()</code>时的行为</p><p><code>__pow__(self, other)</code><br>定义运算符<code>**</code></p><p><code>__lshift__(self, other)</code><br>定义左移运算符<code>&lt;&lt;</code></p><p><code>__rshift__(self, other)</code><br>定义右移运算符<code>>></code></p><p><code>__and__(self, other)</code><br>定义按位与，<code>&</code>操作符</p><p><code>__or__(self, other)</code><br>定义按位或，<code>|</code>操作符</p><p><code>__xor__(self, other)</code><br>定义按位异或， <code>^</code>操作符</p><h4 id=反运算操作符>反运算操作符</h4></section><footer class=article-footer><section class=article-tags><a href=/tags/trans/>Trans</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper></aside><footer class=site-footer><section class=copyright>&copy;
+        <span class=k>return</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>&lt;=</span> <span class=nb>len</span><span class=p>(</span><span class=n>other</span><span class=p>)</span></code></pre></div>
+<p>现在我们通过<code>Wrod("foo") and Word("bar")</code>可以创建两个实例, 然后通过判断它们的长度比较大小，注意到我们这里没有定义<code>__eq__</code>和<code>__ne__</code>方法，这是因为如果定义了会导致一些怪异的行为，尤其是判断<code>Word('foo') == Word('bar')</code>会返回<code>True</code>，这样通过长度判定两个单词相等是没有意义的，所以我们让回落到字符串的范畴中判断是否相等。</p>
+<p>其实有时候我们需要大量比较操作的时候并不需要自己定义大量的magic method, 如果你只需要定义<code>__eq__</code>或者<code>__gt__</code>、<code>__lt__</code>等，Python的标准库<code>functools</code>中已经提供了一个很友好的类装饰器，这个特性只在Python2.7中可用，如果你有机会使用<code>@total_ordering</code>的话一定能节省大量的时间和精力。</p>
+<h3 id=数值运算魔法方法>数值运算魔法方法</h3>
+<p>就像你可以使用某种方法让类可以通过比较操作符进行比较一样，你也可应定义他们使用数学运算符时的表现行为。睁大眼睛注意了，其实有很多这样的魔法方法，为了条理清晰，我把它们分为五类：一元运算符、普通算数运算符、反射算数运算符(稍后详述)、增量赋值和类型转换。</p>
+<h4 id=一元运算符和方法>一元运算符和方法</h4>
+<p>一元运算符只有一个操作数，比如：取反、绝对值等。</p>
+<p><code>__pos__(self)</code><br>
+一元运算符取正值的实现 (e.g. <code>+some_object</code>)</p>
+<p><code>__neg__(self)</code><br>
+一元运算符取反的实现(e.g. <code>-some_object</code>)</p>
+<p><code>__abs__(self)</code><br>
+定义使用内置<code>abs()</code>方法时的行为</p>
+<p><code>__invert__(self)</code><br>
+定义使用内置操作符<code>～</code>时的行为，具体实例见<a class=link href=http://en.wikipedia.org/wiki/Bitwise_operation#NOT target=_blank rel=noopener>the Wikipedia article on bitwise operations</a></p>
+<p><code>__round__(self, n)</code><br>
+定义使用内置方法<code>round()</code>时的行为, <code>n</code>是四舍五入时保留的小数位数</p>
+<p><code>__floor__(self)</code><br>
+定义调用方法<code>math.floor()</code>时的行为， 返回离数字上舍整数</p>
+<p><code>__ceil__(self)</code><br>
+定义调用方法<code>math.ceil()</code>时的行为， 返回离数字上舍整数</p>
+<p><code>__trunc__(self)</code><br>
+定义调用方法<code>math.trunc()</code>时的行为， 截取数字的整数部分</p>
+<h4 id=常用运算符>常用运算符</h4>
+<p>现在我们来看下常用的二元运算符以及几个方法(像：<code>+</code>，<code>-</code>，<code>*</code>等等), 这些中的大部分是很通俗易懂的。</p>
+<p><code>__add__(self, other)</code><br>
+定义加法</p>
+<p><code>__sub__(self, other)</code><br>
+定义减法</p>
+<p><code>__mul__(self, other)</code><br>
+定义乘法</p>
+<p><code>__floordiv__(self, other)</code><br>
+定义整除</p>
+<p><code>__div__(self, other)</code><br>
+定义除法</p>
+<p><code>__truediv__(self, other)</code><br>
+定义整数除法，只有在<code>from __future__ import division</code> 时使用</p>
+<p><code>__mod__(self, other)</code><br>
+定义取模运算</p>
+<p><code>__divmod__(self, other)</code><br>
+定义长除法，调用<code>divmod()</code>时的行为</p>
+<p><code>__pow__(self, other)</code><br>
+定义运算符<code>**</code></p>
+<p><code>__lshift__(self, other)</code><br>
+定义左移运算符<code>&lt;&lt;</code></p>
+<p><code>__rshift__(self, other)</code><br>
+定义右移运算符<code>>></code></p>
+<p><code>__and__(self, other)</code><br>
+定义按位与，<code>&</code>操作符</p>
+<p><code>__or__(self, other)</code><br>
+定义按位或，<code>|</code>操作符</p>
+<p><code>__xor__(self, other)</code><br>
+定义按位异或， <code>^</code>操作符</p>
+<h4 id=反运算操作符>反运算操作符</h4>
+</section>
+<footer class=article-footer>
+<section class=article-tags>
+<a href=/tags/trans/>Trans</a>
+</section>
+<section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span>
+</section>
+</footer>
+</article>
+<aside class=related-contents--wrapper>
+</aside>
+<footer class=site-footer>
+<section class=copyright>
+&copy;
 2012 -
-2021 zhwei's Blog</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.5.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+2021 zhwei's Blog
+</section>
+<section class=powerby>
+Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> <br>
+Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>
+</section>
+</footer>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#介绍>介绍</a></li><li><a href=#构造和初始化>构造和初始化</a></li><li><a href=#让运算符在任意类中使用>让运算符在任意类中使用</a><ol><li><a href=#比较运算-magic-methods>比较运算 magic methods</a></li><li><a href=#数值运算魔法方法>数值运算魔法方法</a><ol><li><a href=#一元运算符和方法>一元运算符和方法</a></li><li><a href=#常用运算符>常用运算符</a></li><li><a href=#反运算操作符>反运算操作符</a></li></ol></li></ol></li></ol></nav></div></section></aside></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const customFont=document.createElement('link');customFont.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";customFont.type="text/css";customFont.rel="stylesheet";document.head.appendChild(customFont);}());</script></body></html>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous>
+</main>
+<aside class="sidebar right-sidebar sticky">
+<section class="widget archives">
+<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+</div>
+<h2 class="widget-title section-title">Table of contents</h2>
+<div class=widget--toc>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#介绍>介绍</a></li>
+<li><a href=#构造和初始化>构造和初始化</a></li>
+<li><a href=#让运算符在任意类中使用>让运算符在任意类中使用</a>
+<ol>
+<li><a href=#比较运算-magic-methods>比较运算 magic methods</a></li>
+<li><a href=#数值运算魔法方法>数值运算魔法方法</a>
+<ol>
+<li><a href=#一元运算符和方法>一元运算符和方法</a></li>
+<li><a href=#常用运算符>常用运算符</a></li>
+<li><a href=#反运算操作符>反运算操作符</a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</nav>
+</div>
+</section>
+</aside>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</body>
+</html>
