@@ -118,11 +118,18 @@ menu:
           weight: -60
           pre: search
 
+    social:
         - identifier: github
           name: GitHub
           url: https://github.com/zhwei
-          weight: -50
-          pre: brand-github
+          params:
+            icon: brand-github
+
+        - identifier: twitter
+          name: Twitter
+          url: https://twitter.com/zhwei_
+          params:
+            icon: brand-twitter
 
 related:
     includeNewer: true

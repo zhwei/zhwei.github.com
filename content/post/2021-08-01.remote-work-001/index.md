@@ -68,3 +68,4 @@ tags:
 
 - [我是张卫，人在青岛，远程五年啦 | No.24 你好鸭#远程工作者](https://mp.weixin.qq.com/s/Jc0kdw6B_Zy-BCKyIfjfHQ)
 - [POPER Interview Remote](https://zhaopin.comiru.cn/article/detail?id=41)
+- [社员采访：远程是我的生活方式](https://mp.weixin.qq.com/s/o0ihmDrkr3sKF7-UmHjmug)
