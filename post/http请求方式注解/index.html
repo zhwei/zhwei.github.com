@@ -9,6 +9,7 @@ GET方法一般被视为安全方法， 因为它仅用来获取数据而不会�
 尽管GET方法是一般被视为“安全的”，但如果在实际使用中没有做任何设置，比如可以无限制的抓取等情况， 也会导致一些不可预料的问题，比如web缓存或者搜索引擎问题。
  POST POST一般用来上传文件或者提交一个完整的web表单。
 这是Chrome中查看到的POST内容
+ Chrome中查看POST内容 
 实际数据是这样的
 user=554101&amp;amp;user_code=eNWyXdrrTpC6hoSvzPHBYKLljGkcDw79QsWtNeMu&amp;amp;attachment=0&amp;amp;code_brush=&amp;amp;code_snippet=&amp;amp;msg=test  浏览器中提交表单时，这里与get类似，每个键值对都是通过&amp;amp;分割, 其他非字母数字会进行url转码。
 为什么一些请求会使用POST提交数据?
@@ -31,6 +32,7 @@ GET方法一般被视为安全方法， 因为它仅用来获取数据而不会�
 尽管GET方法是一般被视为“安全的”，但如果在实际使用中没有做任何设置，比如可以无限制的抓取等情况， 也会导致一些不可预料的问题，比如web缓存或者搜索引擎问题。
  POST POST一般用来上传文件或者提交一个完整的web表单。
 这是Chrome中查看到的POST内容
+ Chrome中查看POST内容 
 实际数据是这样的
 user=554101&amp;amp;user_code=eNWyXdrrTpC6hoSvzPHBYKLljGkcDw79QsWtNeMu&amp;amp;attachment=0&amp;amp;code_brush=&amp;amp;code_snippet=&amp;amp;msg=test  浏览器中提交表单时，这里与get类似，每个键值对都是通过&amp;amp;分割, 其他非字母数字会进行url转码。
 为什么一些请求会使用POST提交数据?
@@ -56,6 +58,7 @@ GET方法一般被视为安全方法， 因为它仅用来获取数据而不会�
 尽管GET方法是一般被视为“安全的”，但如果在实际使用中没有做任何设置，比如可以无限制的抓取等情况， 也会导致一些不可预料的问题，比如web缓存或者搜索引擎问题。
  POST POST一般用来上传文件或者提交一个完整的web表单。
 这是Chrome中查看到的POST内容
+ Chrome中查看POST内容 
 实际数据是这样的
 user=554101&amp;amp;user_code=eNWyXdrrTpC6hoSvzPHBYKLljGkcDw79QsWtNeMu&amp;amp;attachment=0&amp;amp;code_brush=&amp;amp;code_snippet=&amp;amp;msg=test  浏览器中提交表单时，这里与get类似，每个键值对都是通过&amp;amp;分割, 其他非字母数字会进行url转码。
 为什么一些请求会使用POST提交数据?
@@ -75,7 +78,7 @@ PATCH 请求修改局部数据
 <div class="container main-container flex
 extended">
 <div id=article-toolbar>
-<a href=https://zhw.in class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+<a href=/ class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
 <span>Back</span>
 </a>
 </div>
@@ -89,6 +92,11 @@ extended">
 <footer class=article-time>
 <div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
 <time class=article-time--published>2014-06-16</time>
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>
+1 minute read
+</time>
 </div>
 </footer>
 </div>
@@ -107,7 +115,12 @@ extended">
 <h1 id=post>POST</h1>
 <p>POST一般用来上传文件或者提交一个完整的web表单。</p>
 <p>这是Chrome中查看到的POST内容<br>
-<img src=http://ww1.sinaimg.cn/large/9f62afa1tw1ehfyundfwpj20bw03zt90.jpg alt=Chrome中查看POST内容></p>
+<figure>
+<a href=http://ww1.sinaimg.cn/large/9f62afa1tw1ehfyundfwpj20bw03zt90.jpg>
+<img src=http://ww1.sinaimg.cn/large/9f62afa1tw1ehfyundfwpj20bw03zt90.jpg loading=lazy alt=Chrome中查看POST内容>
+</a>
+<figcaption>Chrome中查看POST内容</figcaption>
+</figure></p>
 <p>实际数据是这样的</p>
 <pre><code>user=554101&amp;user_code=eNWyXdrrTpC6hoSvzPHBYKLljGkcDw79QsWtNeMu&amp;attachment=0&amp;code_brush=&amp;code_snippet=&amp;msg=test
 </code></pre>
@@ -151,6 +164,9 @@ extended">
 </article>
 <aside class=related-contents--wrapper>
 </aside>
+<script src=https://utteranc.es/client.js repo=zhwei/zhwei.github.com issue-term=title label=Comment crossorigin=anonymous async></script>
+<style>.utterances{max-width:unset}</style>
+<script>function setUtterancesTheme(b){let a=document.querySelector('.utterances iframe');a&&a.contentWindow.postMessage({type:'set-theme',theme:`github-${b}`},'https://utteranc.es')}addEventListener('message',a=>{if(a.origin!=='https://utteranc.es')return;setUtterancesTheme(document.documentElement.dataset.scheme)}),window.addEventListener('onColorSchemeChange',a=>{setUtterancesTheme(a.detail)})</script>
 <footer class=site-footer>
 <section class=copyright>
 &copy;
@@ -159,7 +175,7 @@ extended">
 </section>
 <section class=powerby>
 Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> <br>
-Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>
+Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.4.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>
 </section>
 </footer>
 <div class=pswp tabindex=-1 role=dialog aria-hidden=true>
