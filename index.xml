@@ -1,4 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>远程工作五年</title><link>https://zhw.in/post/remote-work-001/</link><pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/remote-work-001/</guid><description>&lt;img src="https://zhw.in/post/remote-work-001/media/laptop-336378_1920.jpg" alt="Featured image of post 远程工作五年" />&lt;p>文章主要内容来自 &lt;a class="link" href="https://eleduck.com" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zhwei's Blog</title><link>https://zhw.in/</link><description>Recent content on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Gost 实现内网穿透</title><link>https://zhw.in/post/intranet-penetration-using-gost/</link><pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate><guid>https://zhw.in/post/intranet-penetration-using-gost/</guid><description>&lt;img src="https://zhw.in/post/intranet-penetration-using-gost/media/the-tunnel-1446786.jpg" alt="Featured image of post 使用 Gost 实现内网穿透" />&lt;blockquote>
+&lt;p>Photo by &lt;!-- raw HTML omitted -->theraygun&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Freeimages.com&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="前因">前因&lt;/h2>
+&lt;p>这里的内网穿透是指能够在家庭网络环境之外接入家庭局域网，能够正常访问 NAS、Homelab 等。&lt;/p>
+&lt;p>此前已经使用 Wireguard 组建虚拟网的方式实现了上面需求，wg 安装在 Homelab 机器上，但最近想用 PVE 重装下 Homelab ，为了避免在此期间影响接入，准备将穿透服务迁移到群晖 NAS 上。
+但并没有官方构建的群晖 Wireguard Package，使用第三方的构建没有安全感，所以准备换用其他方案实现，之前方案中也用到了 gost 来提供云端的 SS 代理，发现其 v3 版本中提供了很多转发特性，所以准备用它来实现。&lt;/p>
+&lt;p>Gost 的优点：&lt;/p>
+&lt;ol>
+&lt;li>纯命令行方案，可以不使用配置文件。&lt;/li>
+&lt;li>使用 go 开发，单个二进制文件，方便部署。&lt;/li>
+&lt;/ol>
+&lt;h2 id="安装">安装&lt;/h2>
+&lt;p>前往 GitHub 下载对应架构的二进制包，也可自行构建。&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/go-gost/gost/releases" target="_blank" rel="noopener"
+>https://github.com/go-gost/gost/releases&lt;/a>&lt;/p>
+&lt;h2 id="使用">使用&lt;/h2>
+&lt;h3 id="云主机">云主机&lt;/h3>
+&lt;p>云主机需要有公网 IP ，方便移动设备接入。&lt;/p>
+&lt;pre>&lt;code>gost -L &amp;quot;relay+ssh://:56786?bind=true&amp;amp;nodelay=true&amp;amp;authorizedKeys=$HOME/.ssh/authorized_keys&amp;quot;
+&lt;/code>&lt;/pre>&lt;p>上面命令会使用 &lt;a class="link" href="https://gost.run/tutorials/protocols/relay/" target="_blank" rel="noopener"
+>relay&lt;/a> + &lt;a class="link" href="https://gost.run/tutorials/protocols/ssh/" target="_blank" rel="noopener"
+>ssh&lt;/a> 协议监听本地 56786 端口，授权密钥使用当前用户的 &lt;code>~/.ssh/authorized_keys&lt;/code> 文件。&lt;/p>
+&lt;p>其中 bind=true 允许请求方指定绑定的端口，nodelay=true 降低延迟。&lt;/p>
+&lt;h3 id="家庭-nas">家庭 NAS&lt;/h3>
+&lt;p>NAS 在家庭内网，建议使用 docker 运行下面命令，更容易部署，减少依赖。&lt;/p>
+&lt;pre>&lt;code>gost \
+-L rtcp://:56787/:8848 \
+-F &amp;quot;relay+ssh://root@CLOUD_SERVER_HOST:56786?privateKeyFile=/path/to/ssh_private_key&amp;amp;nodelay=true&amp;quot; \
+-L ss://AEAD_CHACHA20_POLY1305:xxx@:8848
+&lt;/code>&lt;/pre>&lt;p>上面命令中：
+&lt;code>-L rtcp://:56787/:8848&lt;/code> 会将本地的 8848 端口转发到远程的 56787 端口，-F 选项指定了转发协议和链接信息。&lt;/p>
+&lt;p>第二个 -L 在 8848 端口启动一个 ss 代理。&lt;/p>
+&lt;p>上面达成的效果是：当移动设备使用 ss 协议连接到云主机的 56787 端口时，会通过 ssh 代理转发到家庭 NAS 的 8848 端口，实现内网穿透，访问家庭网络内的服务。&lt;/p></description></item><item><title>远程工作五年</title><link>https://zhw.in/post/remote-work-001/</link><pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/remote-work-001/</guid><description>&lt;img src="https://zhw.in/post/remote-work-001/media/laptop-336378_1920.jpg" alt="Featured image of post 远程工作五年" />&lt;p>文章主要内容来自 &lt;a class="link" href="https://eleduck.com" target="_blank" rel="noopener"
 >电鸭社区&lt;/a> 大灰的文字采访，公众号文章链接放在最后。&lt;/p>
 &lt;h2 id="正文">正文&lt;/h2>
 &lt;p>▌介绍下你本人的经历及当前所做的事情吧？&lt;/p>

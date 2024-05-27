@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on zhwei's Blog</title><link>https://zhw.in/post/</link><description>Recent content in Posts on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/post/index.xml" rel="self" type="application/rss+xml"/><item><title>远程工作五年</title><link>https://zhw.in/post/remote-work-001/</link><pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/remote-work-001/</guid><description>文章主要内容来自 电鸭社区 大灰的文字采访，公众号文章链接放在最后。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on zhwei's Blog</title><link>https://zhw.in/post/</link><description>Recent content in Posts on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/post/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Gost 实现内网穿透</title><link>https://zhw.in/post/intranet-penetration-using-gost/</link><pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate><guid>https://zhw.in/post/intranet-penetration-using-gost/</guid><description>Photo by theraygunon Freeimages.com 前因 这里的内网穿透是指能够在家庭网络环境之外接入家庭局域网，能够正常访问 NAS、Homelab 等。
+此前已经使用 Wireguard 组建虚拟网的方式实现了上面需求，wg 安装在 Homelab 机器上，但最近想用 PVE 重装下 Homelab ，为了避免在此期间影响接入，准备将穿透服务迁移到群晖 NAS 上。 但并没有官方构建的群晖 Wireguard Package，使用第三方的构建没有安全感，所以准备换用其他方案实现，之前方案中也用到了 gost 来提供云端的 SS 代理，发现其 v3 版本中提供了很多转发特性，所以准备用它来实现。
+Gost 的优点：
+纯命令行方案，可以不使用配置文件。 使用 go 开发，单个二进制文件，方便部署。 安装 前往 GitHub 下载对应架构的二进制包，也可自行构建。
+https://github.com/go-gost/gost/releases
+使用 云主机 云主机需要有公网 IP ，方便移动设备接入。
+gost -L &amp;quot;relay+ssh://:56786?bind=true&amp;amp;nodelay=true&amp;amp;authorizedKeys=$HOME/.ssh/authorized_keys&amp;quot; 上面命令会使用 relay + ssh 协议监听本地 56786 端口，授权密钥使用当前用户的 ~/.ssh/authorized_keys 文件。
+其中 bind=true 允许请求方指定绑定的端口，nodelay=true 降低延迟。
+家庭 NAS NAS 在家庭内网，建议使用 docker 运行下面命令，更容易部署，减少依赖。</description></item><item><title>远程工作五年</title><link>https://zhw.in/post/remote-work-001/</link><pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/remote-work-001/</guid><description>文章主要内容来自 电鸭社区 大灰的文字采访，公众号文章链接放在最后。
 正文 ▌介绍下你本人的经历及当前所做的事情吧？
 大家好，我叫张卫，目前定居青岛，2016 年初开始远程工作，到现在为止已经有五年了，也算一枚远程老司机。 之前在上海工作了两年，之后有个幸运的机会开始了远程工作，目前主力开发语言是 PHP 和 Python，前端和 App 也写过一些，DevOps 也有不少生产经验，自命为全栈工程师。
 最喜欢青岛清爽爽的感觉

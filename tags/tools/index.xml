@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on zhwei's Blog</title><link>https://zhw.in/tags/tools/</link><description>Recent content in Tools on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/tags/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>Postman 实现带 csrf_token 的表单登录</title><link>https://zhw.in/post/postman-login-with-csrftoken/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/postman-login-with-csrftoken/</guid><description>Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇百怪，完全遵照 OAuth 等标准授权协议的项目简直是凤毛麟角。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on zhwei's Blog</title><link>https://zhw.in/tags/tools/</link><description>Recent content in Tools on zhwei's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://zhw.in/tags/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Gost 实现内网穿透</title><link>https://zhw.in/post/intranet-penetration-using-gost/</link><pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate><guid>https://zhw.in/post/intranet-penetration-using-gost/</guid><description>Photo by theraygunon Freeimages.com 前因 这里的内网穿透是指能够在家庭网络环境之外接入家庭局域网，能够正常访问 NAS、Homelab 等。
+此前已经使用 Wireguard 组建虚拟网的方式实现了上面需求，wg 安装在 Homelab 机器上，但最近想用 PVE 重装下 Homelab ，为了避免在此期间影响接入，准备将穿透服务迁移到群晖 NAS 上。 但并没有官方构建的群晖 Wireguard Package，使用第三方的构建没有安全感，所以准备换用其他方案实现，之前方案中也用到了 gost 来提供云端的 SS 代理，发现其 v3 版本中提供了很多转发特性，所以准备用它来实现。
+Gost 的优点：
+纯命令行方案，可以不使用配置文件。 使用 go 开发，单个二进制文件，方便部署。 安装 前往 GitHub 下载对应架构的二进制包，也可自行构建。
+https://github.com/go-gost/gost/releases
+使用 云主机 云主机需要有公网 IP ，方便移动设备接入。
+gost -L &amp;quot;relay+ssh://:56786?bind=true&amp;amp;nodelay=true&amp;amp;authorizedKeys=$HOME/.ssh/authorized_keys&amp;quot; 上面命令会使用 relay + ssh 协议监听本地 56786 端口，授权密钥使用当前用户的 ~/.ssh/authorized_keys 文件。
+其中 bind=true 允许请求方指定绑定的端口，nodelay=true 降低延迟。
+家庭 NAS NAS 在家庭内网，建议使用 docker 运行下面命令，更容易部署，减少依赖。</description></item><item><title>Postman 实现带 csrf_token 的表单登录</title><link>https://zhw.in/post/postman-login-with-csrftoken/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://zhw.in/post/postman-login-with-csrftoken/</guid><description>Postman 虽然自带了多种授权方式，但不同项目的登录方式千奇百怪，完全遵照 OAuth 等标准授权协议的项目简直是凤毛麟角。
 下面使用 Postman 的 Pre-request Script 实现了 csrf_token 解析，然后与邮箱密码一起发起登录请求。
 脚本中使用了多个环境变量，需要切换身份登陆时可以通过切换不同 Environment 实现。用到的环境变量如下：
 Environments
